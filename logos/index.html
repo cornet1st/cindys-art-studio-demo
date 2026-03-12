@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy's Art Studio — Logo Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+      background: #f4f2ef;
+      color: #2c2c2c;
+    }
+    .header {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .header p { font-size: 0.9rem; color: #888; }
+
+    .set-header {
+      max-width: 1400px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .set-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .set-header .line {
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+    }
+    .set-header .badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .badge-a { background: #e8f4ef; color: #6a9e8c; }
+    .badge-b { background: #fef3e2; color: #b8956a; }
+    .badge-c { background: #eee8f4; color: #8e7aaa; }
+
+    .grid {
+      max-width: 1400px;
+      margin: 1.5rem auto 0;
+      padding: 0 2rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e8e4de;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+    }
+    .logo-box {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      background: #fafaf8;
+    }
+    .logo-box svg, .logo-box img {
+      max-width: 140px;
+      max-height: 140px;
+    }
+    .card-info {
+      padding: 1rem 1.2rem;
+      border-top: 1px solid #f0ece6;
+    }
+    .card-info .num {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    .card-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0.2rem 0;
+    }
+    .card-info p {
+      font-size: 0.78rem;
+      color: #999;
+      line-height: 1.5;
+    }
+
+    /* Detail link */
+    .set-detail {
+      max-width: 1400px;
+      margin: 0.5rem auto 0;
+      padding: 0 2rem 2rem;
+      text-align: right;
+    }
+    .set-detail a {
+      font-size: 0.8rem;
+      color: #6a9e8c;
+      text-decoration: none;
+    }
+    .set-detail a:hover { text-decoration: underline; }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      padding: 2rem;
+      color: #6a9e8c;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-top: 1px solid #e8e4de;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 0 1rem 1rem; }
+      .set-header { padding: 0 1rem; }
+      .logo-box { min-height: 160px; padding: 1.5rem; }
+      .logo-box svg, .logo-box img { max-width: 100px; max-height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Cindy's Art Studio — Logo Concepts</h1>
+  <p>房子 + C 字母 &bull; 居家畫室概念 &bull; 共 15 款供挑選</p>
+</div>
+
+<!-- ===== SET A ===== -->
+<div class="set-header">
+  <h2>Set A</h2>
+  <div class="line"></div>
+  <span class="badge badge-a">5 Designs</span>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="logo-box">
+      <img src="logo-01-arch-house.svg" alt="Logo A1">
+    </div>
+    <div class="card-info">
+      <div class="num">A-1</div>
+      <h3>拱形屋 Arch House</h3>
+      <p>C 字母用赤陶筆刷，搭配經典尖頂房屋線條</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="logo-box">
+      <img src="logo-02-brush-house.svg" alt="Logo A2">
+    </div>
+    <div class="card-info">
+      <div class="num">A-2</div>
+      <h3>筆刷屋 Brush House</h3>
+      <p>弧形屋頂 + 粗體 C，底部有筆觸裝飾線</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="logo-box">
+      <img src="logo-03-monogram-house.svg" alt="Logo A3">
+    </div>
+    <div class="card-info">
+      <div class="num">A-3</div>
+      <h3>字母屋 Monogram</h3>
+      <p>C 字母與房屋結構融為一體的字母組合設計</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="logo-box">
+      <img src="logo-04-window-house.svg" alt="Logo A4">
+    </div>
+    <div class="card-info">
+      <div class="num">A-4</div>
+      <h3>窗戶屋 Window House</h3>
+      <p>C 字母內含門窗元素，暖色門代表歡迎</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="logo-box">
+      <img src="logo-05-art-nook.svg" alt="Logo A5">
+    </div>
+    <div class="card-info">
+      <div class="num">A-5</div>
+      <h3>藝角 Art Nook</h3>
+      <p>C 字母搭配指向箭頭與鉛筆煙囪</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SET B ===== -->
+<div class="set-header">
+  <h2>Set B</h2>
+  <div class="line"></div>
+  <span class="badge badge-b">5 Designs &bull; New</span>
+</div>
+
+<div class="grid">
+  <!-- B-1 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
+        <path d="M50 8L10 40V92H90V40L50 8Z" fill="#f9f7f4" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M50 8L10 40H90L50 8Z" fill="#6a9e8c"/>
+        <path d="M63 54C63 45 57 38 49 38C41 38 35 45 35 54C35 63 41 70 49 70C54 70 58.5 67 61 63" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <circle cx="49" cy="80" r="3" fill="#b8956a"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">B-1</div>
+      <h3>簡約幾何屋</h3>
+      <p>乾淨三角屋頂 + C 嵌入中央，底部調色盤圓點</p>
+    </div>
+  </div>
+
+  <!-- B-2 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
+        <rect x="16" y="42" width="68" height="50" rx="10" fill="#faf6f1" stroke="#3a4a42" stroke-width="2.5"/>
+        <path d="M10 46Q50 10 90 46" stroke="#3a4a42" stroke-width="2.5" stroke-linecap="round" fill="#e8d5b0"/>
+        <rect x="69" y="22" width="6" height="20" rx="2" fill="#b8956a"/>
+        <polygon points="69,22 72,15 75,22" fill="#d4836a"/>
+        <path d="M61 60C59 52 55 48 49 48C42 48 37 53 37 61C37 69 42 74 49 74C55 74 59 70 61 65" stroke="#6a9e8c" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">B-2</div>
+      <h3>溫馨圓角屋</h3>
+      <p>圓弧屋頂 + 鉛筆煙囪 + 手寫感綠色 C</p>
+    </div>
+  </div>
+
+  <!-- B-3 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
+        <path d="M50 6L14 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+        <path d="M50 6L86 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+        <path d="M72 42C68 30 60 24 50 24C36 24 24 38 24 54C24 70 36 84 50 84C60 84 68 78 72 66" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="38" cy="72" r="4" fill="#b8956a"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">B-3</div>
+      <h3>極簡 C 屋</h3>
+      <p>兩條斜線 = 屋頂，C 本身即房屋。最適合小尺寸</p>
+    </div>
+  </div>
+
+  <!-- B-4 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#3a4a42"/>
+        <circle cx="50" cy="50" r="41" fill="none" stroke="#6a9e8c" stroke-width="0.8" stroke-dasharray="2 2.5"/>
+        <path d="M50 18L30 36V72H70V36L50 18Z" fill="#4a5d54"/>
+        <path d="M50 18L30 36H70L50 18Z" fill="#6a9e8c"/>
+        <path d="M58 44C58 38 54.5 34 49.5 34C44 34 40 38.5 40 44.5C40 50.5 44 55 49.5 55C53.5 55 56.5 52.5 58 50" stroke="#faf6f1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <text x="50" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="5" font-weight="600" fill="#8cbcaa" letter-spacing="1.5">CINDY'S ART</text>
+        <text x="50" y="72" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="4.5" fill="#8cbcaa" letter-spacing="1.2">STUDIO</text>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">B-4</div>
+      <h3>徽章印記風</h3>
+      <p>圓形徽章 + 房屋剪影 + C，最適合印章與頭像</p>
+    </div>
+  </div>
+
+  <!-- B-5 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
+        <path d="M50 10L12 42V90H88V42L50 10Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M50 18L22 42H78L50 18Z" fill="#6a9e8c" opacity="0.25"/>
+        <path d="M50 15L19 42H81L50 15Z" fill="#6a9e8c" opacity="0.2"/>
+        <path d="M50 21L25 42H75L50 21Z" fill="#6a9e8c" opacity="0.35"/>
+        <path d="M64 50C61 40 56 35 48 35C38 35 30 44 30 56C30 68 38 77 48 77C56 77 61 72 64 64" stroke="#b8956a" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <circle cx="69" cy="45" r="2.5" fill="#d4836a" opacity="0.7"/>
+        <circle cx="73" cy="52" r="1.5" fill="#6a9e8c" opacity="0.5"/>
+        <circle cx="26" cy="70" r="2" fill="#6a9e8c" opacity="0.4"/>
+        <path d="M28 84Q50 80 72 84" stroke="#b8956a" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">B-5</div>
+      <h3>水彩筆觸風</h3>
+      <p>疊色水彩屋頂 + 金棕筆刷 C + 顏料飛濺點</p>
+    </div>
+  </div>
+</div>
+
+<div class="set-detail">
+  <a href="v2.html">查看 Set B 完整版（含色彩變體）&rarr;</a>
+</div>
+
+<!-- ===== SET C ===== -->
+<div class="set-header">
+  <h2>Set C</h2>
+  <div class="line"></div>
+  <span class="badge badge-c">5 Designs</span>
+</div>
+
+<div class="grid">
+  <!-- C-1 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 15L85 45V85H15V45L50 15Z" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M60 50C58 47 54 45 50 45C44 45 40 49 40 55C40 61 44 65 50 65C54 65 58 63 60 60" stroke="#8E9A8C" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">C-1</div>
+      <h3>極簡線條版</h3>
+      <p>細線房屋輪廓 + 灰綠 Serif C，現代乾淨專業</p>
+    </div>
+  </div>
+
+  <!-- C-2 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 50L50 20L80 50" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"/>
+        <rect x="25" y="50" width="50" height="35" rx="2" stroke="#2C2C2C" stroke-width="3" style="opacity: 0.8;"/>
+        <path d="M40 55C40 50 45 48 50 48C55 48 60 50 60 55V55C60 60 55 62 50 62C45 62 40 60 40 55Z" fill="#8E9A8C" style="opacity: 0.6;"/>
+        <text x="50" y="68" font-family="Playfair Display, serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">C</text>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">C-2</div>
+      <h3>藝術印記版</h3>
+      <p>穩重房屋 + 漆印風格 C，手工創作溫度</p>
+    </div>
+  </div>
+
+  <!-- C-3 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 45L50 15L85 45V85H15V45Z" fill="#2C2C2C"/>
+        <path d="M65 55C65 48 60 43 52 43C43 43 38 49 38 57C38 65 43 71 52 71C60 71 65 66 65 60" stroke="white" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">C-3</div>
+      <h3>負空間色塊版</h3>
+      <p>實色房屋 + 白線 C 負空間，對比搶眼現代感</p>
+    </div>
+  </div>
+
+  <!-- C-4 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 85L50 15L80 85" stroke="#2C2C2C" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="50" cy="55" r="22" fill="#FAFAF7" stroke="#8E9A8C" stroke-width="2"/>
+        <text x="50" y="63" font-family="Serif" font-size="28" fill="#2C2C2C" text-anchor="middle">C</text>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">C-4</div>
+      <h3>閣樓畫室版</h3>
+      <p>A-Frame 造型 + 圓窗 C，寧靜專注的創作空間</p>
+    </div>
+  </div>
+
+  <!-- C-5 -->
+  <div class="card">
+    <div class="logo-box">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10L90 40H10L50 10Z" fill="#8E9A8C"/>
+        <path d="M15 40H85V85H15V40Z" stroke="#2C2C2C" stroke-width="3"/>
+        <path d="M55 52C53 50 50 49 48 49C43 49 40 53 40 58C40 63 43 67 48 67C50 67 53 66 55 64" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="num">C-5</div>
+      <h3>幾何平衡版</h3>
+      <p>三角屋頂 + 矩形牆面 + C，結構平衡象徵系統性</p>
+    </div>
+  </div>
+</div>
+
+<a class="back-link" href="../cindys-art-studio/version-b.html">&larr; 回到網站雛形</a>
+
+</body>
+</html>

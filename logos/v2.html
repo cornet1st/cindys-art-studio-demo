@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy's Art Studio — Logo Concepts</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+      background: #f4f2ef;
+      color: #2c2c2c;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      padding: 3rem 2rem 1.5rem;
+    }
+    .header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .header p { font-size: 0.9rem; color: #888; }
+    .header .concept {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: #6a9e8c;
+      background: #e8f4ef;
+      padding: 6px 18px;
+      border-radius: 20px;
+    }
+    .grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e8e4de;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+    }
+    .logo-display {
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      gap: 1.5rem;
+    }
+    .logo-display .with-text {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .text-stack { text-align: left; }
+    .brand-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: #2c2c2c;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+    }
+    .variants {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.5rem;
+      background: #fafaf8;
+      border-top: 1px solid #f0ece6;
+    }
+    .variant { text-align: center; }
+    .variant-label {
+      font-size: 0.65rem;
+      color: #aaa;
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+    }
+    .card-info {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #f0ece6;
+    }
+    .card-info .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6a9e8c;
+      margin-bottom: 0.5rem;
+    }
+    .card-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .card-info p {
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.6;
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      padding: 2rem;
+      color: #6a9e8c;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 500px) {
+      .grid { grid-template-columns: 1fr; padding: 1rem; }
+      .logo-display { min-height: 240px; padding: 2rem 1.5rem; }
+      .logo-display .with-text { flex-direction: column; text-align: center; }
+      .text-stack { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Cindy's Art Studio &mdash; Logo Concepts</h1>
+  <p>房子造型 + C 字母 &bull; 居家畫室概念</p>
+  <div class="concept">House + C &bull; 5 Variations</div>
+</div>
+
+<div class="grid">
+
+  <!-- ===== LOGO 1: 簡約幾何屋 ===== -->
+  <div class="card">
+    <div class="logo-display">
+      <div class="with-text">
+        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+          <path d="M50 8L10 40V92H90V40L50 8Z" fill="#f9f7f4" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M50 8L10 40H90L50 8Z" fill="#6a9e8c"/>
+          <path d="M63 54C63 45 57 38 49 38C41 38 35 45 35 54C35 63 41 70 49 70C54 70 58.5 67 61 63" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="49" cy="80" r="3" fill="#b8956a"/>
+        </svg>
+        <div class="text-stack">
+          <div class="brand-name">Cindy's Art Studio</div>
+          <div class="brand-sub">See. Think. Create.</div>
+        </div>
+      </div>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <path d="M50 8L10 40V92H90V40L50 8Z" fill="#f9f7f4" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M50 8L10 40H90L50 8Z" fill="#6a9e8c"/>
+          <path d="M63 54C63 45 57 38 49 38C41 38 35 45 35 54C35 63 41 70 49 70C54 70 58.5 67 61 63" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="49" cy="80" r="3" fill="#b8956a"/>
+        </svg>
+        <div class="variant-label">Light</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <rect width="100" height="100" rx="8" fill="#2c2c2c"/>
+          <path d="M50 12L14 40V88H86V40L50 12Z" fill="#3a4a42" stroke="#3a4a42" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M50 12L14 40H86L50 12Z" fill="#6a9e8c"/>
+          <path d="M61 52C61 44 56 38 49 38C42 38 37 44 37 52C37 60 42 66 49 66C53 66 57 63.5 59 61" stroke="#f9f7f4" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Dark</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <path d="M50 8L10 40V92H90V40L50 8Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M63 54C63 45 57 38 49 38C41 38 35 45 35 54C35 63 41 70 49 70C54 70 58.5 67 61 63" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Line</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="tag">Concept 1</div>
+      <h3>簡約幾何屋</h3>
+      <p>乾淨的三角屋頂 + 方形屋身，C 字母自然嵌入屋中央。綠色屋頂代表藝術生長，底部小圓點象徵調色盤。最百搭的基礎款。</p>
+    </div>
+  </div>
+
+  <!-- ===== LOGO 2: 溫馨圓角屋 ===== -->
+  <div class="card">
+    <div class="logo-display">
+      <div class="with-text">
+        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+          <rect x="16" y="42" width="68" height="50" rx="10" fill="#faf6f1" stroke="#3a4a42" stroke-width="2.5"/>
+          <path d="M10 46Q50 10 90 46" stroke="#3a4a42" stroke-width="2.5" stroke-linecap="round" fill="#e8d5b0"/>
+          <rect x="69" y="22" width="6" height="20" rx="2" fill="#b8956a"/>
+          <polygon points="69,22 72,15 75,22" fill="#d4836a"/>
+          <path d="M61 60C59 52 55 48 49 48C42 48 37 53 37 61C37 69 42 74 49 74C55 74 59 70 61 65" stroke="#6a9e8c" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="text-stack">
+          <div class="brand-name">Cindy's Art Studio</div>
+          <div class="brand-sub">See. Think. Create.</div>
+        </div>
+      </div>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <rect x="16" y="42" width="68" height="50" rx="10" fill="#faf6f1" stroke="#3a4a42" stroke-width="2.5"/>
+          <path d="M10 46Q50 10 90 46" stroke="#3a4a42" stroke-width="2.5" fill="#e8d5b0"/>
+          <rect x="69" y="22" width="6" height="20" rx="2" fill="#b8956a"/>
+          <polygon points="69,22 72,15 75,22" fill="#d4836a"/>
+          <path d="M61 60C59 52 55 48 49 48C42 48 37 53 37 61C37 69 42 74 49 74C55 74 59 70 61 65" stroke="#6a9e8c" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Color</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <rect width="100" height="100" rx="8" fill="#2c2c2c"/>
+          <rect x="18" y="44" width="64" height="46" rx="8" fill="#3a4a42" stroke="#556" stroke-width="1.5"/>
+          <path d="M14 48Q50 16 86 48" stroke="#8cbcaa" stroke-width="2.5" fill="#4a5d54"/>
+          <rect x="67" y="26" width="5" height="18" rx="2" fill="#b8956a"/>
+          <path d="M59 58C57 52 54 48 49 48C43 48 39 52 39 59C39 66 43 70 49 70C54 70 57 67 59 63" stroke="#faf6f1" stroke-width="4" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Dark</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <rect x="16" y="42" width="68" height="50" rx="10" stroke="#3a4a42" stroke-width="2.5"/>
+          <path d="M10 46Q50 10 90 46" stroke="#3a4a42" stroke-width="2.5" fill="none"/>
+          <rect x="69" y="22" width="6" height="20" rx="2" stroke="#3a4a42" stroke-width="1.5" fill="none"/>
+          <path d="M61 60C59 52 55 48 49 48C42 48 37 53 37 61C37 69 42 74 49 74C55 74 59 70 61 65" stroke="#3a4a42" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Line</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="tag">Concept 2</div>
+      <h3>溫馨圓角屋</h3>
+      <p>圓弧屋頂營造溫暖居家感，煙囪設計成鉛筆造型（尖頭 = 筆尖），C 字母用綠色手寫筆觸。整體柔軟親切，適合兒童教育品牌。</p>
+    </div>
+  </div>
+
+  <!-- ===== LOGO 3: 極簡 C 屋 ===== -->
+  <div class="card">
+    <div class="logo-display">
+      <div class="with-text">
+        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+          <path d="M50 6L14 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 6L86 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M72 42C68 30 60 24 50 24C36 24 24 38 24 54C24 70 36 84 50 84C60 84 68 78 72 66" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <circle cx="38" cy="72" r="4" fill="#b8956a"/>
+        </svg>
+        <div class="text-stack">
+          <div class="brand-name">Cindy's Art Studio</div>
+          <div class="brand-sub">See. Think. Create.</div>
+        </div>
+      </div>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <path d="M50 6L14 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 6L86 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M72 42C68 30 60 24 50 24C36 24 24 38 24 54C24 70 36 84 50 84C60 84 68 78 72 66" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <circle cx="38" cy="72" r="4" fill="#b8956a"/>
+        </svg>
+        <div class="variant-label">Color</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <rect width="100" height="100" rx="8" fill="#2c2c2c"/>
+          <path d="M50 10L18 38" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 10L82 38" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <path d="M70 44C66 32 59 26 50 26C38 26 28 38 28 52C28 66 38 78 50 78C59 78 66 72 70 62" stroke="#8cbcaa" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+          <circle cx="40" cy="68" r="3.5" fill="#b8956a"/>
+        </svg>
+        <div class="variant-label">Dark</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <path d="M50 6L14 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 6L86 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M72 42C68 30 60 24 50 24C36 24 24 38 24 54C24 70 36 84 50 84C60 84 68 78 72 66" stroke="#3a4a42" stroke-width="6" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Mono</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="tag">Concept 3</div>
+      <h3>極簡 C 屋</h3>
+      <p>最少線條：兩條斜線 = 屋頂，C 字母本身就是房屋主體。極簡現代，縮到很小也清楚，適合 favicon、水印、印章。</p>
+    </div>
+  </div>
+
+  <!-- ===== LOGO 4: 徽章印記風 ===== -->
+  <div class="card">
+    <div class="logo-display">
+      <div class="with-text">
+        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="#3a4a42"/>
+          <circle cx="50" cy="50" r="41" fill="none" stroke="#6a9e8c" stroke-width="0.8" stroke-dasharray="2 2.5"/>
+          <path d="M50 18L30 36V72H70V36L50 18Z" fill="#4a5d54"/>
+          <path d="M50 18L30 36H70L50 18Z" fill="#6a9e8c"/>
+          <path d="M58 44C58 38 54.5 34 49.5 34C44 34 40 38.5 40 44.5C40 50.5 44 55 49.5 55C53.5 55 56.5 52.5 58 50" stroke="#faf6f1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <text x="50" y="66" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="5" font-weight="600" fill="#8cbcaa" letter-spacing="1.5">CINDY'S ART</text>
+          <text x="50" y="72" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="4.5" fill="#8cbcaa" letter-spacing="1.2">STUDIO</text>
+          <circle cx="10" cy="50" r="1.5" fill="#b8956a"/>
+          <circle cx="90" cy="50" r="1.5" fill="#b8956a"/>
+        </svg>
+        <div class="text-stack">
+          <div class="brand-name">Cindy's Art Studio</div>
+          <div class="brand-sub">See. Think. Create.</div>
+        </div>
+      </div>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="#3a4a42"/>
+          <path d="M50 20L32 36V68H68V36L50 20Z" fill="#4a5d54"/>
+          <path d="M50 20L32 36H68L50 20Z" fill="#6a9e8c"/>
+          <path d="M57 43C57 38 54 34 49.5 34C44.5 34 41 38 41 44C41 50 44.5 54 49.5 54C53 54 56 52 57 50" stroke="#faf6f1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Icon</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="#faf6f1" stroke="#3a4a42" stroke-width="2"/>
+          <path d="M50 20L32 36V68H68V36L50 20Z" fill="#e8f4ef"/>
+          <path d="M50 20L32 36H68L50 20Z" fill="#6a9e8c"/>
+          <path d="M57 43C57 38 54 34 49.5 34C44.5 34 41 38 41 44C41 50 44.5 54 49.5 54C53 54 56 52 57 50" stroke="#3a4a42" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Light</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#3a4a42" stroke-width="2"/>
+          <path d="M50 22L34 36V66H66V36L50 22Z" fill="none" stroke="#3a4a42" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M57 43C57 38 54 34 49.5 34C44.5 34 41 38 41 44C41 50 44.5 54 49.5 54C53 54 56 52 57 50" stroke="#3a4a42" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Line</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="tag">Concept 4</div>
+      <h3>徽章印記風</h3>
+      <p>圓形徽章包覆房屋剪影 + C 字母，下方嵌入品牌名。適合印章、貼紙、社群頭像、名片，品牌辨識度最高。</p>
+    </div>
+  </div>
+
+  <!-- ===== LOGO 5: 水彩筆觸風 ===== -->
+  <div class="card">
+    <div class="logo-display">
+      <div class="with-text">
+        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+          <path d="M50 10L12 42V90H88V42L50 10Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M50 18L22 42H78L50 18Z" fill="#6a9e8c" opacity="0.25"/>
+          <path d="M50 15L19 42H81L50 15Z" fill="#6a9e8c" opacity="0.2"/>
+          <path d="M50 21L25 42H75L50 21Z" fill="#6a9e8c" opacity="0.35"/>
+          <path d="M64 50C61 40 56 35 48 35C38 35 30 44 30 56C30 68 38 77 48 77C56 77 61 72 64 64" stroke="#b8956a" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="69" cy="45" r="2.5" fill="#d4836a" opacity="0.7"/>
+          <circle cx="73" cy="52" r="1.5" fill="#6a9e8c" opacity="0.5"/>
+          <circle cx="26" cy="70" r="2" fill="#6a9e8c" opacity="0.4"/>
+          <circle cx="22" cy="64" r="1.2" fill="#b8956a" opacity="0.5"/>
+          <path d="M28 84Q50 80 72 84" stroke="#b8956a" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+        </svg>
+        <div class="text-stack">
+          <div class="brand-name">Cindy's Art Studio</div>
+          <div class="brand-sub">See. Think. Create.</div>
+        </div>
+      </div>
+    </div>
+    <div class="variants">
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <path d="M50 10L12 42V90H88V42L50 10Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M50 21L25 42H75L50 21Z" fill="#6a9e8c" opacity="0.35"/>
+          <path d="M64 50C61 40 56 35 48 35C38 35 30 44 30 56C30 68 38 77 48 77C56 77 61 72 64 64" stroke="#b8956a" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="69" cy="45" r="2.5" fill="#d4836a" opacity="0.7"/>
+        </svg>
+        <div class="variant-label">Color</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <rect width="100" height="100" rx="8" fill="#2c2c2c"/>
+          <path d="M50 12L16 42V88H84V42L50 12Z" fill="none" stroke="#eee" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M50 22L26 42H74L50 22Z" fill="#8cbcaa" opacity="0.25"/>
+          <path d="M62 48C59 40 55 36 48 36C40 36 33 43 33 54C33 65 40 72 48 72C55 72 59 68 62 62" stroke="#d4b88a" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <circle cx="66" cy="44" r="2" fill="#d4836a" opacity="0.7"/>
+        </svg>
+        <div class="variant-label">Dark</div>
+      </div>
+      <div class="variant">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+          <path d="M50 10L12 42V90H88V42L50 10Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M64 50C61 40 56 35 48 35C38 35 30 44 30 56C30 68 38 77 48 77C56 77 61 72 64 64" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="variant-label">Mono</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="tag">Concept 5</div>
+      <h3>水彩筆觸風</h3>
+      <p>屋頂以疊色水彩效果呈現層次，C 字母用金棕色筆刷質感，搭配零星顏料飛濺點。最有手作溫度與藝術靈魂的一款。</p>
+    </div>
+  </div>
+
+</div>
+
+<a class="back-link" href="../cindys-art-studio/version-b.html">&larr; 回到網站雛形 Version 6</a>
+
+</body>
+</html>
