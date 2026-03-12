@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy's Art Studio | Homepage Draft</title>
+  <style>
+    :root {
+      --bg: #f5efe6;
+      --paper: #fffaf2;
+      --ink: #1f1b18;
+      --muted: #685d54;
+      --accent: #af5d3f;
+      --accent-soft: #d7b89b;
+      --forest: #596654;
+      --line: rgba(31, 27, 24, 0.12);
+      --shadow: 0 18px 50px rgba(31, 27, 24, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(175, 93, 63, 0.16), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(89, 102, 84, 0.12), transparent 24%),
+        linear-gradient(180deg, #f8f3ec 0%, #f2eadf 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 26px 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 14px 20px;
+      background: rgba(255, 250, 242, 0.72);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links span:last-child {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: stretch;
+      padding: 30px 0 50px;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .panel,
+    .gallery-card,
+    .contact-card {
+      background: rgba(255, 250, 242, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(175, 93, 63, 0.12);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--forest);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      margin-bottom: 18px;
+      max-width: 9ch;
+    }
+
+    .lead {
+      max-width: 54ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: #fff9f2;
+      border-color: var(--ink);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      padding: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .image-block {
+      min-height: 250px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(175, 93, 63, 0.25), rgba(89, 102, 84, 0.18)),
+        linear-gradient(180deg, #dbc7b1, #b58f73);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-block::before,
+    .image-block::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 250, 242, 0.24);
+    }
+
+    .image-block::before {
+      width: 220px;
+      height: 220px;
+      top: -50px;
+      right: -40px;
+    }
+
+    .image-block::after {
+      width: 140px;
+      height: 140px;
+      bottom: -30px;
+      left: -20px;
+    }
+
+    .quote {
+      padding: 6px 6px 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    main section {
+      padding: 18px 0 34px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      max-width: 52ch;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid-4,
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .panel .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .panel p,
+    .panel li,
+    .contact-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .path {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      color: var(--forest);
+      font-weight: 700;
+    }
+
+    .gallery-card {
+      padding: 18px;
+    }
+
+    .gallery-card .thumb {
+      height: 180px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      background:
+        linear-gradient(135deg, rgba(175, 93, 63, 0.18), rgba(89, 102, 84, 0.2)),
+        linear-gradient(180deg, #e8d8c7, #d4baa3);
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      padding: 20px 0 42px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .panel,
+      .contact-card {
+        padding: 24px;
+      }
+
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <div class="nav">
+      <div class="brand">Cindy's Art Studio</div>
+      <div class="nav-links">
+        <span>Home</span>
+        <span>Programs</span>
+        <span>Gallery</span>
+        <span>About Cindy</span>
+        <span>Contact</span>
+        <span>Book Consultation</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">See. Think. Create.</div>
+        <h1>Where Ideas Take Shape.</h1>
+        <p class="lead">
+          全年齡藝術課程，從基礎訓練到作品集升學輔導。以結構化教學建立能力，
+          讓孩子與創作者在創意、觀察與表達之間，長出真正屬於自己的作品語言。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#">預約諮詢</a>
+          <a class="button" href="#">查看課程</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>20+ 年</strong>
+            <span>藝術教學與個別指導經驗</span>
+          </div>
+          <div class="metric">
+            <strong>1–12 年級</strong>
+            <span>基礎課程與長期能力養成</span>
+          </div>
+          <div class="metric">
+            <strong>Portfolio</strong>
+            <span>藝術設計升學與作品集規劃</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="image-block"></div>
+        <div class="quote">
+          「中式美育的涵養 × 西式教學的系統」<br>
+          用清晰的能力路徑，支持真正自由的創作。
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Brand Core</div>
+          <h2>結構為骨・感知為魂・美育為根</h2>
+        </div>
+        <p>
+          這不是單次體驗式美術課，而是一套可循序進階的藝術訓練系統。
+          網站首頁應把品牌觀點直接講清楚，讓家長與學生一眼理解這間畫室的差異。
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="panel">
+          <div class="tag">Eastern Aesthetics</div>
+          <h3>中式美育的涵養</h3>
+          <p>培養感受力、審美秩序與內在專注，讓孩子不只會畫，更懂得看與感受。</p>
+        </article>
+        <article class="panel">
+          <div class="tag">Western Structure</div>
+          <h3>西式教學的系統</h3>
+          <p>把觀察、結構、造型與表達拆解成能被理解與累積的能力路徑。</p>
+        </article>
+        <article class="panel">
+          <div class="tag">Long-Term Growth</div>
+          <h3>長期成長規劃</h3>
+          <p>從兒童基礎、青少年進階，到作品集升學，課程彼此連動而不是零散拼接。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Programs</div>
+          <h2>首頁主推課程入口</h2>
+        </div>
+        <p>這四塊會是首頁最重要的導流區，先幫使用者快速找到自己適合的學習方向。</p>
+      </div>
+      <div class="grid-4">
+        <article class="panel">
+          <div class="tag">Ages 1–12</div>
+          <h3>Art Foundation</h3>
+          <p>2 小時課程，適合所有程度，從觀察到創作建立穩定基礎。</p>
+        </article>
+        <article class="panel">
+          <div class="tag">Ages 8–12+</div>
+          <h3>Portfolio Preparation</h3>
+          <p>作品集規劃、研究頁發展、Concept 建立與升學策略。</p>
+        </article>
+        <article class="panel">
+          <div class="tag">Seasonal</div>
+          <h3>Spring & Summer Break</h3>
+          <p>春季與暑期密集課程，涵蓋素描、繪畫、動畫與多元媒材。</p>
+        </article>
+        <article class="panel">
+          <div class="tag">Private / Small Group</div>
+          <h3>Tailored Lessons</h3>
+          <p>家教與小班制教學，提供更高密度的個別修正與長期追蹤。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Method</div>
+          <h2>能力建構路徑</h2>
+        </div>
+        <p>這一段可以做成品牌招牌區塊，比一般「教學特色」更有說服力。</p>
+      </div>
+      <div class="panel">
+        <h3>觀察力 → 結構邏輯 → 造型思維 → 創意表達</h3>
+        <div class="path">
+          <span>Observe</span>
+          <span>Form</span>
+          <span>Construct</span>
+          <span>Express</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Gallery</div>
+          <h2>學生作品展示區</h2>
+        </div>
+        <p>這裡之後直接換成真實作品照片。首頁先放 3 格就夠，重點是質感與分類清楚。</p>
+      </div>
+      <div class="grid-3">
+        <article class="gallery-card">
+          <div class="thumb"></div>
+          <h3>Art Explore</h3>
+          <p>兒童創意作品與媒材探索</p>
+        </article>
+        <article class="gallery-card">
+          <div class="thumb"></div>
+          <h3>Art Foundation</h3>
+          <p>基礎訓練、觀察與結構表現</p>
+        </article>
+        <article class="gallery-card">
+          <div class="thumb"></div>
+          <h3>Portfolio & Awards</h3>
+          <p>作品集系列作品與得獎成果</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Instructor</div>
+          <h2>老師背書區</h2>
+        </div>
+        <p>首頁只放精華，不要把完整自傳塞進來。完整版本再放到 About 頁。</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <div class="tag">Founder & Lead Instructor</div>
+          <h3>Cindy Yang</h3>
+          <p>
+            Emily Carr University of Art + Design 校友，具加拿大與台灣跨領域視覺實務背景，
+            擁有 20 年以上藝術教學經驗，長期陪伴學生建立繪畫能力、審美素養與作品集方向。
+          </p>
+        </article>
+        <article class="panel">
+          <div class="tag">Teaching Focus</div>
+          <h3>個別回饋 + 系統化進階</h3>
+          <p>
+            目前以家教與小班制為主，確保每位學生都能獲得具體修正、階段評估與清楚的成長路徑。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Call To Action</div>
+          <h2>首頁收尾區</h2>
+        </div>
+        <p>最後要明確引導諮詢，尤其作品集與新生體驗的轉換會在這裡發生。</p>
+      </div>
+      <div class="cta">
+        <article class="contact-card">
+          <h3>Book a Complimentary Consultation</h3>
+          <p>想了解適合的課程安排、作品集準備方式或學習路徑，先預約一對一諮詢。</p>
+          <p style="margin-top: 18px;"><strong>Vancouver Studio</strong><br>Coquitlam Central, BC, Canada<br>(672) 999-7099</p>
+        </article>
+        <article class="contact-card">
+          <h3>雙據點資訊</h3>
+          <p><strong>Taipei Studio</strong><br>台北市大安區<br>0925-604-658</p>
+          <p style="margin-top: 18px;">Email: cindyhyang@hotmail.com<br>營業時間依課程安排與個別預約</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    Homepage draft for review. This wireframe focuses on brand tone, section order, and conversion flow.
+  </footer>
+</body>
+</html>

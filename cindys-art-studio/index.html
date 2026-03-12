@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy's Art Studio — See. Think. Create.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF6F1;
+      --warm-white: #FFFCF8;
+      --charcoal: #2C2C2C;
+      --dark-green: #3A4A3A;
+      --sage: #7A8B6F;
+      --sage-light: #A8B89E;
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --text: #3A3A3A;
+      --text-light: #6B6B6B;
+      --border: #E8E0D6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      color: var(--text);
+      background: var(--warm-white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 252, 248, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--dark-green);
+      letter-spacing: 0.02em;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover { color: var(--sage); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--sage);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-lang {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-lang:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    .mobile-menu { display: none; cursor: pointer; }
+
+    /* ===== HERO ===== */
+    .hero {
+      margin-top: 72px;
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #F5EDE3 0%, #EDE7DC 40%, #E8DFD3 100%);
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+      opacity: 0.08;
+      background:
+        radial-gradient(circle at 30% 40%, var(--sage) 1px, transparent 1px),
+        radial-gradient(circle at 70% 60%, var(--sage) 1px, transparent 1px),
+        radial-gradient(circle at 50% 80%, var(--sage) 1px, transparent 1px);
+      background-size: 60px 60px, 80px 80px, 40px 40px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-text { z-index: 1; }
+
+    .hero-welcome {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--dark-green);
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--dark-green);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--sage);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(58, 74, 58, 0.2);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: transparent;
+      color: var(--dark-green);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border: 1.5px solid var(--dark-green);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--dark-green);
+      color: #fff;
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-img-card {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--border);
+      position: relative;
+    }
+
+    .hero-img-card:nth-child(2) { margin-top: 2rem; }
+    .hero-img-card:nth-child(3) { margin-top: -2rem; }
+
+    .hero-img-card .placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--sage-light);
+      background: linear-gradient(145deg, #EDE7DC, #E0D8CC);
+    }
+
+    /* ===== ANNOUNCEMENT BAR ===== */
+    .announce-bar {
+      background: var(--dark-green);
+      color: #fff;
+      text-align: center;
+      padding: 12px 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .announce-bar a {
+      color: var(--gold-light);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    /* ===== PHILOSOPHY SECTION ===== */
+    .philosophy {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: var(--warm-white);
+    }
+
+    .philosophy-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy h2 {
+      font-family: 'Noto Serif TC', 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .philosophy .en-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 2rem;
+    }
+
+    .philosophy p {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy-path {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .path-step {
+      padding: 12px 24px;
+      background: var(--cream);
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--dark-green);
+      border: 1px solid var(--border);
+    }
+
+    .path-arrow {
+      color: var(--sage-light);
+      font-size: 1.2rem;
+    }
+
+    /* ===== PROGRAMS SECTION ===== */
+    .programs {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+
+    .programs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .program-card {
+      background: var(--warm-white);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      border-color: var(--sage-light);
+    }
+
+    .program-card .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .program-card:nth-child(1) .card-icon { background: #FFF3E0; }
+    .program-card:nth-child(2) .card-icon { background: #E8F5E9; }
+    .program-card:nth-child(3) .card-icon { background: #FDE8E8; }
+    .program-card:nth-child(4) .card-icon { background: #E8EAF6; }
+
+    .program-card .card-grade {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .program-card h3 {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .program-card .card-subtitle {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.95rem;
+      color: var(--dark-green);
+      margin-bottom: 1rem;
+    }
+
+    .program-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .program-card .card-link {
+      font-size: 0.85rem;
+      color: var(--dark-green);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .program-card .card-link:hover { gap: 10px; }
+
+    .program-card .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .program-card .tag {
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--cream);
+      color: var(--text-light);
+      border: 1px solid var(--border);
+    }
+
+    /* ===== GALLERY SECTION ===== */
+    .gallery {
+      padding: 6rem 2rem;
+      background: var(--warm-white);
+    }
+
+    .gallery-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #EDE7DC, #DDD5C9);
+      position: relative;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover { transform: scale(1.03); }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item .g-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage-light);
+      font-size: 0.8rem;
+      gap: 8px;
+    }
+
+    .gallery-item .g-placeholder .g-icon { font-size: 2rem; }
+
+    .gallery-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* ===== ABOUT / TEACHER ===== */
+    .about {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #E0D8CC, #D5CFC3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage-light);
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(transparent, rgba(58, 74, 58, 0.15));
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .about-text .about-role {
+      font-size: 0.9rem;
+      color: var(--sage);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .about-text .about-school {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text .about-quote {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.15rem;
+      color: var(--dark-green);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      padding-left: 1.2rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .about-text p {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .about-feature {
+      padding: 1rem;
+      background: var(--warm-white);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .about-feature h4 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+
+    .about-feature p {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+
+    /* ===== EVENTS SECTION ===== */
+    .events {
+      padding: 6rem 2rem;
+      background: var(--warm-white);
+    }
+
+    .events-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--warm-white);
+      transition: all 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .event-card .event-img {
+      height: 200px;
+      background: linear-gradient(145deg, #E8E0D6, #DDD5C9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--sage-light);
+    }
+
+    .event-card .event-body {
+      padding: 1.5rem;
+    }
+
+    .event-card h3 {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .event-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact {
+      padding: 6rem 2rem;
+      background: var(--dark-green);
+      color: #fff;
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-intro h2 {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .contact-intro p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+
+    .contact-location h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--gold-light);
+    }
+
+    .contact-location .info-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 0.8rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+
+    .contact-location .info-icon {
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #242424;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    footer .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    footer .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    footer .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    footer .footer-social a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    footer .footer-social a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-image { display: none; }
+      .hero-title { font-size: 2.6rem; }
+      .programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-photo { max-height: 360px; aspect-ratio: 16/9; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .mobile-menu { display: block; font-size: 1.5rem; color: var(--text); }
+      .hero { min-height: auto; padding: 2rem 0; }
+      .hero-title { font-size: 2rem; }
+      .hero-tagline { font-size: 1.1rem; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .philosophy-path { flex-direction: column; }
+      .path-arrow { transform: rotate(90deg); }
+      .about-features { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      footer .footer-inner { flex-direction: column; gap: 1rem; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">
+        Cindy's Art Studio
+        <span>See. Think. Create.</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><span class="nav-lang">EN / 中</span></li>
+      </ul>
+      <div class="mobile-menu">&#9776;</div>
+    </div>
+  </nav>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar" style="margin-top: 72px;">
+    2026 Spring &amp; Summer 春季與暑期課程即將開放報名 &mdash; <a href="#programs">View Programs</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-welcome">Welcome to Cindy's Art Studio</div>
+        <h1 class="hero-title">
+          See. Think.<br><em>Create.</em>
+        </h1>
+        <p class="hero-tagline">Where Ideas Take Shape.</p>
+        <p class="hero-desc">
+          我們相信，孩子的藝術能力不是靠天分，而是靠正確的方法與長期累積。<br>
+          從觀察力到創意表達，建立屬於每位學生的成長路徑。
+        </p>
+        <div class="hero-buttons">
+          <a href="#programs" class="btn-primary">探索課程 Explore Programs</a>
+          <a href="#contact" class="btn-secondary">預約諮詢 Book Consultation</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-grid">
+          <div class="hero-img-card">
+            <div class="placeholder">&#x1f3a8;</div>
+          </div>
+          <div class="hero-img-card">
+            <div class="placeholder">&#x270f;&#xfe0f;</div>
+          </div>
+          <div class="hero-img-card">
+            <div class="placeholder">&#x1f5bc;&#xfe0f;</div>
+          </div>
+          <div class="hero-img-card">
+            <div class="placeholder">&#x2728;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy fade-in">
+    <div class="philosophy-inner">
+      <div class="section-label">Our Philosophy</div>
+      <h2>中式美育的涵養 &times; 西式教學的系統</h2>
+      <p class="en-subtitle">Eastern Aesthetic Roots &times; Western Structured Methodology</p>
+      <p>
+        我們以東方美學的審美底蘊，培養孩子的感受力與內在秩序；
+        並以西方工作室制的結構訓練與方法建構，建立可被累積、可被驗證的能力路徑。
+      </p>
+      <p>
+        在 Cindy 畫室，藝術教育不是零散的創作體驗，
+        而是一套清晰、可進階的<strong>能力成長系統</strong>。
+      </p>
+      <div class="philosophy-path">
+        <div class="path-step">觀察力</div>
+        <span class="path-arrow">&rarr;</span>
+        <div class="path-step">結構邏輯</div>
+        <span class="path-arrow">&rarr;</span>
+        <div class="path-step">造型思維</div>
+        <span class="path-arrow">&rarr;</span>
+        <div class="path-step">創意表達</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs fade-in" id="programs">
+    <div class="programs-inner">
+      <div class="section-header">
+        <div class="section-label">Programs</div>
+        <h2>課程總覽</h2>
+        <p>適合不同年齡與程度的藝術學習路徑</p>
+      </div>
+      <div class="programs-grid">
+        <!-- Card 1 -->
+        <div class="program-card">
+          <div class="card-icon">&#x1f31f;</div>
+          <div class="card-grade">Kindergarten &ndash; Grade 2</div>
+          <h3>Art Explore</h3>
+          <div class="card-subtitle">藝術探索</div>
+          <div class="card-tags">
+            <span class="tag">1.5 小時</span>
+            <span class="tag">所有程度</span>
+          </div>
+          <p>透過多元媒材與遊戲式引導，啟發幼齡學生的創作本能與手眼協調能力，讓孩子在探索中愛上藝術。</p>
+          <a href="#" class="card-link">了解更多 &rarr;</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="program-card">
+          <div class="card-icon">&#x1f3a8;</div>
+          <div class="card-grade">Grades 1 &ndash; 12</div>
+          <h3>Art Foundation</h3>
+          <div class="card-subtitle">藝術基礎課程</div>
+          <div class="card-tags">
+            <span class="tag">2 小時</span>
+            <span class="tag">所有程度</span>
+          </div>
+          <p>涵蓋 Art Creative 創意藝術與 Art Technical 技法訓練兩大方向，建立穩定成長路徑。</p>
+          <a href="#" class="card-link">了解更多 &rarr;</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="program-card">
+          <div class="card-icon">&#x1f4c1;</div>
+          <div class="card-grade">Grades 8 &ndash; 12+</div>
+          <h3>Portfolio Prep</h3>
+          <div class="card-subtitle">作品集準備課程</div>
+          <div class="card-tags">
+            <span class="tag">一對一</span>
+            <span class="tag">升學導向</span>
+          </div>
+          <p>系統化作品集規劃，從主題發展、Concept 建立到模擬評圖，為藝術大學申請做最完整的準備。</p>
+          <a href="#" class="card-link">了解更多 &rarr;</a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="program-card">
+          <div class="card-icon">&#x2615;</div>
+          <div class="card-grade">18+</div>
+          <h3>Art for Adults</h3>
+          <div class="card-subtitle">成人藝術課程</div>
+          <div class="card-tags">
+            <span class="tag">彈性時段</span>
+            <span class="tag">放鬆創作</span>
+          </div>
+          <p>專為成人設計的藝術課程，無需基礎，在創作中放鬆、充電，找回生活中的美感與靈感。</p>
+          <a href="#" class="card-link">了解更多 &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery fade-in" id="gallery">
+    <div class="gallery-inner">
+      <div class="section-header">
+        <div class="section-label">Student Gallery</div>
+        <h2>學生作品</h2>
+        <p>每一件作品，都是一段成長的見證</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="g-placeholder">
+            <span class="g-icon">&#x1f5bc;&#xfe0f;</span>
+            <span>Student Artwork</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x1f3a8;</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x270f;&#xfe0f;</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x1f58c;&#xfe0f;</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x2728;</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x1f31f;</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x1f3a8;</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="g-placeholder"><span class="g-icon">&#x1f5bc;&#xfe0f;</span></div>
+        </div>
+      </div>
+      <div class="gallery-cta">
+        <a href="#" class="btn-secondary">View All Works &nbsp;查看全部作品</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / TEACHER -->
+  <section class="about fade-in" id="about">
+    <div class="about-inner">
+      <div class="about-photo">
+        &#x1f469;&#x200d;&#x1f3a8;
+      </div>
+      <div class="about-text">
+        <div class="section-label">Our Teacher</div>
+        <h2>Cindy Yang</h2>
+        <div class="about-role">創辦人暨主任導師 Founder &amp; Lead Instructor</div>
+        <div class="about-school">Emily Carr University of Art + Design &mdash; Communication Design</div>
+        <div class="about-quote">
+          真正的創意，不來自放任，<br>而來自能力之上的自由。
+        </div>
+        <p>
+          Cindy 老師擁有 20 年以上藝術教學與個別指導經驗，長期陪伴 3&ndash;18 歲學生建立繪畫能力與審美素養。
+          曾任職於加拿大新創動畫公司與臺灣設計公司，具備跨領域視覺實務經驗。
+        </p>
+        <p>
+          教學理念以「引導創意・建立能力・發展個人風格」為核心，協助每位學生發揮個人創意，
+          最終發展出屬於自己的繪畫風格與視覺語言。
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <h4>&#9312; 結構導向訓練</h4>
+            <p>以結構為核心，建立空間理解與造型能力</p>
+          </div>
+          <div class="about-feature">
+            <h4>&#9313; 知識分解式教學</h4>
+            <p>觀察、塑型、形式與表達四階段學習</p>
+          </div>
+          <div class="about-feature">
+            <h4>&#9314; 個別回饋機制</h4>
+            <p>小班制教學，個別修正與階段性評估</p>
+          </div>
+          <div class="about-feature">
+            <h4>&#9315; 長期成長規劃</h4>
+            <p>依年齡與目標，規劃完整發展路徑</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="events fade-in">
+    <div class="events-inner">
+      <div class="section-header">
+        <div class="section-label">Events</div>
+        <h2>More Than a School &mdash; A Creative Hub</h2>
+        <p>不只是教學，更是一個創意交流的社群空間</p>
+      </div>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-img">&#x1f382;</div>
+          <div class="event-body">
+            <h3>Birthday Parties &amp; Private Events</h3>
+            <p>生日派對與私人活動</p>
+            <p>為孩子規劃一場充滿藝術氛圍的生日派對，在創作中留下美好回憶。</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-img">&#x1f3db;&#xfe0f;</div>
+          <div class="event-body">
+            <h3>Student Showcases &amp; Exhibits</h3>
+            <p>學生展覽與年度畫展</p>
+            <p>每學年末舉辦年度藝術展 (Year-End Art Show)，讓所有學生展示成長與學習成果。</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-img">&#x2600;&#xfe0f;</div>
+          <div class="event-body">
+            <h3>Spring &amp; Summer Break 2026</h3>
+            <p>春季與暑期藝術課程</p>
+            <p>素描、繪畫、動畫與多元媒材探索，開放給所有年齡層的創作者。暑期課程時間表即將公布。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-intro">
+        <div class="section-label" style="color: var(--gold-light);">Contact Us</div>
+        <h2>聯絡我們</h2>
+        <p>
+          歡迎來信或來電洽詢課程相關事宜。<br>
+          作品集個人班請另行約定時間。
+        </p>
+        <br>
+        <a href="#" class="btn-primary" style="background: var(--gold); color: var(--charcoal);">
+          立即預約諮詢
+        </a>
+      </div>
+
+      <div class="contact-location">
+        <h3>&#x1f1e8;&#x1f1e6; 溫哥華工作室</h3>
+        <div class="info-item">
+          <span class="info-icon">&#x1f4cd;</span>
+          <span>Coquitlam Central, BC, Canada</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">&#x1f4de;</span>
+          <span>(672) 999-7099</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">&#x2709;</span>
+          <span>cindyhyang@hotmail.com</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">&#x1f552;</span>
+          <span>1:00 PM &ndash; 9:00 PM</span>
+        </div>
+      </div>
+
+      <div class="contact-location">
+        <h3>&#x1f1f9;&#x1f1fc; 台北工作室</h3>
+        <div class="info-item">
+          <span class="info-icon">&#x1f4cd;</span>
+          <span>台北市 大安區</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">&#x1f4de;</span>
+          <span>0925-604-658</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">&#x2709;</span>
+          <span>cindyhyang@hotmail.com</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">&#x1f552;</span>
+          <span>9:00 AM &ndash; 9:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Cindy's Art Studio</div>
+      <div class="footer-copy">&copy; 2026 Cindy's Art Studio. All rights reserved.</div>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL ANIMATION -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy's Art Studio | ArtVillage-Style Draft</title>
+  <style>
+    :root {
+      --bg: #f8f7f3;
+      --surface: #ffffff;
+      --ink: #1f1f1c;
+      --muted: #66625b;
+      --accent: #556b57;
+      --accent-2: #c77747;
+      --line: #e5e0d7;
+      --hero: linear-gradient(135deg, rgba(85, 107, 87, 0.18), rgba(199, 119, 71, 0.22));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(248, 247, 243, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 64px 0 56px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      line-height: 1;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 60ch;
+      font-size: 1.02rem;
+    }
+
+    .hero-card {
+      min-height: 420px;
+      border-radius: 18px;
+      background: var(--hero), linear-gradient(180deg, #d9cfc2, #bba089);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-card::before {
+      width: 220px;
+      height: 220px;
+      top: -30px;
+      right: -30px;
+    }
+
+    .hero-card::after {
+      width: 140px;
+      height: 140px;
+      left: 24px;
+      bottom: 24px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      font-size: 0.95rem;
+      background: transparent;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    section {
+      padding: 54px 0;
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 64ch;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .photo-block,
+    .program-image,
+    .event-thumb {
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(85, 107, 87, 0.18), rgba(199, 119, 71, 0.24)), #d9d1c7;
+      min-height: 280px;
+    }
+
+    .cards-3,
+    .cards-2 {
+      display: grid;
+      gap: 20px;
+    }
+
+    .cards-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hub {
+      background: #efebe3;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .join-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-panel,
+    .newsletter {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .contact-panel h3,
+    .newsletter h3 {
+      margin-top: 0;
+    }
+
+    .hours {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .newsletter input {
+      width: 100%;
+      margin: 10px 0 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about,
+      .cards-3,
+      .cards-2,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <div class="logo">Cindy's Art Studio</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Programs</a>
+        <a href="#">Spring & Summer 2026</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap hero">
+        <div>
+          <div class="eyebrow">Welcome to Cindy's Art Studio</div>
+          <h1>See. Think. Create.</h1>
+          <p>
+            在 Cindy 畫室，我們相信藝術不是單一技法的堆疊，而是一種觀看世界、
+            理解自我，並建立表達的能力。從 1–12 年級基礎課程，到 8–12 年級以上作品集準備，
+            我們用清晰的方法與個別引導，陪伴學生建立可長期累積的創作能力。
+          </p>
+          <p>
+            無論是第一次拿起畫筆，還是正準備申請藝術與設計科系，
+            這裡都會有一條適合你的成長路徑。
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="#">Explore Our Programs</a>
+            <a class="button" href="#">Book Consultation</a>
+          </div>
+        </div>
+        <div class="hero-card"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap about">
+        <div class="photo-block"></div>
+        <div>
+          <div class="section-title">
+            <h2>About Us</h2>
+            <p>
+              由 Cindy Yang 帶領教學與課程設計，Cindy 畫室致力於建立一套結構清晰、
+              邏輯完整、可持續進階的藝術訓練體系。
+            </p>
+          </div>
+          <p style="color: var(--muted); margin: 0 0 18px;">
+            我們以東方美學的審美底蘊培養感受力與內在秩序，
+            並以西方工作室制的結構訓練與方法建構，建立可被累積、可被驗證的能力路徑。
+          </p>
+          <a class="button" href="#">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Programs</h2>
+          <p>
+            課程涵蓋兒童與青少年基礎藝術訓練、作品集與升學輔導，以及春季與暑期藝術課程。
+            每條課程線都對應不同年齡與目標，但共享同一套能力養成邏輯。
+          </p>
+        </div>
+        <div class="cards-3">
+          <article class="card">
+            <div class="program-image"></div>
+            <div class="card-body">
+              <h3>Art Foundation | Grades 1–12</h3>
+              <p>
+                2 小時課程，適合所有程度。從觀察、結構到創意藝術，
+                讓學生依自己的節奏建立穩定且可進階的創作基礎。
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="program-image"></div>
+            <div class="card-body">
+              <h3>Portfolio Preparation | Grades 8–12+</h3>
+              <p>
+                作品集不是幾張畫的集合，而是一套完整呈現能力、思考深度與創作方向的系統。
+                提供一對一諮詢、主題規劃與申請輔導。
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="program-image"></div>
+            <div class="card-body">
+              <h3>Spring & Summer Break 2026</h3>
+              <p>
+                開放給學生、成人與家庭的季節課程，內容涵蓋素描、繪畫、動畫與多元媒材探索。
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="hub">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>More Than a Studio</h2>
+          <p>
+            除了課程本身，Cindy 畫室也可以發展成一個作品展示、交流與慶祝創作的空間。
+          </p>
+        </div>
+        <div class="cards-3">
+          <article class="card">
+            <div class="event-thumb"></div>
+            <div class="card-body">
+              <h3>Birthday Parties & Private Events</h3>
+              <p>提供客製化藝術主題活動，適合生日派對與私人創作聚會。</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="event-thumb"></div>
+            <div class="card-body">
+              <h3>Student Showcases & Exhibits</h3>
+              <p>展示學生年度作品、系列創作與得獎成果，讓努力被看見。</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="event-thumb"></div>
+            <div class="card-body">
+              <h3>Awards & Portfolio Highlights</h3>
+              <p>集中呈現得獎紀錄與作品集成果，強化品牌信任與升學實力。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="join-box">
+          <div>
+            <div class="eyebrow">Join the Studio</div>
+            <h2 style="margin: 0 0 8px;">Ready to create with us?</h2>
+            <p style="margin: 0; color: var(--muted); max-width: 58ch;">
+              不論是培養長期藝術能力，還是準備未來的藝術與設計申請，
+              我們都希望先理解學生目前的程度與方向，再安排最適合的課程路徑。
+            </p>
+          </div>
+          <div class="button-row" style="margin-top: 0;">
+            <a class="button primary" href="#">Programs</a>
+            <a class="button" href="#">Class Schedule</a>
+            <a class="button" href="#">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap contact-grid">
+        <div class="contact-panel">
+          <div class="eyebrow">Contact Us</div>
+          <h3>Vancouver Studio</h3>
+          <p style="color: var(--muted); margin-top: 0;">
+            Coquitlam Central, BC, Canada<br>
+            (672) 999-7099<br>
+            cindyhyang@hotmail.com
+          </p>
+          <h3 style="margin-top: 22px;">Studio Hours</h3>
+          <div class="hours">
+            <span>Monday - Friday</span><span>1:00pm - 9:00pm</span>
+            <span>Portfolio Private Lessons</span><span>By Appointment</span>
+            <span>Spring / Summer Program</span><span>Schedule Coming Soon</span>
+          </div>
+          <h3 style="margin-top: 26px;">Taipei Studio</h3>
+          <p style="color: var(--muted); margin-bottom: 0;">
+            台北市大安區<br>
+            0925-604-658<br>
+            cindyhyang@hotmail.com<br>
+            9:00am - 9:00pm
+          </p>
+        </div>
+
+        <div class="newsletter">
+          <div class="eyebrow">Portfolio Consultation</div>
+          <h3>Complimentary One-on-One Consultation</h3>
+          <p style="color: var(--muted); margin-top: 0;">
+            為協助學生順利啟動藝術或設計作品集準備，我們提供專業一對一諮詢。
+            導師將依學生目前程度與申請方向，提供具體建議、時間規劃與發展路徑。
+          </p>
+          <input type="text" placeholder="Your Email">
+          <a class="button primary" href="#">Submit Inquiry</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Homepage draft inspired by the section structure of artvillagelangley.com, with content adapted from the Cindy PDF.
+    </div>
+  </footer>
+</body>
+</html>

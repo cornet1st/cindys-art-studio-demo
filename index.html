@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cindy's Art Studio | See. Think. Create.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAFAF7; /* Gallery Minimal Base Color */
+            --text-main: #2C2C2C;
+            --text-light: #555555;
+            --accent: #8E9A8C; /* 柔和的鼠尾草綠，增添藝術氣息 */
+            --glass-bg: rgba(250, 250, 247, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --spacing-unit: 8px; /* 8pt grid 系統 */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6, .serif {
+            font-family: 'Noto Serif TC', serif; /* 襯線字體增添藝術深度 */
+            font-weight: 500;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 8);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: calc(var(--spacing-unit) * 5);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 calc(var(--spacing-unit) * 4);
+            /* 輕微的網格背景點綴 */
+            background-image: radial-gradient(#d5d5d5 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 680px;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 5);
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 2px;
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Common Section Styles */
+        section {
+            padding: calc(var(--spacing-unit) * 15) calc(var(--spacing-unit) * 8);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 10);
+            position: relative;
+        }
+
+        /* Features / Philosophy */
+        .philosophy {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 10);
+            align-items: center;
+        }
+
+        .philosophy-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            line-height: 1.4;
+        }
+
+        .philosophy-image {
+            background-color: #EFEFEA;
+            height: 500px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+            border: 1px solid #E5E5E0;
+        }
+
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: calc(var(--spacing-unit) * 5);
+        }
+
+        .program-card {
+            background: #FFFFFF;
+            padding: calc(var(--spacing-unit) * 6);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
+
+        .program-card h3 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            border-bottom: 1px solid #F0F0F0;
+            padding-bottom: calc(var(--spacing-unit) * 3);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .program-card span.eng-title {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-family: 'Noto Sans TC', sans-serif;
+            margin-top: calc(var(--spacing-unit) * 1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 8);
+            margin-top: calc(var(--spacing-unit) * 10);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 6);
+        }
+
+        .footer-content h4 {
+            color: #D1D5CE;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-content p {
+            color: #999999;
+            font-size: 0.95rem;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo serif">Cindy's Art Studio</a>
+        <nav>
+            <a href="#about">教學理念</a>
+            <a href="#programs">課程計畫</a>
+            <a href="#gallery">學生藝廊</a>
+            <a href="#contact">聯絡畫室</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="serif">See. Think. Create.</h1>
+        <p>Or Where Ideas Take Shape. <br>我們幫助學生從基礎到高階，逐步建立真正能支撐創作與作品集發展的專業能力。</p>
+        <a href="#programs" class="cta-btn">探索課程</a>
+    </section>
+
+    <section id="about" class="philosophy">
+        <div class="philosophy-image">
+            [ 高質感畫室環境 / 創作側拍照片佔位符 ]
+        </div>
+        <div class="philosophy-text">
+            <h2>中式美育的涵養<br>× 西式教學的系統</h2>
+            <p>由 Emily Carr University of Art + Design 校友 Cindy Yang 領軍，擁有20年以上藝術教學與個別指導經驗。</p>
+            <p>我們相信：藝術不是零散的創作體驗，而是一套清晰、可進階的能力成長系統。從「引導創意」出發，尊重學生特質，建立扎實基礎，最終發展出獨一無二的個人風格。</p>
+            <p style="margin-top: 24px; padding-left: 16px; border-left: 2px solid var(--accent); color: var(--text-light);">
+                <strong>能力建構路徑：</strong><br>觀察力 ➔ 結構邏輯 ➔ 造型思維 ➔ 創意表達
+            </p>
+        </div>
+    </section>
+
+    <section id="programs">
+        <h2 class="section-title serif">核心課程計畫</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <h3>藝術基礎課程<span class="eng-title">Art Foundation (1-12年級)</span></h3>
+                <p>以主題為核心，透過多元媒材與藝術家作品引導，培養觀察力、想像力與個人表達。2小時課程提供彈性而清晰的學習架構，讓孩子在適合自己的節奏中進步。</p>
+            </div>
+            <div class="program-card">
+                <h3>作品集準備<span class="eng-title">Portfolio Prep (8-12年級以上)</span></h3>
+                <p>陪伴學生踏實完成大學申請的每一個步驟。發掘天賦強項，建立清晰的作品集發展路徑。我們提供的不是把畫作放在一起，而是一套完整呈現思考深度的系統。</p>
+            </div>
+            <div class="program-card">
+                <h3>春季與暑期營隊<span class="eng-title">Spring & Summer Break</span></h3>
+                <p>開放給所有年齡層的創作者（1-12 年級學生、成人與家庭）。課程內容涵蓋素描、繪畫、動畫與多元媒材探索，度過一段充滿創意與實作的藝術時光。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h4 class="serif">Cindy's Art Studio</h4>
+                <p>全年齡藝術課程</p>
+                <p>結構為骨・感知為魂・美育為根</p>
+                <p style="margin-top: 16px;">Email: cindyhyang@hotmail.com</p>
+            </div>
+            <div>
+                <h4 class="serif">溫哥華工作室</h4>
+                <p>Coquitlam Central, BC, Canada</p>
+                <p>Phone: (672) 999-7099</p>
+                <p>Time: 1:00pm - 9:00pm</p>
+                <p>作品集個人班：個別約定時間</p>
+            </div>
+            <div>
+                <h4 class="serif">台北工作室</h4>
+                <p>台北市 大安區</p>
+                <p>Phone: 0925-604-658</p>
+                <p>Time: 9:00am - 9:00pm</p>
+                <p>作品集個人班：個別約定時間</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
