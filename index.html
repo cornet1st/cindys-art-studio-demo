@@ -1,321 +1,430 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cindy's Art Studio | See. Think. Create.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #FAFAF7; /* Gallery Minimal Base Color */
-            --text-main: #2C2C2C;
-            --text-light: #555555;
-            --accent: #8E9A8C; /* 柔和的鼠尾草綠，增添藝術氣息 */
-            --glass-bg: rgba(250, 250, 247, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --spacing-unit: 8px; /* 8pt grid 系統 */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cindy's Art Studio — 網站雛形比較</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Noto Sans TC', sans-serif;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      min-height: 100vh;
+    }
 
-        h1, h2, h3, h4, h5, h6, .serif {
-            font-family: 'Noto Serif TC', serif; /* 襯線字體增添藝術深度 */
-            font-weight: 500;
-        }
+    /* HEADER */
+    .header {
+      text-align: center;
+      padding: 3.5rem 2rem 2rem;
+      border-bottom: 1px solid #222;
+    }
 
-        /* Glassmorphism Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 8);
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-decoration: none;
-            color: var(--text-main);
-        }
+    .header p {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.6;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            margin-left: calc(var(--spacing-unit) * 5);
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
+    .header .hint {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #555;
+      background: #1a1a1a;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid #2a2a2a;
+    }
 
-        nav a:hover {
-            color: var(--accent);
-        }
+    /* GRID */
+    .grid {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
+    /* CARD */
+    .card {
+      background: #181818;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #2a2a2a;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
 
-        nav a:hover::after {
-            width: 100%;
-        }
+    .card:hover {
+      border-color: #444;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 calc(var(--spacing-unit) * 4);
-            /* 輕微的網格背景點綴 */
-            background-image: radial-gradient(#d5d5d5 1px, transparent 1px);
-            background-size: 32px 32px;
-            background-position: center;
-        }
+    /* IFRAME CONTAINER */
+    .preview-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #111;
+      cursor: pointer;
+    }
 
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-            letter-spacing: 2px;
-            color: var(--text-main);
-        }
+    .preview-wrap iframe {
+      width: 200%;
+      height: 200%;
+      border: none;
+      transform: scale(0.5);
+      transform-origin: top left;
+      pointer-events: none;
+    }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 680px;
-            margin-bottom: calc(var(--spacing-unit) * 6);
-        }
+    .preview-wrap .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-        .cta-btn {
-            display: inline-block;
-            padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 5);
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            text-decoration: none;
-            border-radius: 2px;
-            font-family: 'Noto Serif TC', serif;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+    .preview-wrap:hover .overlay {
+      opacity: 1;
+    }
 
-        .cta-btn:hover {
-            background-color: var(--accent);
-            transform: translateY(-2px);
-        }
+    .overlay .open-btn {
+      padding: 10px 28px;
+      background: #fff;
+      color: #111;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+    }
 
-        /* Common Section Styles */
-        section {
-            padding: calc(var(--spacing-unit) * 15) calc(var(--spacing-unit) * 8);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* CARD INFO */
+    .card-info {
+      padding: 1.2rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: calc(var(--spacing-unit) * 10);
-            position: relative;
-        }
+    .card-info .version-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+      width: fit-content;
+    }
 
-        /* Features / Philosophy */
-        .philosophy {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: calc(var(--spacing-unit) * 10);
-            align-items: center;
-        }
+    .tag-a { background: #1a2e1a; color: #6ecf6e; }
+    .tag-b { background: #2e2a1a; color: #cfb86e; }
+    .tag-c { background: #1a2a2e; color: #6eb8cf; }
+    .tag-d { background: #2e1a2a; color: #cf6eb8; }
+    .tag-e { background: #1a2e26; color: #6ecfb8; }
+    .tag-f { background: #2e1a1a; color: #cf6e6e; }
 
-        .philosophy-text h2 {
-            font-size: 2.2rem;
-            margin-bottom: calc(var(--spacing-unit) * 4);
-            line-height: 1.4;
-        }
+    .card-info h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
 
-        .philosophy-image {
-            background-color: #EFEFEA;
-            height: 500px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-style: italic;
-            border: 1px solid #E5E5E0;
-        }
+    .card-info .style-desc {
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
 
-        /* Programs Grid */
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: calc(var(--spacing-unit) * 5);
-        }
+    .card-info .style-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
 
-        .program-card {
-            background: #FFFFFF;
-            padding: calc(var(--spacing-unit) * 6);
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
+    .style-tag {
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid #333;
+      color: #999;
+    }
 
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-        }
+    .card-info .open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 0;
+      border-top: 1px solid #2a2a2a;
+      transition: color 0.2s;
+    }
 
-        .program-card h3 {
-            font-size: 1.6rem;
-            margin-top: 0;
-            border-bottom: 1px solid #F0F0F0;
-            padding-bottom: calc(var(--spacing-unit) * 3);
-            margin-bottom: calc(var(--spacing-unit) * 3);
-        }
+    .card-info .open-link:hover { color: #6ecfb8; }
 
-        .program-card span.eng-title {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-family: 'Noto Sans TC', sans-serif;
-            margin-top: calc(var(--spacing-unit) * 1);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    /* VOTE SECTION */
+    .vote-section {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
 
-        /* Footer */
-        footer {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 8);
-            margin-top: calc(var(--spacing-unit) * 10);
-        }
+    .vote-box {
+      background: #181818;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 2.5rem;
+      text-align: center;
+    }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: calc(var(--spacing-unit) * 6);
-        }
+    .vote-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
 
-        .footer-content h4 {
-            color: #D1D5CE;
-            margin-bottom: calc(var(--spacing-unit) * 3);
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
+    .vote-box p {
+      font-size: 0.88rem;
+      color: #888;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
 
-        .footer-content p {
-            color: #999999;
-            font-size: 0.95rem;
-            margin-bottom: calc(var(--spacing-unit) * 1);
-        }
-    </style>
+    .vote-options {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .vote-btn {
+      padding: 12px 24px;
+      background: #222;
+      border: 1.5px solid #333;
+      border-radius: 10px;
+      color: #ccc;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .vote-btn:hover {
+      border-color: #6ecfb8;
+      color: #fff;
+      background: #1a2e26;
+    }
+
+    .vote-btn.selected {
+      border-color: #6ecfb8;
+      color: #6ecfb8;
+      background: #1a2e26;
+      box-shadow: 0 0 20px rgba(110, 207, 184, 0.15);
+    }
+
+    .vote-result {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #6ecfb8;
+      display: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+      .header { padding: 2.5rem 1.5rem 1.5rem; }
+      .header h1 { font-size: 1.3rem; }
+      .vote-section { padding: 0 1rem 3rem; }
+      .vote-box { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo serif">Cindy's Art Studio</a>
-        <nav>
-            <a href="#about">教學理念</a>
-            <a href="#programs">課程計畫</a>
-            <a href="#gallery">學生藝廊</a>
-            <a href="#contact">聯絡畫室</a>
-        </nav>
-    </header>
+  <div class="header">
+    <h1>Cindy's Art Studio — 網站雛形比較</h1>
+    <p>共 6 個版本，點擊預覽圖或下方連結可開啟完整頁面</p>
+    <div class="hint">左右滑動可在手機上瀏覽 &bull; 點擊卡片查看完整設計</div>
+  </div>
 
-    <section class="hero">
-        <h1 class="serif">See. Think. Create.</h1>
-        <p>Or Where Ideas Take Shape. <br>我們幫助學生從基礎到高階，逐步建立真正能支撐創作與作品集發展的專業能力。</p>
-        <a href="#programs" class="cta-btn">探索課程</a>
-    </section>
+  <div class="grid">
 
-    <section id="about" class="philosophy">
-        <div class="philosophy-image">
-            [ 高質感畫室環境 / 創作側拍照片佔位符 ]
+    <!-- Card 1 -->
+    <div class="card">
+      <a class="preview-wrap" href="cindy-homepage-wireframe.html" target="_blank">
+        <iframe src="cindy-homepage-wireframe.html" loading="lazy"></iframe>
+        <div class="overlay"><div class="open-btn">開啟完整頁面</div></div>
+      </a>
+      <div class="card-info">
+        <span class="version-tag tag-a">Version 1</span>
+        <h3>手繪質感風</h3>
+        <div class="style-desc">Georgia 襯線字體、暖棕大地色系、手工紙質感背景、赤陶色點綴</div>
+        <div class="style-tags">
+          <span class="style-tag">復古手感</span>
+          <span class="style-tag">大地色</span>
+          <span class="style-tag">襯線字體</span>
         </div>
-        <div class="philosophy-text">
-            <h2>中式美育的涵養<br>× 西式教學的系統</h2>
-            <p>由 Emily Carr University of Art + Design 校友 Cindy Yang 領軍，擁有20年以上藝術教學與個別指導經驗。</p>
-            <p>我們相信：藝術不是零散的創作體驗，而是一套清晰、可進階的能力成長系統。從「引導創意」出發，尊重學生特質，建立扎實基礎，最終發展出獨一無二的個人風格。</p>
-            <p style="margin-top: 24px; padding-left: 16px; border-left: 2px solid var(--accent); color: var(--text-light);">
-                <strong>能力建構路徑：</strong><br>觀察力 ➔ 結構邏輯 ➔ 造型思維 ➔ 創意表達
-            </p>
-        </div>
-    </section>
+        <a class="open-link" href="cindy-homepage-wireframe.html" target="_blank">開啟完整頁面 &rarr;</a>
+      </div>
+    </div>
 
-    <section id="programs">
-        <h2 class="section-title serif">核心課程計畫</h2>
-        <div class="programs-grid">
-            <div class="program-card">
-                <h3>藝術基礎課程<span class="eng-title">Art Foundation (1-12年級)</span></h3>
-                <p>以主題為核心，透過多元媒材與藝術家作品引導，培養觀察力、想像力與個人表達。2小時課程提供彈性而清晰的學習架構，讓孩子在適合自己的節奏中進步。</p>
-            </div>
-            <div class="program-card">
-                <h3>作品集準備<span class="eng-title">Portfolio Prep (8-12年級以上)</span></h3>
-                <p>陪伴學生踏實完成大學申請的每一個步驟。發掘天賦強項，建立清晰的作品集發展路徑。我們提供的不是把畫作放在一起，而是一套完整呈現思考深度的系統。</p>
-            </div>
-            <div class="program-card">
-                <h3>春季與暑期營隊<span class="eng-title">Spring & Summer Break</span></h3>
-                <p>開放給所有年齡層的創作者（1-12 年級學生、成人與家庭）。課程內容涵蓋素描、繪畫、動畫與多元媒材探索，度過一段充滿創意與實作的藝術時光。</p>
-            </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <a class="preview-wrap" href="v2-minimal-gallery.html" target="_blank">
+        <iframe src="v2-minimal-gallery.html" loading="lazy"></iframe>
+        <div class="overlay"><div class="open-btn">開啟完整頁面</div></div>
+      </a>
+      <div class="card-info">
+        <span class="version-tag tag-b">Version 2</span>
+        <h3>極簡藝廊風</h3>
+        <div class="style-desc">Noto Sans/Serif TC、乾淨灰白底、鼠尾草綠點綴、玻璃擬態效果</div>
+        <div class="style-tags">
+          <span class="style-tag">極簡</span>
+          <span class="style-tag">藝廊感</span>
+          <span class="style-tag">透明質感</span>
         </div>
-    </section>
+        <a class="open-link" href="v2-minimal-gallery.html" target="_blank">開啟完整頁面 &rarr;</a>
+      </div>
+    </div>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div>
-                <h4 class="serif">Cindy's Art Studio</h4>
-                <p>全年齡藝術課程</p>
-                <p>結構為骨・感知為魂・美育為根</p>
-                <p style="margin-top: 16px;">Email: cindyhyang@hotmail.com</p>
-            </div>
-            <div>
-                <h4 class="serif">溫哥華工作室</h4>
-                <p>Coquitlam Central, BC, Canada</p>
-                <p>Phone: (672) 999-7099</p>
-                <p>Time: 1:00pm - 9:00pm</p>
-                <p>作品集個人班：個別約定時間</p>
-            </div>
-            <div>
-                <h4 class="serif">台北工作室</h4>
-                <p>台北市 大安區</p>
-                <p>Phone: 0925-604-658</p>
-                <p>Time: 9:00am - 9:00pm</p>
-                <p>作品集個人班：個別約定時間</p>
-            </div>
+    <!-- Card 3 -->
+    <div class="card">
+      <a class="preview-wrap" href="cindy-homepage-artvillage-style.html" target="_blank">
+        <iframe src="cindy-homepage-artvillage-style.html" loading="lazy"></iframe>
+        <div class="overlay"><div class="open-btn">開啟完整頁面</div></div>
+      </a>
+      <div class="card-info">
+        <span class="version-tag tag-c">Version 3</span>
+        <h3>Art Village 風格 A</h3>
+        <div class="style-desc">Arial 無襯線、米灰底、綠橘雙色、清爽結構化版面</div>
+        <div class="style-tags">
+          <span class="style-tag">清爽</span>
+          <span class="style-tag">雙色調</span>
+          <span class="style-tag">結構化</span>
         </div>
-    </footer>
+        <a class="open-link" href="cindy-homepage-artvillage-style.html" target="_blank">開啟完整頁面 &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <a class="preview-wrap" href="artvillage_style.html" target="_blank">
+        <iframe src="artvillage_style.html" loading="lazy"></iframe>
+        <div class="overlay"><div class="open-btn">開啟完整頁面</div></div>
+      </a>
+      <div class="card-info">
+        <span class="version-tag tag-d">Version 4</span>
+        <h3>Art Village 風格 B</h3>
+        <div class="style-desc">Playfair Display + Montserrat、白底灰綠、精緻排版、學院品牌感</div>
+        <div class="style-tags">
+          <span class="style-tag">精緻</span>
+          <span class="style-tag">品牌感</span>
+          <span class="style-tag">學院風</span>
+        </div>
+        <a class="open-link" href="artvillage_style.html" target="_blank">開啟完整頁面 &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <a class="preview-wrap" href="cindys-art-studio/index.html" target="_blank">
+        <iframe src="cindys-art-studio/index.html" loading="lazy"></iframe>
+        <div class="overlay"><div class="open-btn">開啟完整頁面</div></div>
+      </a>
+      <div class="card-info">
+        <span class="version-tag tag-e">Version 5 — New</span>
+        <h3>溫暖學院風</h3>
+        <div class="style-desc">Inter + Playfair Display、奶油暖色底、鼠尾草綠、滾動漸入動畫、雙語切換</div>
+        <div class="style-tags">
+          <span class="style-tag">溫暖</span>
+          <span class="style-tag">親切</span>
+          <span class="style-tag">完整結構</span>
+          <span class="style-tag">RWD</span>
+        </div>
+        <a class="open-link" href="cindys-art-studio/index.html" target="_blank">開啟完整頁面 &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <a class="preview-wrap" href="cindys-art-studio/version-b.html" target="_blank">
+        <iframe src="cindys-art-studio/version-b.html" loading="lazy"></iframe>
+        <div class="overlay"><div class="open-btn">開啟完整頁面</div></div>
+      </a>
+      <div class="card-info">
+        <span class="version-tag tag-f">Version 6 — New</span>
+        <h3>現代專業風</h3>
+        <div class="style-desc">DM Sans + DM Serif Display、深色 Hero、金色點綴、大膽排版、聯絡表單</div>
+        <div class="style-tags">
+          <span class="style-tag">專業</span>
+          <span class="style-tag">大膽</span>
+          <span class="style-tag">深色調</span>
+          <span class="style-tag">完整功能</span>
+        </div>
+        <a class="open-link" href="cindys-art-studio/version-b.html" target="_blank">開啟完整頁面 &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VOTE -->
+  <div class="vote-section">
+    <div class="vote-box">
+      <h2>你最喜歡哪個版本？</h2>
+      <p>選一個最接近理想的方向，後續可以再混搭調整</p>
+      <div class="vote-options">
+        <button class="vote-btn" onclick="vote(this, 'V1 手繪質感風')">V1 手繪質感</button>
+        <button class="vote-btn" onclick="vote(this, 'V2 極簡藝廊風')">V2 極簡藝廊</button>
+        <button class="vote-btn" onclick="vote(this, 'V3 Art Village A')">V3 Art Village A</button>
+        <button class="vote-btn" onclick="vote(this, 'V4 Art Village B')">V4 Art Village B</button>
+        <button class="vote-btn" onclick="vote(this, 'V5 溫暖學院風')">V5 溫暖學院</button>
+        <button class="vote-btn" onclick="vote(this, 'V6 現代專業風')">V6 現代專業</button>
+      </div>
+      <div class="vote-result" id="voteResult"></div>
+    </div>
+  </div>
+
+  <script>
+    function vote(btn, name) {
+      document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const result = document.getElementById('voteResult');
+      result.style.display = 'block';
+      result.textContent = '已選擇：' + name + ' ✓';
+    }
+  </script>
 
 </body>
 </html>
