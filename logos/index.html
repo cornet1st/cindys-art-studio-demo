@@ -3,410 +3,2795 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cindy's Art Studio — Logo Showcase</title>
+  <title>Cindy's Art Studio — Logo Collection</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
       background: #f4f2ef;
       color: #2c2c2c;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
-    .header {
-      text-align: center;
-      padding: 3rem 2rem 1rem;
-    }
-    .header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-    .header p { font-size: 0.9rem; color: #888; }
 
-    .set-header {
-      max-width: 1400px;
-      margin: 2.5rem auto 0;
-      padding: 0 2rem;
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      text-align: center;
+      padding: 3.5rem 2rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #2c2c2c;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .page-header .subtitle {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+    }
+    .page-header .total-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #6a6a6a;
+      background: #e8e4de;
+      padding: 6px 20px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      padding: 0 2rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .nav a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #666;
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 16px;
+      border: 1px solid #e0dcd6;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav a:hover {
+      background: #fff;
+      color: #2c2c2c;
+      border-color: #ccc;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+    .section-header {
+      padding: 2rem 0 1.2rem;
+      border-bottom: 1px solid #e8e4de;
+      margin-bottom: 1.5rem;
+    }
+    .section-title-row {
       display: flex;
       align-items: center;
       gap: 1rem;
+      flex-wrap: wrap;
     }
-    .set-header h2 {
+    .section-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      white-space: nowrap;
     }
-    .set-header .line {
-      flex: 1;
-      height: 1px;
-      background: #ddd;
-    }
-    .set-header .badge {
-      font-size: 0.68rem;
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
-      white-space: nowrap;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
     }
-    .badge-a { background: #e8f4ef; color: #6a9e8c; }
-    .badge-b { background: #fef3e2; color: #b8956a; }
-    .badge-c { background: #eee8f4; color: #8e7aaa; }
 
+    /* ===== GRID ===== */
     .grid {
-      max-width: 1400px;
-      margin: 1.5rem auto 0;
-      padding: 0 2rem 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
     }
 
+    /* ===== CARD ===== */
     .card {
       background: #fff;
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1px solid #e8e4de;
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.08);
     }
-    .logo-box {
-      padding: 2rem;
+
+    .card-preview {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 200px;
-      background: #fafaf8;
+      min-height: 160px;
+      padding: 1.2rem;
+      background: #faf9f7;
+      border-bottom: 1px solid #f0ece6;
     }
-    .logo-box svg, .logo-box img {
-      max-width: 140px;
-      max-height: 140px;
+    .card-preview svg {
+      width: 100%;
+      max-width: 120px;
+      max-height: 120px;
+      height: auto;
+      display: block;
     }
-    .card-info {
-      padding: 1rem 1.2rem;
-      border-top: 1px solid #f0ece6;
+    .card-preview img {
+      max-width: 120px;
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      display: block;
     }
-    .card-info .num {
+
+    .card-body {
+      padding: 0.9rem 1rem;
+    }
+    .card-label {
       font-size: 0.65rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #aaa;
+      color: #a09a90;
+      margin-bottom: 0.3rem;
     }
-    .card-info h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      margin: 0.2rem 0;
+    .card-name {
+      font-family: 'Noto Sans TC', 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2c2c2c;
+      line-height: 1.35;
+      margin-bottom: 0.15rem;
     }
-    .card-info p {
-      font-size: 0.78rem;
+    .card-name-secondary {
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 0.25rem;
+    }
+    .card-desc {
+      font-size: 0.72rem;
       color: #999;
       line-height: 1.5;
     }
 
-    /* Detail link */
-    .set-detail {
-      max-width: 1400px;
-      margin: 0.5rem auto 0;
-      padding: 0 2rem 2rem;
-      text-align: right;
-    }
-    .set-detail a {
-      font-size: 0.8rem;
-      color: #6a9e8c;
-      text-decoration: none;
-    }
-    .set-detail a:hover { text-decoration: underline; }
-
-    .back-link {
-      display: block;
+    /* ===== FOOTER ===== */
+    .page-footer {
       text-align: center;
       padding: 2rem;
-      color: #6a9e8c;
-      text-decoration: none;
-      font-size: 0.85rem;
+      color: #bbb;
+      font-size: 0.78rem;
       border-top: 1px solid #e8e4de;
+      max-width: 1440px;
+      margin: 1rem auto 0;
     }
-    .back-link:hover { text-decoration: underline; }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 0 1rem 1rem; }
-      .set-header { padding: 0 1rem; }
-      .logo-box { min-height: 160px; padding: 1.5rem; }
-      .logo-box svg, .logo-box img { max-width: 100px; max-height: 100px; }
+      .page-header h1 { font-size: 1.6rem; }
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+      .card-preview {
+        min-height: 120px;
+        padding: 0.8rem;
+      }
+      .card-preview svg, .card-preview img {
+        max-width: 90px;
+        max-height: 90px;
+      }
+      .card-body {
+        padding: 0.6rem 0.7rem;
+      }
+      .card-name { font-size: 0.78rem; }
+      .card-desc { font-size: 0.65rem; }
+      .section { padding: 0 1rem 2rem; }
+      .page-header { padding: 2rem 1rem 1.5rem; }
+      .nav { padding: 0 1rem 1.5rem; }
+    }
+    @media (max-width: 380px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+    }
+    @media (min-width: 1200px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>Cindy's Art Studio — Logo Concepts</h1>
-  <p>房子 + C 字母 &bull; 居家畫室概念 &bull; 共 15 款供挑選</p>
-</div>
+  <header class="page-header">
+    <h1>Cindy&rsquo;s Art Studio &mdash; Logo Collection</h1>
+    <p class="subtitle">Complete gallery of all logo design concepts for client review</p>
+    <span class="total-badge">120 Logo Designs &middot; 6 Sets</span>
+  </header>
 
-<!-- ===== SET A ===== -->
-<div class="set-header">
-  <h2>Set A</h2>
-  <div class="line"></div>
-  <span class="badge badge-a">5 Designs</span>
-</div>
+  <nav class="nav">
+    <a href="#set-a">Set A &middot; 5</a>
+    <a href="#set-b">Set B &middot; 5</a>
+    <a href="#set-c">Set C &middot; 5</a>
+    <a href="#set-d">Set D &middot; 35</a>
+    <a href="#set-e">Set E &middot; 35</a>
+    <a href="#set-f">Set F &middot; 35</a>
+  </nav>
 
-<div class="grid">
-  <div class="card">
-    <div class="logo-box">
-      <img src="logo-01-arch-house.svg" alt="Logo A1">
-    </div>
-    <div class="card-info">
-      <div class="num">A-1</div>
-      <h3>拱形屋 Arch House</h3>
-      <p>C 字母用赤陶筆刷，搭配經典尖頂房屋線條</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="logo-box">
-      <img src="logo-02-brush-house.svg" alt="Logo A2">
-    </div>
-    <div class="card-info">
-      <div class="num">A-2</div>
-      <h3>筆刷屋 Brush House</h3>
-      <p>弧形屋頂 + 粗體 C，底部有筆觸裝飾線</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="logo-box">
-      <img src="logo-03-monogram-house.svg" alt="Logo A3">
-    </div>
-    <div class="card-info">
-      <div class="num">A-3</div>
-      <h3>字母屋 Monogram</h3>
-      <p>C 字母與房屋結構融為一體的字母組合設計</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="logo-box">
-      <img src="logo-04-window-house.svg" alt="Logo A4">
-    </div>
-    <div class="card-info">
-      <div class="num">A-4</div>
-      <h3>窗戶屋 Window House</h3>
-      <p>C 字母內含門窗元素，暖色門代表歡迎</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="logo-box">
-      <img src="logo-05-art-nook.svg" alt="Logo A5">
-    </div>
-    <div class="card-info">
-      <div class="num">A-5</div>
-      <h3>藝角 Art Nook</h3>
-      <p>C 字母搭配指向箭頭與鉛筆煙囪</p>
-    </div>
-  </div>
-</div>
+    <section class="section" id="set-a">
+      <div class="section-header">
+        <div class="section-title-row">
+          <h2 class="section-title">Set A</h2>
+          <span class="badge" style="background:#4a9e6c">5 Designs · AI-1</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-preview">
+            <img src="logo-01-arch-house.svg" alt="拱形屋 Arch House">
+          </div>
+          <div class="card-body">
+            <div class="card-label">A-01</div>
+            <div class="card-name">拱形屋 Arch House</div>
+            <div class="card-desc">C 字母用赤陶筆刷，搭配經典尖頂房屋線條</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <img src="logo-02-brush-house.svg" alt="筆刷屋 Brush House">
+          </div>
+          <div class="card-body">
+            <div class="card-label">A-02</div>
+            <div class="card-name">筆刷屋 Brush House</div>
+            <div class="card-desc">弧形屋頂 + 粗體 C，底部有筆觸裝飾線</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <img src="logo-03-monogram-house.svg" alt="字母屋 Monogram">
+          </div>
+          <div class="card-body">
+            <div class="card-label">A-03</div>
+            <div class="card-name">字母屋 Monogram</div>
+            <div class="card-desc">C 字母與房屋結構融為一體的字母組合設計</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <img src="logo-04-window-house.svg" alt="窗戶屋 Window House">
+          </div>
+          <div class="card-body">
+            <div class="card-label">A-04</div>
+            <div class="card-name">窗戶屋 Window House</div>
+            <div class="card-desc">C 字母內含門窗元素，暖色門代表歡迎</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <img src="logo-05-art-nook.svg" alt="藝角 Art Nook">
+          </div>
+          <div class="card-body">
+            <div class="card-label">A-05</div>
+            <div class="card-name">藝角 Art Nook</div>
+            <div class="card-desc">C 字母搭配指向箭頭與鉛筆煙囪</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- ===== SET B ===== -->
-<div class="set-header">
-  <h2>Set B</h2>
-  <div class="line"></div>
-  <span class="badge badge-b">5 Designs &bull; New</span>
-</div>
+    <section class="section" id="set-b">
+      <div class="section-header">
+        <div class="section-title-row">
+          <h2 class="section-title">Set B</h2>
+          <span class="badge" style="background:#c5a33e">5 Designs · AI-1</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-preview">
+            <svg  viewBox="0 0 100 100" fill="none">
+          <path d="M50 8L10 40V92H90V40L50 8Z" fill="#f9f7f4" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M50 8L10 40H90L50 8Z" fill="#6a9e8c"/>
+          <path d="M63 54C63 45 57 38 49 38C41 38 35 45 35 54C35 63 41 70 49 70C54 70 58.5 67 61 63" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="49" cy="80" r="3" fill="#b8956a"/>
+        </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">B-1</div>
+            <div class="card-name">簡約幾何屋</div>
+              <div class="card-name-secondary">Minimal Geometry</div>
+            <div class="card-desc">乾淨的三角屋頂 + 方形屋身，C 字母自然嵌入屋中央。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg  viewBox="0 0 100 100" fill="none">
+          <rect x="16" y="42" width="68" height="50" rx="10" fill="#faf6f1" stroke="#3a4a42" stroke-width="2.5"/>
+          <path d="M10 46Q50 10 90 46" stroke="#3a4a42" stroke-width="2.5" stroke-linecap="round" fill="#e8d5b0"/>
+          <rect x="69" y="22" width="6" height="20" rx="2" fill="#b8956a"/>
+          <polygon points="69,22 72,15 75,22" fill="#d4836a"/>
+          <path d="M61 60C59 52 55 48 49 48C42 48 37 53 37 61C37 69 42 74 49 74C55 74 59 70 61 65" stroke="#6a9e8c" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">B-2</div>
+            <div class="card-name">溫馨圓角屋</div>
+              <div class="card-name-secondary">Rounded Warmth</div>
+            <div class="card-desc">圓弧屋頂營造溫暖居家感，煙囪設計成鉛筆造型。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg  viewBox="0 0 100 100" fill="none">
+          <path d="M50 6L14 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 6L86 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
+          <path d="M72 42C68 30 60 24 50 24C36 24 24 38 24 54C24 70 36 84 50 84C60 84 68 78 72 66" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <circle cx="38" cy="72" r="4" fill="#b8956a"/>
+        </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">B-3</div>
+            <div class="card-name">極簡C屋</div>
+              <div class="card-name-secondary">Minimal C House</div>
+            <div class="card-desc">最少線條：兩條斜線 = 屋頂，C 字母本身就是房屋主體。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg  viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="#3a4a42"/>
+          <circle cx="50" cy="50" r="41" fill="none" stroke="#6a9e8c" stroke-width="0.8" stroke-dasharray="2 2.5"/>
+          <path d="M50 18L30 36V72H70V36L50 18Z" fill="#4a5d54"/>
+          <path d="M50 18L30 36H70L50 18Z" fill="#6a9e8c"/>
+          <path d="M58 44C58 38 54.5 34 49.5 34C44 34 40 38.5 40 44.5C40 50.5 44 55 49.5 55C53.5 55 56.5 52.5 58 50" stroke="#faf6f1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <text x="50" y="66" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="5" font-weight="600" fill="#8cbcaa" letter-spacing="1.5">CINDY'S ART</text>
+          <text x="50" y="72" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="4.5" fill="#8cbcaa" letter-spacing="1.2">STUDIO</text>
+          <circle cx="10" cy="50" r="1.5" fill="#b8956a"/>
+          <circle cx="90" cy="50" r="1.5" fill="#b8956a"/>
+        </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">B-4</div>
+            <div class="card-name">徽章印記風</div>
+              <div class="card-name-secondary">Badge Seal</div>
+            <div class="card-desc">圓形徽章包覆房屋剪影 + C 字母，品牌辨識度最高。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg  viewBox="0 0 100 100" fill="none">
+          <path d="M50 10L12 42V90H88V42L50 10Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M50 18L22 42H78L50 18Z" fill="#6a9e8c" opacity="0.25"/>
+          <path d="M50 15L19 42H81L50 15Z" fill="#6a9e8c" opacity="0.2"/>
+          <path d="M50 21L25 42H75L50 21Z" fill="#6a9e8c" opacity="0.35"/>
+          <path d="M64 50C61 40 56 35 48 35C38 35 30 44 30 56C30 68 38 77 48 77C56 77 61 72 64 64" stroke="#b8956a" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="69" cy="45" r="2.5" fill="#d4836a" opacity="0.7"/>
+          <circle cx="73" cy="52" r="1.5" fill="#6a9e8c" opacity="0.5"/>
+          <circle cx="26" cy="70" r="2" fill="#6a9e8c" opacity="0.4"/>
+          <circle cx="22" cy="64" r="1.2" fill="#b8956a" opacity="0.5"/>
+          <path d="M28 84Q50 80 72 84" stroke="#b8956a" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+        </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">B-5</div>
+            <div class="card-name">水彩筆觸風</div>
+              <div class="card-name-secondary">Watercolor Stroke</div>
+            <div class="card-desc">屋頂以疊色水彩效果呈現層次，C 字母用金棕色筆刷質感。</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="grid">
-  <!-- B-1 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
-        <path d="M50 8L10 40V92H90V40L50 8Z" fill="#f9f7f4" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M50 8L10 40H90L50 8Z" fill="#6a9e8c"/>
-        <path d="M63 54C63 45 57 38 49 38C41 38 35 45 35 54C35 63 41 70 49 70C54 70 58.5 67 61 63" stroke="#3a4a42" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <circle cx="49" cy="80" r="3" fill="#b8956a"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">B-1</div>
-      <h3>簡約幾何屋</h3>
-      <p>乾淨三角屋頂 + C 嵌入中央，底部調色盤圓點</p>
-    </div>
-  </div>
+    <section class="section" id="set-c">
+      <div class="section-header">
+        <div class="section-title-row">
+          <h2 class="section-title">Set C</h2>
+          <span class="badge" style="background:#7e5aa0">5 Designs · AI-2</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15L85 45V85H15V45L50 15Z" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M60 50C58 47 54 45 50 45C44 45 40 49 40 55C40 61 44 65 50 65C54 65 58 63 60 60" stroke="#8E9A8C" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">C-1</div>
+            <div class="card-name">極簡線條版</div>
+              <div class="card-name-secondary">Minimalist Line</div>
+            <div class="card-desc">使用俐落的細線描繪房屋輪廓，內嵌柔軟的 Serif 'C'。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 50L50 20L80 50" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"/>
+                    <rect x="25" y="50" width="50" height="35" rx="2" stroke="#2C2C2C" stroke-width="3" style="opacity: 0.8;"/>
+                    <path d="M40 55C40 50 45 48 50 48C55 48 60 50 60 55V55C60 60 55 62 50 62C45 62 40 60 40 55Z" fill="#8E9A8C" style="opacity: 0.6;"/>
+                    <text x="50" y="68" font-family="Playfair Display, serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">C</text>
+                </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">C-2</div>
+            <div class="card-name">藝術印記版</div>
+              <div class="card-name-secondary">Artistic Stamp</div>
+            <div class="card-desc">房屋造型較為穩重，'C' 以藝術漆印方式呈現。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 45L50 15L85 45V85H15V45Z" fill="#2C2C2C"/>
+                    <path d="M65 55C65 48 60 43 52 43C43 43 38 49 38 57C38 65 43 71 52 71C60 71 65 66 65 60" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">C-3</div>
+            <div class="card-name">負空間色塊版</div>
+              <div class="card-name-secondary">Negative Space</div>
+            <div class="card-desc">運用實色房屋地基，透過負空間勾勒出大寫 'C'。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 85L50 15L80 85" stroke="#2C2C2C" stroke-width="5" stroke-linecap="round"/>
+                    <circle cx="50" cy="55" r="22" fill="#FAFAF7" stroke="#8E9A8C" stroke-width="2"/>
+                    <text x="50" y="63" font-family="Serif" font-size="28" fill="#2C2C2C" text-anchor="middle">C</text>
+                </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">C-4</div>
+            <div class="card-name">閣樓畫室版</div>
+              <div class="card-name-secondary">A-Frame Studio</div>
+            <div class="card-desc">採用 A-Frame 建築造型，圓形窗戶中包圍著字母 'C'。</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10L90 40H10L50 10Z" fill="#8E9A8C"/>
+                    <path d="M15 40H85V85H15V40Z" stroke="#2C2C2C" stroke-width="3"/>
+                    <path d="M55 52C53 50 50 49 48 49C43 49 40 53 40 58C40 63 43 67 48 67C50 67 53 66 55 64" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">C-5</div>
+            <div class="card-name">幾何平衡版</div>
+              <div class="card-name-secondary">Geometric Balance</div>
+            <div class="card-desc">將房屋拆解為三角形屋頂與矩形牆面，結構平衡。</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- B-2 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
-        <rect x="16" y="42" width="68" height="50" rx="10" fill="#faf6f1" stroke="#3a4a42" stroke-width="2.5"/>
-        <path d="M10 46Q50 10 90 46" stroke="#3a4a42" stroke-width="2.5" stroke-linecap="round" fill="#e8d5b0"/>
-        <rect x="69" y="22" width="6" height="20" rx="2" fill="#b8956a"/>
-        <polygon points="69,22 72,15 75,22" fill="#d4836a"/>
-        <path d="M61 60C59 52 55 48 49 48C42 48 37 53 37 61C37 69 42 74 49 74C55 74 59 70 61 65" stroke="#6a9e8c" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">B-2</div>
-      <h3>溫馨圓角屋</h3>
-      <p>圓弧屋頂 + 鉛筆煙囪 + 手寫感綠色 C</p>
-    </div>
-  </div>
+    <section class="section" id="set-d">
+      <div class="section-header">
+        <div class="section-title-row">
+          <h2 class="section-title">Set D — Gemini</h2>
+          <span class="badge" style="background:#4285f4">35 Designs · Gemini</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,85 V45 L60,20 L90,45 V55 M90,75 V85 H30" fill="none" stroke="#6a9e8c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M85,55 A25,25 0 1,0 85,85" fill="none" stroke="#b8956a" stroke-width="8" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-01</div>
+            <div class="card-name">創意避風港</div>
+              <div class="card-name-secondary">The Creative Haven</div>
+            <div class="card-desc">Minimalist C forming the main structure of a house.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,65 L60,25 L100,65" fill="none" stroke="#c57546" stroke-width="12" stroke-linecap="round"/>
+  <rect x="30" y="65" width="60" height="35" fill="#f9f7f4"/>
+  <path d="M70,75 A12,12 0 1,0 70,95" fill="none" stroke="#2c2c2c" stroke-width="6" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-02</div>
+            <div class="card-name">匠心之巔</div>
+              <div class="card-name-secondary">Artisan Peak</div>
+            <div class="card-desc">Brushstroke forming a house roof with a C-shaped window.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,90 C10,90 10,30 60,30 C110,30 110,90 90,90 H30" fill="#8E9A8C"/>
+  <path d="M45,90 V60 L60,45 L75,60 V90" fill="#f9f7f4"/>
+  <circle cx="45" cy="50" r="5" fill="#d4836a"/>
+  <circle cx="75" cy="50" r="5" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-03</div>
+            <div class="card-name">調色板莊園</div>
+              <div class="card-name-secondary">Palette Manor</div>
+            <div class="card-desc">A house silhouette integrated with an artist's palette shape.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="25" y="40" width="8" height="50" rx="4" fill="#2a3a4a"/>
+  <rect x="87" y="40" width="8" height="50" rx="4" fill="#2a3a4a"/>
+  <path d="M20,45 L60,15 L100,45" fill="none" stroke="#6b4c6e" stroke-width="10" stroke-linecap="round"/>
+  <path d="M75,60 A15,15 0 1,0 75,85" fill="none" stroke="#b8956a" stroke-width="6" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-04</div>
+            <div class="card-name">筆觸居所</div>
+              <div class="card-name-secondary">Brushstroke Shelter</div>
+            <div class="card-desc">Vertical paintbrushes forming the walls of a C-shaped house.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,100 V50 L60,20 L100,50 V100 Z" fill="#2c2c2c"/>
+  <path d="M75,55 A18,18 0 1,0 75,85" fill="none" stroke="#f9f7f4" stroke-width="8" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-05</div>
+            <div class="card-name">內嵌畫室</div>
+              <div class="card-name-secondary">The Inset Studio</div>
+            <div class="card-desc">Negative space C inside a solid house silhouette.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60,20 L100,100 M60,20 L20,100 M30,80 H90" fill="none" stroke="#3a5a42" stroke-width="6" stroke-linecap="round"/>
+  <path d="M75,45 A15,15 0 1,0 75,70" fill="none" stroke="#c57546" stroke-width="8" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-06</div>
+            <div class="card-name">畫布小屋</div>
+              <div class="card-name-secondary">Canvas Cottage</div>
+            <div class="card-desc">An easel that doubles as a house frame with a C monogram.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="50" width="80" height="50" fill="#6a9e8c" opacity="0.2"/>
+  <path d="M20,50 L60,15 L100,50" fill="#2a3a4a"/>
+  <path d="M70,60 A12,12 0 1,0 70,85" fill="none" stroke="#d4836a" stroke-width="8"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-07</div>
+            <div class="card-name">幾何視覺</div>
+              <div class="card-name-secondary">Geometric Vision</div>
+            <div class="card-desc">Abstract modern house using primary geometric shapes.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M90,90 C90,110 20,110 20,60 C20,10 90,10 90,30" fill="none" stroke="#2c2c2c" stroke-width="10" stroke-linecap="round"/>
+  <path d="M50,60 L70,40 L90,60" fill="none" stroke="#b8956a" stroke-width="6"/>
+  <line x1="70" y1="40" x2="70" y2="80" stroke="#b8956a" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-08</div>
+            <div class="card-name">書法之宅</div>
+              <div class="card-name-secondary">Calligraphy Home</div>
+            <div class="card-desc">Elegant brush stroke C that forms the roof and one side.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="80" height="80" rx="4" fill="#c57546"/>
+  <path d="M40,75 V55 L60,40 L80,55 V75 H40" fill="none" stroke="#f9f7f4" stroke-width="6"/>
+  <path d="M70,58 A8,8 0 1,0 70,72" fill="none" stroke="#f9f7f4" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-09</div>
+            <div class="card-name">藝術家印章</div>
+              <div class="card-name-secondary">The Artist's Seal</div>
+            <div class="card-desc">Square oriental seal style with C and house icon.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60,20 L25,50 L25,95 L95,95 L95,50 Z" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+  <path d="M60,20 L25,50 L60,50 Z" fill="#6a9e8c"/>
+  <path d="M60,20 L95,50 L60,50 Z" fill="#d4836a"/>
+  <path d="M25,50 L25,95 L60,70 Z" fill="#2a3a4a"/>
+  <path d="M95,50 L95,95 L60,70 Z" fill="#b8956a"/>
+  <path d="M65,60 A10,10 0 1,0 65,80" fill="none" stroke="#f9f7f4" stroke-width="5"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-10</div>
+            <div class="card-name">稜鏡畫室</div>
+              <div class="card-name-secondary">Prism Studio</div>
+            <div class="card-desc">Stained glass effect house with vibrant color facets.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,80 L60,20 L100,80 L60,60 Z" fill="#8E9A8C"/>
+  <path d="M20,80 H100 L60,100 Z" fill="#6a9e8c" opacity="0.6"/>
+  <path d="M70,65 A10,10 0 1,0 70,85" fill="none" stroke="#f9f7f4" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-11</div>
+            <div class="card-name">摺疊創意</div>
+              <div class="card-name-secondary">Folded Creativity</div>
+            <div class="card-desc">Origami style paper house with subtle C shadow.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="20" width="20" height="20" fill="#6b4c6e"/>
+  <rect x="30" y="45" width="20" height="20" fill="#6a9e8c"/>
+  <rect x="70" y="45" width="20" height="20" fill="#d4836a"/>
+  <rect x="30" y="70" width="20" height="20" fill="#b8956a"/>
+  <rect x="70" y="70" width="20" height="20" fill="#2a3a4a"/>
+  <path d="M65,55 A8,8 0 1,0 65,75" fill="none" stroke="#2c2c2c" stroke-width="5"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-12</div>
+            <div class="card-name">馬賽克港灣</div>
+              <div class="card-name-secondary">Mosaic Haven</div>
+            <div class="card-desc">House formed by small square tiles with C center.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,100 V50 L60,20 L100,50 V100 H20" fill="none" stroke="#2a3a4a" stroke-width="6"/>
+  <path d="M50,100 V70 C50,60 70,60 70,70 V85 C70,95 50,95 50,85" fill="none" stroke="#c57546" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-13</div>
+            <div class="card-name">豁然畫室</div>
+              <div class="card-name-secondary">Open View Studio</div>
+            <div class="card-desc">House silhouette with a door that opens into a C shape.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,100 V60 L60,35 L90,60 V100 H30" fill="#f9f7f4" stroke="#2c2c2c" stroke-width="4"/>
+  <rect x="75" y="40" width="8" height="20" fill="#b8956a"/>
+  <path d="M79,40 L79,30" stroke="#3a5a42" stroke-width="6" stroke-linecap="round"/>
+  <path d="M85,25 A15,15 0 1,0 65,10" fill="none" stroke="#6a9e8c" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-14</div>
+            <div class="card-name">向上筆劃</div>
+              <div class="card-name-secondary">Upward Stroke</div>
+            <div class="card-desc">Chimney as a paintbrush releasing a C-shaped smoke.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30" y="20" width="15" height="40" fill="#6a9e8c"/>
+  <rect x="45" y="20" width="15" height="40" fill="#b8956a"/>
+  <rect x="60" y="20" width="15" height="40" fill="#c57546"/>
+  <rect x="75" y="20" width="15" height="40" fill="#d4836a"/>
+  <path d="M20,60 H100 V100 H20 Z" fill="#2c2c2c"/>
+  <path d="M70,70 A10,10 0 1,0 70,90" fill="none" stroke="#f9f7f4" stroke-width="5"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-15</div>
+            <div class="card-name">光譜屋頂</div>
+              <div class="card-name-secondary">Spectrum Roof</div>
+            <div class="card-desc">House with roof tiles as a color swatch palette.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,90 V50 L60,25 L90,50 V90 H75 A12,12 0 1,1 75,65" fill="none" stroke="#6a9e8c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-16</div>
+            <div class="card-name">純淨路徑</div>
+              <div class="card-name-secondary">Pure Path</div>
+            <div class="card-desc">Continuous single line drawing of house and C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,90 C30,40 60,10 90,40 C110,60 90,110 30,90 Z" fill="#f9f7f4" stroke="#6b4c6e" stroke-width="6"/>
+  <path d="M75,55 A12,12 0 1,0 75,80" fill="none" stroke="#d4836a" stroke-width="8" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-17</div>
+            <div class="card-name">流動形態</div>
+              <div class="card-name-secondary">Fluid Form</div>
+            <div class="card-desc">Organic, curvy house shape with an integrated brush-tip C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,50 L60,35 L90,50 V90 L60,105 L30,90 Z" fill="#2a3a4a"/>
+  <path d="M60,35 V105 M30,50 L60,65 L90,50" fill="none" stroke="#f9f7f4" stroke-width="2"/>
+  <path d="M75,65 A10,10 0 1,0 75,85" fill="none" stroke="#b8956a" stroke-width="5"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-18</div>
+            <div class="card-name">都市畫廊</div>
+              <div class="card-name-secondary">Urban Loft</div>
+            <div class="card-desc">Modern isometric loft silhouette with architectural C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#2c2c2c" stroke-width="4"/>
+  <path d="M40,85 V50 L60,35 L80,50 V85 Z" fill="#b8956a"/>
+  <path d="M70,60 A10,10 0 1,0 70,75" fill="none" stroke="#f9f7f4" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-19</div>
+            <div class="card-name">傳承畫室</div>
+              <div class="card-name-secondary">Heritage House</div>
+            <div class="card-desc">Classic emblem featuring a shield, a house, and a C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M25,95 Q20,95 20,55 Q60,15 100,55 Q100,95 95,95 Z" fill="none" stroke="#d4836a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M70,60 C70,45 50,45 50,60 C50,75 70,75 70,60" fill="none" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-20</div>
+            <div class="card-name">童心藝術</div>
+              <div class="card-name-secondary">Young At Art</div>
+            <div class="card-desc">Playful hand-drawn crayon style house and C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M90,80 A30,30 0 1,1 90,40" fill="none" stroke="#2c2c2c" stroke-width="15"/>
+  <path d="M30,40 L60,10 L90,40 Z" fill="#c57546"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-21</div>
+            <div class="card-name">包浩斯 C</div>
+              <div class="card-name-secondary">Bauhaus C</div>
+            <div class="card-desc">Heavy geometric C with a triangle roof peak.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M90,60 A30,30 0 1,0 60,90" fill="none" stroke="#3a5a42" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M40,60 L60,40 L80,60 V80 H40 Z" fill="#8E9A8C"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-22</div>
+            <div class="card-name">寧靜水墨</div>
+              <div class="card-name-secondary">Serene Ink</div>
+            <div class="card-desc">Zen-style ink wash circle forming a house and C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,20 H100 V100 H20 V20" fill="none" stroke="#2a3a4a" stroke-width="2"/>
+  <path d="M40,40 V80 H80" fill="none" stroke="#2a3a4a" stroke-width="6"/>
+  <path d="M80,60 A15,15 0 1,0 80,40" fill="none" stroke="#6a9e8c" stroke-width="6"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-23</div>
+            <div class="card-name">結構 C</div>
+              <div class="card-name-secondary">Structural C</div>
+            <div class="card-desc">Architectural blueprint style C integrated into a floor plan.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="70" cy="40" r="25" fill="#b8956a" opacity="0.3"/>
+  <path d="M85,40 A15,15 0 1,0 85,55" fill="none" stroke="#b8956a" stroke-width="6"/>
+  <path d="M20,100 V60 L60,30 L100,60 V100 H20" fill="#2c2c2c"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-24</div>
+            <div class="card-name">熠熠畫室</div>
+              <div class="card-name-secondary">Luminous Studio</div>
+            <div class="card-desc">House with a glowing sun/light C behind it.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30" y="50" width="40" height="40" fill="#6a9e8c" opacity="0.6"/>
+  <path d="M50,30 L90,30 L90,70 L50,70 Z" fill="#d4836a" opacity="0.6"/>
+  <path d="M80,40 A10,10 0 1,0 80,60" fill="none" stroke="#2a3a4a" stroke-width="5"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-25</div>
+            <div class="card-name">層疊深度</div>
+              <div class="card-name-secondary">Layered Depth</div>
+            <div class="card-desc">Overlapping transparent shapes forming house and C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,80 L60,40 L100,80" fill="none" stroke="#2c2c2c" stroke-width="4"/>
+  <path d="M68,55 A8,8 0 1,0 68,75" fill="none" stroke="#c57546" stroke-width="8"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-26</div>
+            <div class="card-name">極簡之巔</div>
+              <div class="card-name-secondary">Minimalist Peak</div>
+            <div class="card-desc">Two lines forming a roof and a C window.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M80,30 H40 V90 H80" fill="none" stroke="#8E9A8C" stroke-width="12" stroke-linecap="round"/>
+  <path d="M40,55 H70" stroke="#b8956a" stroke-width="8"/>
+  <path d="M40,30 L60,10 L80,30" fill="none" stroke="#8E9A8C" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-27</div>
+            <div class="card-name">匠心 C</div>
+              <div class="card-name-secondary">Artisan C</div>
+            <div class="card-desc">A thick C that also looks like a chair/easel in a studio.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="80" height="80" fill="none" stroke="#2c2c2c" stroke-width="8"/>
+  <path d="M40,80 V60 L60,45 L80,60 V80" fill="none" stroke="#6a9e8c" stroke-width="4"/>
+  <path d="M68,65 A8,8 0 1,0 68,75" fill="none" stroke="#b8956a" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-28</div>
+            <div class="card-name">框架生活</div>
+              <div class="card-name-secondary">Framed Living</div>
+            <div class="card-desc">A picture frame containing a house silhouette with C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,80 C20,20 60,20 60,50 L80,30 L100,50 V80 H20" fill="none" stroke="#6b4c6e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M45,55 A10,10 0 1,0 45,75" fill="none" stroke="#d4836a" stroke-width="5"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-29</div>
+            <div class="card-name">筆跡居所</div>
+              <div class="card-name-secondary">Scripted Home</div>
+            <div class="card-desc">Cursive signature style 'C' flowing into a house shape.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="20" r="4" fill="#6a9e8c"/>
+  <circle cx="40" cy="40" r="4" fill="#b8956a"/>
+  <circle cx="80" cy="40" r="4" fill="#c57546"/>
+  <circle cx="40" cy="70" r="4" fill="#d4836a"/>
+  <circle cx="80" cy="70" r="4" fill="#2a3a4a"/>
+  <circle cx="60" cy="90" r="4" fill="#3a5a42"/>
+  <path d="M70,50 A10,10 0 1,0 70,70" fill="none" stroke="#2c2c2c" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-30</div>
+            <div class="card-name">點彩路徑</div>
+              <div class="card-name-secondary">Pointillist Path</div>
+            <div class="card-desc">House and C formed by a series of colored dots.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,80 L30,40 L60,20 L90,40 L90,80 L60,100 Z" fill="#8E9A8C"/>
+  <path d="M60,20 V100 M30,40 L60,60 L90,40" fill="none" stroke="#f9f7f4" stroke-width="1"/>
+  <path d="M50,65 A8,8 0 1,0 50,85" fill="none" stroke="#2c2c2c" stroke-width="6"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-31</div>
+            <div class="card-name">立體藝術</div>
+              <div class="card-name-secondary">Dimensional Art</div>
+            <div class="card-desc">3D effect house with a C cut into the side wall.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,100 V60 C20,20 100,20 100,60 V100" fill="none" stroke="#6a9e8c" stroke-width="15" stroke-linecap="round"/>
+  <path d="M85,60 A25,25 0 1,0 85,90" fill="none" stroke="#b8956a" stroke-width="8"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-32</div>
+            <div class="card-name">醒目拱門</div>
+              <div class="card-name-secondary">Bold Arch</div>
+            <div class="card-desc">Thick, artistic archway forming a C and a studio entrance.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,90 V55 L60,30 L90,55 V90 H30" fill="none" stroke="#3a5a42" stroke-width="4"/>
+  <path d="M75,60 C75,40 50,40 50,60 C50,80 75,80 75,70" fill="none" stroke="#d4836a" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="60" cy="60" r="3" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-33</div>
+            <div class="card-name">綻放畫室</div>
+              <div class="card-name-secondary">Blooming Studio</div>
+            <div class="card-desc">House with a C formed by a leaf or floral element.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,90 V40 H50 L80,20 V90 H20" fill="none" stroke="#2c2c2c" stroke-width="4"/>
+  <path d="M45,55 A10,10 0 1,0 45,75" fill="none" stroke="#6b4c6e" stroke-width="8"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-34</div>
+            <div class="card-name">閣樓線條</div>
+              <div class="card-name-secondary">Loft Line</div>
+            <div class="card-desc">Minimalist industrial loft outline with C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60,40 L30,60 L60,80 L90,60 L60,40" fill="none" stroke="#2a3a4a" stroke-width="4"/>
+  <path d="M60,40 C80,20 110,50 90,80 C70,110 40,80 60,60" fill="none" stroke="#c57546" stroke-width="6" stroke-linecap="round"/>
+  <path d="M35,65 A8,8 0 1,0 35,80" fill="none" stroke="#6a9e8c" stroke-width="4"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">D-35</div>
+            <div class="card-name">永恆創意</div>
+              <div class="card-name-secondary">Eternal Creativity</div>
+            <div class="card-desc">House and C connected in an infinity-like loop.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- B-3 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
-        <path d="M50 6L14 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
-        <path d="M50 6L86 36" stroke="#3a4a42" stroke-width="3" stroke-linecap="round"/>
-        <path d="M72 42C68 30 60 24 50 24C36 24 24 38 24 54C24 70 36 84 50 84C60 84 68 78 72 66" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <circle cx="38" cy="72" r="4" fill="#b8956a"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">B-3</div>
-      <h3>極簡 C 屋</h3>
-      <p>兩條斜線 = 屋頂，C 本身即房屋。最適合小尺寸</p>
-    </div>
-  </div>
+    <section class="section" id="set-e">
+      <div class="section-header">
+        <div class="section-title-row">
+          <h2 class="section-title">Set E — Claude</h2>
+          <span class="badge" style="background:#d97706">35 Designs · Claude</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- House body -->
+  <polygon points="60,18 20,48 20,100 100,100 100,48" fill="#6a9e8c"/>
+  <!-- Roof accent -->
+  <polygon points="60,18 20,48 100,48" fill="#3a5a42"/>
+  <!-- C as door -->
+  <path d="M72,68 A16,16 0 1,0 72,88" fill="none" stroke="#f9f7f4" stroke-width="6" stroke-linecap="round"/>
+  <!-- Window left -->
+  <rect x="30" y="56" width="14" height="14" rx="1" fill="#f9f7f4" opacity="0.9"/>
+  <!-- Window right -->
+  <rect x="80" y="56" width="14" height="14" rx="1" fill="#f9f7f4" opacity="0.9"/>
+  <!-- Ground line -->
+  <line x1="10" y1="100" x2="110" y2="100" stroke="#2c2c2c" stroke-width="1.5"/>
+  <!-- Text -->
+  <text x="60" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c" letter-spacing="3">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-01</div>
+            <div class="card-name">C之家</div>
+              <div class="card-name-secondary">House of C</div>
+            <div class="card-desc">Minimalist house silhouette with the letter C forming the doorway</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Brush handle = roof left -->
+  <line x1="15" y1="55" x2="60" y2="28" stroke="#b8956a" stroke-width="5" stroke-linecap="round"/>
+  <!-- Brush tip = roof right -->
+  <line x1="60" y1="28" x2="105" y2="55" stroke="#c57546" stroke-width="5" stroke-linecap="round"/>
+  <!-- Brush bristles detail -->
+  <path d="M96,50 L105,55 L100,58" fill="#c57546" stroke="none"/>
+  <line x1="100" y1="50" x2="108" y2="56" stroke="#b8956a" stroke-width="1.5"/>
+  <line x1="102" y1="48" x2="110" y2="54" stroke="#b8956a" stroke-width="1"/>
+  <!-- House walls -->
+  <rect x="25" y="55" width="70" height="40" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+  <!-- C door -->
+  <path d="M68,72 A10,10 0 1,0 68,86" fill="none" stroke="#6a9e8c" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Window -->
+  <rect x="34" y="64" width="12" height="12" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <line x1="40" y1="64" x2="40" y2="76" stroke="#2c2c2c" stroke-width="1"/>
+  <line x1="34" y1="70" x2="46" y2="70" stroke="#2c2c2c" stroke-width="1"/>
+  <!-- Text -->
+  <text x="60" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-02</div>
+            <div class="card-name">筆屋</div>
+              <div class="card-name-secondary">Brush Roof</div>
+            <div class="card-desc">Paintbrush forming the roofline of a simple house</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Outer seal border -->
+  <rect x="20" y="15" width="80" height="80" rx="4" fill="none" stroke="#c57546" stroke-width="4"/>
+  <!-- Inner border -->
+  <rect x="27" y="22" width="66" height="66" rx="2" fill="none" stroke="#c57546" stroke-width="1.5"/>
+  <!-- Large C character - seal style -->
+  <path d="M72,38 C72,38 68,32 56,32 C42,32 35,42 35,55 C35,68 42,78 56,78 C68,78 72,72 72,72" fill="none" stroke="#c57546" stroke-width="6" stroke-linecap="square"/>
+  <!-- Small house inside C -->
+  <polygon points="56,46 48,52 48,62 64,62 64,52" fill="#c57546" opacity="0.6"/>
+  <polygon points="56,46 48,52 64,52" fill="#c57546"/>
+  <!-- Text below -->
+  <text x="60" y="108" text-anchor="middle" font-family="'SimSun', 'Songti SC', serif" font-size="9" fill="#c57546">Cindy 畫室</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-03</div>
+            <div class="card-name">印章</div>
+              <div class="card-name-secondary">Eastern Seal</div>
+            <div class="card-desc">Traditional Chinese seal stamp style with C monogram</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#2a3a4a"/>
+  <!-- Geometric house shapes -->
+  <polygon points="60,15 25,45 95,45" fill="#b8956a" opacity="0.9"/>
+  <rect x="30" y="45" width="60" height="45" fill="#6a9e8c" opacity="0.8"/>
+  <!-- C circle cutout -->
+  <circle cx="60" cy="62" r="16" fill="#2a3a4a"/>
+  <path d="M70,52 A16,16 0 1,0 70,72" fill="none" stroke="#b8956a" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Accent triangles -->
+  <polygon points="35,45 45,35 45,45" fill="#c57546" opacity="0.5"/>
+  <polygon points="85,45 75,35 75,45" fill="#c57546" opacity="0.5"/>
+  <!-- Small windows -->
+  <circle cx="42" cy="55" r="4" fill="#2a3a4a" opacity="0.6"/>
+  <circle cx="78" cy="55" r="4" fill="#2a3a4a" opacity="0.6"/>
+  <!-- Text -->
+  <text x="60" y="104" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="6.5" fill="#f9f7f4" letter-spacing="4">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-04</div>
+            <div class="card-name">幾何融合</div>
+              <div class="card-name-secondary">Geometric Fusion</div>
+            <div class="card-desc">Abstract geometric house made of triangles and circles with C</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Watercolor blobs -->
+  <ellipse cx="55" cy="60" rx="35" ry="30" fill="#6a9e8c" opacity="0.2"/>
+  <ellipse cx="65" cy="55" rx="30" ry="28" fill="#d4836a" opacity="0.15"/>
+  <ellipse cx="50" cy="65" rx="25" ry="20" fill="#b8956a" opacity="0.15"/>
+  <!-- House outline - loose hand-drawn feel -->
+  <path d="M35,55 L60,30 L85,55 L85,85 L35,85 Z" fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linejoin="round" stroke-dasharray="0"/>
+  <!-- Watercolor drip from roof -->
+  <path d="M60,30 L60,22" stroke="#6a9e8c" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="60" cy="20" r="2" fill="#6a9e8c" opacity="0.4"/>
+  <!-- C as door -->
+  <path d="M68,68 A11,11 0 1,0 68,80" fill="none" stroke="#c57546" stroke-width="3" stroke-linecap="round"/>
+  <!-- Paint splatter dots -->
+  <circle cx="28" cy="45" r="2.5" fill="#6a9e8c" opacity="0.3"/>
+  <circle cx="92" cy="50" r="1.8" fill="#d4836a" opacity="0.3"/>
+  <circle cx="25" cy="75" r="1.5" fill="#b8956a" opacity="0.4"/>
+  <circle cx="95" cy="72" r="2" fill="#6a9e8c" opacity="0.25"/>
+  <circle cx="75" cy="25" r="1.2" fill="#c57546" opacity="0.35"/>
+  <!-- Text -->
+  <text x="60" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c" font-style="italic">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-05</div>
+            <div class="card-name">水彩之家</div>
+              <div class="card-name-secondary">Watercolor Home</div>
+            <div class="card-desc">Loose watercolor splashes forming a house with C motif</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Outer circle -->
+  <circle cx="60" cy="58" r="48" fill="none" stroke="#2c2c2c" stroke-width="2.5"/>
+  <circle cx="60" cy="58" r="44" fill="none" stroke="#2c2c2c" stroke-width="0.8"/>
+  <!-- Top text on path -->
+  <defs>
+    <path id="topArc" d="M20,58 A40,40 0 0,1 100,58"/>
+    <path id="bottomArc" d="M22,64 A42,42 0 0,0 98,64"/>
+  </defs>
+  <text font-family="Georgia, serif" font-size="7" fill="#2c2c2c" letter-spacing="2.5">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">CINDY'S ART STUDIO</textPath>
+  </text>
+  <!-- Bottom text -->
+  <text font-family="Georgia, serif" font-size="5.5" fill="#2c2c2c" letter-spacing="1.5">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">EST. 2004 - COQUITLAM</textPath>
+  </text>
+  <!-- Center house + C -->
+  <polygon points="60,35 42,48 42,72 78,72 78,48" fill="#6a9e8c" opacity="0.15"/>
+  <polygon points="60,35 40,50 80,50" fill="none" stroke="#6a9e8c" stroke-width="2"/>
+  <rect x="42" y="50" width="36" height="22" fill="none" stroke="#6a9e8c" stroke-width="1.5"/>
+  <path d="M66,56 A8,8 0 1,0 66,68" fill="none" stroke="#b8956a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Stars -->
+  <circle cx="30" cy="58" r="1.5" fill="#b8956a"/>
+  <circle cx="90" cy="58" r="1.5" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-06</div>
+            <div class="card-name">經典徽章</div>
+              <div class="card-name-secondary">Badge Classic</div>
+            <div class="card-desc">Vintage circular badge with house icon and C monogram</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Origami house - folded paper look -->
+  <!-- Left wall (shadow) -->
+  <polygon points="30,52 60,32 60,90 30,90" fill="#6a9e8c"/>
+  <!-- Right wall (lighter) -->
+  <polygon points="60,32 90,52 90,90 60,90" fill="#8bb8a6"/>
+  <!-- Left roof -->
+  <polygon points="60,32 25,52 30,52" fill="#3a5a42"/>
+  <!-- Right roof -->
+  <polygon points="60,32 95,52 90,52" fill="#4a6a52"/>
+  <!-- Fold line -->
+  <line x1="60" y1="32" x2="60" y2="90" stroke="#f9f7f4" stroke-width="0.5" opacity="0.5"/>
+  <!-- C on right side -->
+  <path d="M74,62 A10,10 0 1,0 74,78" fill="none" stroke="#f9f7f4" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Fold detail triangle -->
+  <polygon points="90,52 95,52 90,57" fill="#6a9e8c" opacity="0.5"/>
+  <!-- Window on left -->
+  <rect x="38" y="60" width="10" height="10" fill="#3a5a42" opacity="0.4"/>
+  <!-- Text -->
+  <text x="60" y="106" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="7" fill="#2c2c2c" font-weight="300" letter-spacing="2">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-07</div>
+            <div class="card-name">摺紙屋</div>
+              <div class="card-name-secondary">Origami House</div>
+            <div class="card-desc">Paper fold origami-style house in flat geometric style</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Easel legs -->
+  <line x1="35" y1="100" x2="55" y2="38" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+  <line x1="85" y1="100" x2="65" y2="38" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+  <line x1="60" y1="105" x2="60" y2="55" stroke="#2c2c2c" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Easel shelf -->
+  <line x1="42" y1="72" x2="78" y2="72" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+  <!-- Canvas with house -->
+  <rect x="38" y="25" width="44" height="47" rx="1" fill="#f9f7f4" stroke="#2c2c2c" stroke-width="1.5"/>
+  <!-- House on canvas -->
+  <polygon points="60,33 46,44 74,44" fill="none" stroke="#6a9e8c" stroke-width="1.5"/>
+  <rect x="48" y="44" width="24" height="20" fill="none" stroke="#6a9e8c" stroke-width="1.5"/>
+  <!-- C as window -->
+  <path d="M65,50 A6,6 0 1,0 65,58" fill="none" stroke="#c57546" stroke-width="2" stroke-linecap="round"/>
+  <!-- Brush resting on shelf -->
+  <line x1="80" y1="72" x2="88" y2="60" stroke="#b8956a" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="89" cy="58.5" r="2" fill="#c57546"/>
+  <!-- Text -->
+  <text x="60" y="116" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#2c2c2c" letter-spacing="1">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-08</div>
+            <div class="card-name">畫架線藝</div>
+              <div class="card-name-secondary">Line Art Easel</div>
+            <div class="card-desc">Single continuous line forming an easel with house canvas</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#2a3a4a"/>
+  <!-- Shield shape -->
+  <path d="M60,10 L95,30 L95,70 Q95,95 60,110 Q25,95 25,70 L25,30 Z" fill="#2a3a4a" stroke="#b8956a" stroke-width="2.5"/>
+  <path d="M60,16 L90,34 L90,68 Q90,90 60,104 Q30,90 30,68 L30,34 Z" fill="none" stroke="#b8956a" stroke-width="0.8"/>
+  <!-- Large C -->
+  <path d="M74,42 C74,42 70,30 56,30 C40,30 34,42 34,58 C34,74 40,86 56,86 C70,86 74,74 74,74" fill="none" stroke="#f9f7f4" stroke-width="4" stroke-linecap="round"/>
+  <!-- Roof inside C -->
+  <polygon points="56,42 44,52 68,52" fill="none" stroke="#b8956a" stroke-width="1.5"/>
+  <!-- Small vertical lines under roof -->
+  <line x1="48" y1="52" x2="48" y2="62" stroke="#b8956a" stroke-width="1"/>
+  <line x1="64" y1="52" x2="64" y2="62" stroke="#b8956a" stroke-width="1"/>
+  <line x1="48" y1="62" x2="64" y2="62" stroke="#b8956a" stroke-width="1"/>
+  <!-- Star accent -->
+  <circle cx="56" cy="72" r="2" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-09</div>
+            <div class="card-name">字母盾</div>
+              <div class="card-name-secondary">Monogram Shield</div>
+            <div class="card-desc">Shield-shaped monogram with overlapping C and house roof</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Palette shape -->
+  <path d="M60,15 C85,15 105,35 105,60 C105,82 90,100 68,100 L52,100 C30,100 15,82 15,60 C15,35 35,15 60,15 Z" fill="#f9f7f4" stroke="#2c2c2c" stroke-width="2"/>
+  <!-- Thumb hole = C shape -->
+  <path d="M46,55 A12,14 0 1,0 46,75" fill="none" stroke="#2c2c2c" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Paint dots = windows -->
+  <circle cx="70" cy="32" r="6" fill="#c57546"/>
+  <circle cx="85" cy="48" r="6" fill="#6a9e8c"/>
+  <circle cx="88" cy="68" r="6" fill="#b8956a"/>
+  <circle cx="75" cy="84" r="6" fill="#6b4c6e"/>
+  <circle cx="55" cy="90" r="5" fill="#d4836a"/>
+  <!-- House in center -->
+  <polygon points="60,38 50,46 70,46" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <rect x="52" y="46" width="16" height="12" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+  <!-- Text -->
+  <text x="60" y="116" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-10</div>
+            <div class="card-name">調色盤之家</div>
+              <div class="card-name-secondary">Palette Home</div>
+            <div class="card-desc">Paint palette shape merged with house silhouette</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- House filled shape with C cut out -->
+  <defs>
+    <mask id="cMask">
+      <rect width="120" height="120" fill="white"/>
+      <path d="M72,52 A18,18 0 1,0 72,82" fill="black" stroke="black" stroke-width="8" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <!-- Full house -->
+  <g mask="url(#cMask)">
+    <polygon points="60,12 15,50 15,98 105,98 105,50" fill="#c57546"/>
+    <polygon points="60,12 15,50 105,50" fill="#a5603a"/>
+  </g>
+  <!-- Subtle door -->
+  <rect x="52" y="78" width="16" height="20" rx="8" fill="#f9f7f4" opacity="0.3"/>
+  <!-- Text -->
+  <text x="60" y="114" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="6" fill="#2c2c2c" letter-spacing="3" font-weight="600">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-11</div>
+            <div class="card-name">留白C</div>
+              <div class="card-name-secondary">Negative Space C</div>
+            <div class="card-desc">C formed by negative space within a house shape</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Flowing calligraphic C that becomes roof -->
+  <path d="M82,25 C70,18 40,20 30,40 C22,56 25,75 35,85 C42,92 55,95 65,90" fill="none" stroke="#2c2c2c" stroke-width="4" stroke-linecap="round"/>
+  <!-- Brush thin-thick variation -->
+  <path d="M82,25 C82,25 88,22 90,28" fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+  <!-- House structure integrated -->
+  <path d="M38,55 L55,40 L72,55 L72,78 L38,78 Z" fill="none" stroke="#6a9e8c" stroke-width="1.5"/>
+  <!-- Window -->
+  <circle cx="48" cy="62" r="5" fill="none" stroke="#6a9e8c" stroke-width="1.2"/>
+  <!-- Door -->
+  <rect x="58" y="66" width="8" height="12" rx="4" fill="none" stroke="#6a9e8c" stroke-width="1.2"/>
+  <!-- Ink splash accents -->
+  <circle cx="85" cy="30" r="1.5" fill="#2c2c2c" opacity="0.3"/>
+  <circle cx="28" cy="88" r="2" fill="#2c2c2c" opacity="0.2"/>
+  <!-- Text -->
+  <text x="60" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c" font-style="italic">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-12</div>
+            <div class="card-name">書法流韻</div>
+              <div class="card-name-secondary">Calligraphic Flow</div>
+            <div class="card-desc">Flowing calligraphic C that transitions into a house form</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Stacked blocks house -->
+  <!-- Roof triangle -->
+  <polygon points="60,18 30,45 90,45" fill="#c57546"/>
+  <!-- Row 1 -->
+  <rect x="30" y="45" width="20" height="18" fill="#6a9e8c"/>
+  <rect x="50" y="45" width="20" height="18" fill="#b8956a"/>
+  <rect x="70" y="45" width="20" height="18" fill="#6a9e8c"/>
+  <!-- Row 2 -->
+  <rect x="30" y="63" width="20" height="18" fill="#d4836a"/>
+  <rect x="50" y="63" width="20" height="18" fill="#6a9e8c"/>
+  <rect x="70" y="63" width="20" height="18" fill="#b8956a"/>
+  <!-- Row 3 -->
+  <rect x="30" y="81" width="20" height="14" fill="#b8956a"/>
+  <rect x="50" y="81" width="20" height="14" fill="#c57546"/>
+  <rect x="70" y="81" width="20" height="14" fill="#d4836a"/>
+  <!-- C overlay -->
+  <path d="M72,54 A16,16 0 1,0 72,80" fill="none" stroke="#f9f7f4" stroke-width="4" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="60" y="108" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="6.5" fill="#2c2c2c" font-weight="500" letter-spacing="2">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-13</div>
+            <div class="card-name">堆疊方塊</div>
+              <div class="card-name-secondary">Stacked Blocks</div>
+            <div class="card-desc">Colorful stacked geometric blocks forming a house with C accent</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Far mountain -->
+  <path d="M0,70 Q30,35 50,55 Q65,30 85,50 Q100,38 120,65 L120,80 L0,80 Z" fill="#2c2c2c" opacity="0.08"/>
+  <!-- Near mountain -->
+  <path d="M0,80 Q25,55 45,70 Q58,48 75,65 Q95,50 120,75 L120,90 L0,90 Z" fill="#2c2c2c" opacity="0.15"/>
+  <!-- Simple house -->
+  <polygon points="60,42 48,52 72,52" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <rect x="50" y="52" width="20" height="16" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <!-- C door -->
+  <path d="M64,56 A5,5 0 1,0 64,64" fill="none" stroke="#c57546" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Ink C at top -->
+  <path d="M78,15 C72,10 52,12 48,22 C45,30 48,38 55,40" fill="none" stroke="#2c2c2c" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <!-- Ground -->
+  <path d="M10,90 Q40,85 60,88 Q80,91 110,87" fill="none" stroke="#2c2c2c" stroke-width="1" opacity="0.3"/>
+  <!-- Chinese text -->
+  <text x="15" y="30" font-family="'SimSun', 'Songti SC', serif" font-size="8" fill="#2c2c2c" opacity="0.5">畫</text>
+  <!-- Text -->
+  <text x="60" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c">Cindy's Art Studio</text>
+  <text x="60" y="115" text-anchor="middle" font-family="'SimSun', serif" font-size="5" fill="#2c2c2c" opacity="0.6">Cindy 畫室</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-14</div>
+            <div class="card-name">水墨山居</div>
+              <div class="card-name-secondary">Ink Wash Mountain</div>
+            <div class="card-desc">Chinese ink wash painting style with house among mountains</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Left half -->
+  <rect x="12" y="15" width="44" height="75" fill="#2a3a4a"/>
+  <!-- Right half -->
+  <rect x="64" y="15" width="44" height="75" fill="#6a9e8c"/>
+  <!-- Large C on left -->
+  <path d="M48,35 C42,28 28,30 26,45 C24,58 28,70 38,74 C44,76 48,73 48,73" fill="none" stroke="#f9f7f4" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- House on right -->
+  <polygon points="86,35 74,45 98,45" fill="none" stroke="#f9f7f4" stroke-width="2"/>
+  <rect x="76" y="45" width="20" height="20" fill="none" stroke="#f9f7f4" stroke-width="1.5"/>
+  <rect x="83" y="55" width="6" height="10" rx="3" fill="none" stroke="#f9f7f4" stroke-width="1.2"/>
+  <!-- Diagonal connector -->
+  <line x1="56" y1="15" x2="64" y2="90" stroke="#b8956a" stroke-width="2"/>
+  <!-- Text below -->
+  <text x="34" y="104" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="8" fill="#2a3a4a" font-weight="600">CINDY'S</text>
+  <text x="86" y="104" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="8" fill="#6a9e8c" font-weight="300">ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-15</div>
+            <div class="card-name">現代分割</div>
+              <div class="card-name-secondary">Modern Split</div>
+            <div class="card-desc">Modern split-screen design with C on one side and house on the other</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Wall -->
+  <rect x="20" y="18" width="80" height="85" fill="#8E9A8C" rx="3"/>
+  <!-- Arched window (C shape) -->
+  <path d="M45,82 L45,45 A15,15 0 0,1 75,45 L75,82" fill="#f9f7f4"/>
+  <!-- Window panes -->
+  <line x1="60" y1="35" x2="60" y2="82" stroke="#8E9A8C" stroke-width="2"/>
+  <line x1="45" y1="58" x2="75" y2="58" stroke="#8E9A8C" stroke-width="2"/>
+  <!-- Warm glow from window -->
+  <path d="M47,82 L47,46 A13,13 0 0,1 73,46 L73,82" fill="#b8956a" opacity="0.15"/>
+  <!-- C hint in glow -->
+  <path d="M66,48 A9,9 0 1,0 66,66" fill="none" stroke="#b8956a" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <!-- Flower box -->
+  <rect x="42" y="80" width="36" height="5" rx="1" fill="#c57546" opacity="0.6"/>
+  <circle cx="50" cy="78" r="3" fill="#d4836a" opacity="0.5"/>
+  <circle cx="60" cy="77" r="3" fill="#c57546" opacity="0.5"/>
+  <circle cx="70" cy="78" r="3" fill="#d4836a" opacity="0.5"/>
+  <!-- Roof line -->
+  <polygon points="60,8 15,18 105,18" fill="#3a5a42" opacity="0.3"/>
+  <!-- Text -->
+  <text x="60" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-16</div>
+            <div class="card-name">窗之C</div>
+              <div class="card-name-secondary">Window C</div>
+            <div class="card-desc">Arched window shape forming the letter C with warm light</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- House -->
+  <polygon points="60,30 25,55 25,92 95,92 95,55" fill="#6a9e8c" opacity="0.15"/>
+  <polygon points="60,30 25,55 95,55" fill="none" stroke="#6a9e8c" stroke-width="2"/>
+  <rect x="25" y="55" width="70" height="37" fill="none" stroke="#6a9e8c" stroke-width="2"/>
+  <!-- Pencil chimney -->
+  <rect x="72" y="14" width="8" height="30" fill="#b8956a"/>
+  <polygon points="72,14 76,6 80,14" fill="#2c2c2c"/>
+  <rect x="72" y="38" width="8" height="4" fill="#c57546"/>
+  <!-- Pencil tip -->
+  <polygon points="74,6 76,2 78,6" fill="#d4836a"/>
+  <!-- Smoke = paint swirls -->
+  <path d="M76,2 Q82,-5 78,-10" fill="none" stroke="#8E9A8C" stroke-width="1" opacity="0.4"/>
+  <path d="M76,2 Q70,-4 74,-10" fill="none" stroke="#8E9A8C" stroke-width="1" opacity="0.3"/>
+  <!-- C door -->
+  <path d="M66,72 A11,11 0 1,0 66,86" fill="none" stroke="#c57546" stroke-width="3" stroke-linecap="round"/>
+  <!-- Windows -->
+  <rect x="34" y="62" width="12" height="12" rx="1" fill="#f9f7f4" stroke="#6a9e8c" stroke-width="1"/>
+  <!-- Text -->
+  <text x="60" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-17</div>
+            <div class="card-name">鉛筆煙囪</div>
+              <div class="card-name-secondary">Pencil Chimney</div>
+            <div class="card-desc">House with a pencil serving as the chimney</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- East circle -->
+  <circle cx="48" cy="55" r="30" fill="none" stroke="#c57546" stroke-width="2"/>
+  <!-- West circle -->
+  <circle cx="72" cy="55" r="30" fill="none" stroke="#6a9e8c" stroke-width="2"/>
+  <!-- Overlap area color -->
+  <clipPath id="clip18a">
+    <circle cx="48" cy="55" r="30"/>
+  </clipPath>
+  <circle cx="72" cy="55" r="30" fill="#b8956a" opacity="0.15" clip-path="url(#clip18a)"/>
+  <!-- House in overlap -->
+  <polygon points="60,38 50,46 70,46" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <rect x="52" y="46" width="16" height="14" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+  <!-- C in house -->
+  <path d="M64,50 A5,5 0 1,0 64,56" fill="none" stroke="#b8956a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Brush in left circle -->
+  <line x1="28" y1="48" x2="38" y2="62" stroke="#c57546" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Ink brush in right circle -->
+  <line x1="82" y1="48" x2="92" y2="62" stroke="#6a9e8c" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Labels -->
+  <text x="32" y="74" text-anchor="middle" font-family="'SimSun', serif" font-size="5" fill="#c57546">東</text>
+  <text x="88" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#6a9e8c">West</text>
+  <!-- Text -->
+  <text x="60" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c">Cindy's Art Studio</text>
+  <text x="60" y="112" text-anchor="middle" font-family="'SimSun', serif" font-size="6" fill="#2c2c2c" opacity="0.6">Cindy 畫室</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-18</div>
+            <div class="card-name">圓融和諧</div>
+              <div class="card-name-secondary">Circle Harmony</div>
+            <div class="card-desc">Overlapping circles creating East-meets-West harmony with C</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#2c2c2c"/>
+  <!-- Golden spiral forming C -->
+  <path d="M78,30 A30,30 0 0,0 28,55 A30,30 0 0,0 55,85 A18,18 0 0,0 73,70" fill="none" stroke="#b8956a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Geometric golden rectangles -->
+  <rect x="30" y="30" width="50" height="50" fill="none" stroke="#b8956a" stroke-width="0.5" opacity="0.3"/>
+  <rect x="30" y="30" width="31" height="50" fill="none" stroke="#b8956a" stroke-width="0.5" opacity="0.3"/>
+  <!-- House within golden rectangle -->
+  <polygon points="55,38 40,50 70,50" fill="none" stroke="#f9f7f4" stroke-width="1.5"/>
+  <rect x="42" y="50" width="26" height="22" fill="none" stroke="#f9f7f4" stroke-width="1.2"/>
+  <!-- Door -->
+  <rect x="52" y="60" width="8" height="12" rx="4" fill="#b8956a" opacity="0.4"/>
+  <!-- Accent dots at spiral points -->
+  <circle cx="78" cy="30" r="2" fill="#b8956a"/>
+  <circle cx="73" cy="70" r="2" fill="#b8956a"/>
+  <!-- Text -->
+  <text x="60" y="100" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="6" fill="#b8956a" letter-spacing="3">CINDY'S ART</text>
+  <text x="60" y="112" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="4.5" fill="#f9f7f4" letter-spacing="5" opacity="0.5">STUDIO</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-19</div>
+            <div class="card-name">黃金比例C</div>
+              <div class="card-name-secondary">Golden Ratio C</div>
+            <div class="card-desc">C built from golden ratio spiral integrated with house geometry</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Mosaic tiles forming house shape -->
+  <!-- Roof tiles -->
+  <rect x="55" y="18" width="10" height="8" fill="#c57546" rx="1"/>
+  <rect x="45" y="26" width="10" height="8" fill="#d4836a" rx="1"/>
+  <rect x="55" y="26" width="10" height="8" fill="#b8956a" rx="1"/>
+  <rect x="65" y="26" width="10" height="8" fill="#c57546" rx="1"/>
+  <rect x="35" y="34" width="10" height="8" fill="#b8956a" rx="1"/>
+  <rect x="45" y="34" width="10" height="8" fill="#c57546" rx="1"/>
+  <rect x="55" y="34" width="10" height="8" fill="#d4836a" rx="1"/>
+  <rect x="65" y="34" width="10" height="8" fill="#b8956a" rx="1"/>
+  <rect x="75" y="34" width="10" height="8" fill="#c57546" rx="1"/>
+  <!-- Wall tiles -->
+  <rect x="35" y="44" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="45" y="44" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="55" y="44" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="65" y="44" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="75" y="44" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="35" y="54" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="45" y="54" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="55" y="54" width="10" height="8" fill="#f9f7f4" rx="1" stroke="#b8956a" stroke-width="1"/>
+  <rect x="65" y="54" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="75" y="54" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="35" y="64" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="45" y="64" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="55" y="64" width="10" height="8" fill="#b8956a" rx="1"/>
+  <rect x="65" y="64" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="75" y="64" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="35" y="74" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <rect x="45" y="74" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="55" y="74" width="10" height="8" fill="#b8956a" rx="1"/>
+  <rect x="65" y="74" width="10" height="8" fill="#6a9e8c" rx="1"/>
+  <rect x="75" y="74" width="10" height="8" fill="#8E9A8C" rx="1"/>
+  <!-- C overlay on door tiles -->
+  <path d="M64,58 A7,7 0 1,0 64,70" fill="none" stroke="#f9f7f4" stroke-width="2" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="60" y="98" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="6.5" fill="#2c2c2c" letter-spacing="1.5" font-weight="500">CINDY'S ART STUDIO</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-20</div>
+            <div class="card-name">馬賽克屋</div>
+              <div class="card-name-secondary">Mosaic House</div>
+            <div class="card-desc">Mosaic tile pattern forming a house silhouette</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Building facade -->
+  <rect x="22" y="25" width="76" height="70" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+  <!-- Pediment / roof -->
+  <polygon points="18,25 60,8 102,25" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+  <!-- Columns -->
+  <rect x="28" y="25" width="5" height="70" fill="#8E9A8C" opacity="0.3"/>
+  <rect x="87" y="25" width="5" height="70" fill="#8E9A8C" opacity="0.3"/>
+  <!-- Large C arch as central feature -->
+  <path d="M72,40 A20,22 0 1,0 72,78" fill="none" stroke="#c57546" stroke-width="4" stroke-linecap="round"/>
+  <!-- Keystone -->
+  <polygon points="48,36 52,30 56,36" fill="#b8956a"/>
+  <!-- Windows flanking -->
+  <rect x="30" y="40" width="10" height="14" rx="5" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+  <rect x="80" y="40" width="10" height="14" rx="5" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+  <!-- Base -->
+  <line x1="18" y1="95" x2="102" y2="95" stroke="#2c2c2c" stroke-width="2"/>
+  <!-- Text -->
+  <text x="60" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c" letter-spacing="2">CINDY'S ART STUDIO</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-21</div>
+            <div class="card-name">建築C</div>
+              <div class="card-name-secondary">Architectural C</div>
+            <div class="card-desc">C letter as an architectural arch element of a building facade</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Large paint drop -->
+  <path d="M60,10 C60,10 25,50 25,70 A35,35 0 0,0 95,70 C95,50 60,10 60,10 Z" fill="#6a9e8c"/>
+  <!-- House inside drop -->
+  <polygon points="60,38 42,52 78,52" fill="none" stroke="#f9f7f4" stroke-width="2"/>
+  <rect x="44" y="52" width="32" height="26" fill="none" stroke="#f9f7f4" stroke-width="1.5"/>
+  <!-- C as door -->
+  <path d="M66,58 A9,9 0 1,0 66,72" fill="none" stroke="#b8956a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Window -->
+  <rect x="49" y="57" width="8" height="8" fill="#f9f7f4" opacity="0.3" rx="1"/>
+  <!-- Drip at bottom -->
+  <ellipse cx="60" cy="100" rx="3" ry="4" fill="#6a9e8c" opacity="0.5"/>
+  <line x1="60" y1="96" x2="60" y2="100" stroke="#6a9e8c" stroke-width="2" opacity="0.5"/>
+  <!-- Text -->
+  <text x="60" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-22</div>
+            <div class="card-name">落墨成家</div>
+              <div class="card-name-secondary">Paint Drop Home</div>
+            <div class="card-desc">Paint drop shape containing a house silhouette with C</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#2c2c2c"/>
+  <!-- Stained glass frame - gothic arch -->
+  <path d="M25,95 L25,45 A35,35 0 0,1 95,45 L95,95 Z" fill="#1a1a1a" stroke="#b8956a" stroke-width="2"/>
+  <!-- Glass panels -->
+  <!-- Sky -->
+  <path d="M30,45 A30,30 0 0,1 90,45 L90,50 L30,50 Z" fill="#2a3a4a" opacity="0.6"/>
+  <!-- Sun/moon -->
+  <circle cx="70" cy="40" r="6" fill="#b8956a" opacity="0.6"/>
+  <!-- House panel left wall -->
+  <polygon points="60,35 38,52 38,70 60,70" fill="#6a9e8c" stroke="#b8956a" stroke-width="1" opacity="0.7"/>
+  <!-- House panel right wall -->
+  <polygon points="60,35 82,52 82,70 60,70" fill="#3a5a42" stroke="#b8956a" stroke-width="1" opacity="0.7"/>
+  <!-- Door panel (C shape) -->
+  <path d="M66,58 A8,8 0 1,0 66,72" fill="#c57546" stroke="#b8956a" stroke-width="1" opacity="0.7"/>
+  <!-- Base panel -->
+  <rect x="30" y="70" width="60" height="22" fill="#8E9A8C" stroke="#b8956a" stroke-width="1" opacity="0.4"/>
+  <!-- Lead lines -->
+  <line x1="60" y1="35" x2="60" y2="95" stroke="#b8956a" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="70" x2="90" y2="70" stroke="#b8956a" stroke-width="1" opacity="0.6"/>
+  <!-- Text -->
+  <text x="60" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="5.5" fill="#b8956a" letter-spacing="2">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-23</div>
+            <div class="card-name">彩繪玻璃</div>
+              <div class="card-name-secondary">Stained Glass</div>
+            <div class="card-desc">Stained glass window effect with house and C motif</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Small house center -->
+  <polygon points="60,30 45,42 75,42" fill="#6a9e8c" stroke="#3a5a42" stroke-width="1"/>
+  <rect x="47" y="42" width="26" height="22" fill="#6a9e8c" stroke="#3a5a42" stroke-width="1"/>
+  <rect x="56" y="50" width="8" height="14" rx="4" fill="#f9f7f4"/>
+  <!-- Ribbon C wrapping around -->
+  <path d="M80,25 C70,18 40,20 32,38 C26,52 28,68 36,78 C42,86 56,90 68,86" fill="none" stroke="#c57546" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+  <!-- Ribbon shadow/highlight -->
+  <path d="M80,25 C70,18 40,20 32,38 C26,52 28,68 36,78 C42,86 56,90 68,86" fill="none" stroke="#b8956a" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <!-- Ribbon tail flourish -->
+  <path d="M80,25 C84,22 88,24 86,28" fill="none" stroke="#c57546" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M68,86 C72,88 74,92 70,94" fill="none" stroke="#c57546" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <!-- Text -->
+  <text x="60" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c" font-style="italic">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-24</div>
+            <div class="card-name">緞帶C</div>
+              <div class="card-name-secondary">Ribbon C</div>
+            <div class="card-desc">Elegant ribbon forming C shape that wraps around a house icon</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Grid lines -->
+  <line x1="20" y1="20" x2="100" y2="20" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="20" y1="40" x2="100" y2="40" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="20" y1="60" x2="100" y2="60" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="20" y1="80" x2="100" y2="80" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="20" y1="20" x2="20" y2="80" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="40" y1="20" x2="40" y2="80" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="60" y1="20" x2="60" y2="80" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="80" y1="20" x2="80" y2="80" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <line x1="100" y1="20" x2="100" y2="80" stroke="#2c2c2c" stroke-width="0.3" opacity="0.2"/>
+  <!-- C in left grid area -->
+  <path d="M52,28 C46,22 28,24 26,38 C24,52 28,68 42,72 C50,74 54,70 54,70" fill="none" stroke="#2c2c2c" stroke-width="4" stroke-linecap="round"/>
+  <!-- House in right grid area -->
+  <polygon points="80,28 66,42 94,42" fill="#c57546"/>
+  <rect x="68" y="42" width="24" height="22" fill="#c57546" opacity="0.7"/>
+  <!-- Door -->
+  <rect x="77" y="52" width="6" height="12" fill="#f9f7f4"/>
+  <!-- Heavy bottom rule -->
+  <line x1="20" y1="82" x2="100" y2="82" stroke="#2c2c2c" stroke-width="3"/>
+  <!-- Text in grid -->
+  <text x="20" y="96" font-family="'Helvetica Neue', sans-serif" font-size="8" fill="#2c2c2c" font-weight="700">CINDY'S</text>
+  <text x="20" y="106" font-family="'Helvetica Neue', sans-serif" font-size="8" fill="#2c2c2c" font-weight="300">ART STUDIO</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-25</div>
+            <div class="card-name">網格系統</div>
+              <div class="card-name-secondary">Grid System</div>
+            <div class="card-desc">Swiss grid style minimalist design with C and house in grid</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Decorative oval frame -->
+  <ellipse cx="60" cy="55" rx="40" ry="42" fill="none" stroke="#6b4c6e" stroke-width="1.5"/>
+  <ellipse cx="60" cy="55" rx="37" ry="39" fill="none" stroke="#6b4c6e" stroke-width="0.5"/>
+  <!-- Ornamental top -->
+  <path d="M45,16 Q52,10 60,14 Q68,10 75,16" fill="none" stroke="#6b4c6e" stroke-width="1"/>
+  <circle cx="60" cy="12" r="2" fill="#6b4c6e"/>
+  <!-- Ornamental bottom -->
+  <path d="M45,94 Q52,100 60,96 Q68,100 75,94" fill="none" stroke="#6b4c6e" stroke-width="1"/>
+  <!-- Large elegant C -->
+  <path d="M76,32 C68,22 44,24 38,42 C33,58 38,76 52,82 C62,86 72,80 76,74" fill="none" stroke="#6b4c6e" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Small house inside C -->
+  <polygon points="58,42 48,50 68,50" fill="none" stroke="#b8956a" stroke-width="1.2"/>
+  <rect x="50" y="50" width="16" height="14" fill="none" stroke="#b8956a" stroke-width="1"/>
+  <rect x="56" y="56" width="4" height="8" fill="#b8956a" opacity="0.4"/>
+  <!-- Text -->
+  <text x="60" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#6b4c6e" letter-spacing="1.5">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-26</div>
+            <div class="card-name">梅韻雅緻</div>
+              <div class="card-name-secondary">Plum Elegant</div>
+            <div class="card-desc">Elegant serif monogram in plum tones with decorative frame</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Triangle roof block -->
+  <polygon points="60,15 30,45 90,45" fill="#c57546" stroke="#a5603a" stroke-width="1.5"/>
+  <!-- Face on triangle -->
+  <circle cx="52" cy="35" r="1.5" fill="#a5603a"/>
+  <circle cx="68" cy="35" r="1.5" fill="#a5603a"/>
+  <path d="M55,39 Q60,43 65,39" fill="none" stroke="#a5603a" stroke-width="1" stroke-linecap="round"/>
+  <!-- Square blocks -->
+  <rect x="30" y="45" width="30" height="25" fill="#6a9e8c" stroke="#4a7a68" stroke-width="1.5" rx="2"/>
+  <rect x="60" y="45" width="30" height="25" fill="#b8956a" stroke="#987a55" stroke-width="1.5" rx="2"/>
+  <rect x="30" y="70" width="30" height="22" fill="#d4836a" stroke="#b06a55" stroke-width="1.5" rx="2"/>
+  <rect x="60" y="70" width="30" height="22" fill="#6b4c6e" stroke="#5a3e5c" stroke-width="1.5" rx="2"/>
+  <!-- C on center block -->
+  <path d="M54,52 A8,8 0 1,0 54,62" fill="none" stroke="#f9f7f4" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Letter A on block -->
+  <text x="75" y="62" text-anchor="middle" font-family="'Comic Sans MS', cursive" font-size="12" fill="#f9f7f4" font-weight="bold">A</text>
+  <!-- Stars -->
+  <text x="40" y="83" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f9f7f4">*</text>
+  <text x="80" y="86" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#f9f7f4">*</text>
+  <!-- Text -->
+  <text x="60" y="106" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="7.5" fill="#2c2c2c" font-weight="600">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-27</div>
+            <div class="card-name">積木遊戲</div>
+              <div class="card-name-secondary">Playful Blocks</div>
+            <div class="card-desc">Playful children's building blocks forming a house, kid-friendly</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Raked sand lines -->
+  <path d="M10,85 Q30,82 60,85 Q90,88 110,85" fill="none" stroke="#8E9A8C" stroke-width="0.8" opacity="0.4"/>
+  <path d="M10,90 Q30,87 60,90 Q90,93 110,90" fill="none" stroke="#8E9A8C" stroke-width="0.8" opacity="0.4"/>
+  <path d="M10,95 Q30,92 60,95 Q90,98 110,95" fill="none" stroke="#8E9A8C" stroke-width="0.8" opacity="0.4"/>
+  <path d="M10,100 Q30,97 60,100 Q90,103 110,100" fill="none" stroke="#8E9A8C" stroke-width="0.8" opacity="0.4"/>
+  <!-- Raked circle around stone -->
+  <circle cx="60" cy="52" r="30" fill="none" stroke="#8E9A8C" stroke-width="0.6" opacity="0.3"/>
+  <circle cx="60" cy="52" r="35" fill="none" stroke="#8E9A8C" stroke-width="0.6" opacity="0.2"/>
+  <!-- Stone house -->
+  <ellipse cx="60" cy="58" rx="18" ry="8" fill="#8E9A8C" opacity="0.3"/>
+  <polygon points="60,28 44,42 76,42" fill="#8E9A8C" opacity="0.6"/>
+  <rect x="46" y="42" width="28" height="20" fill="#8E9A8C" opacity="0.5"/>
+  <!-- C -->
+  <path d="M68,44 A10,10 0 1,0 68,58" fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"/>
+  <!-- Bamboo accent -->
+  <line x1="95" y1="15" x2="95" y2="75" stroke="#3a5a42" stroke-width="1.5" opacity="0.4"/>
+  <line x1="95" y1="30" x2="102" y2="24" stroke="#3a5a42" stroke-width="1" opacity="0.3"/>
+  <line x1="95" y1="45" x2="88" y2="40" stroke="#3a5a42" stroke-width="1" opacity="0.3"/>
+  <!-- Text -->
+  <text x="60" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c" letter-spacing="1">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-28</div>
+            <div class="card-name">禪意花園</div>
+              <div class="card-name-secondary">Zen Garden</div>
+            <div class="card-desc">Zen garden inspired with raked sand lines, stone house and C</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Outer house stroke -->
+  <polygon points="60,15 20,48 20,88 100,88 100,48" fill="none" stroke="#6a9e8c" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Inner house stroke -->
+  <polygon points="60,24 30,50 30,82 90,82 90,50" fill="none" stroke="#6a9e8c" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Bold C center -->
+  <path d="M72,48 C72,48 66,38 54,38 C40,38 34,48 34,60 C34,72 40,82 54,82 C66,82 72,72 72,72" fill="none" stroke="#c57546" stroke-width="5" stroke-linecap="round"/>
+  <!-- Inner C -->
+  <path d="M68,52 C68,52 64,44 54,44 C44,44 40,52 40,60 C40,68 44,76 54,76 C64,76 68,68 68,68" fill="none" stroke="#b8956a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="60" y="102" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="7" fill="#2c2c2c" font-weight="700" letter-spacing="2">CINDY'S ART</text>
+  <text x="60" y="114" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="5" fill="#6a9e8c" letter-spacing="5">STUDIO</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-29</div>
+            <div class="card-name">雙線勾勒</div>
+              <div class="card-name-secondary">Double Stroke</div>
+            <div class="card-desc">Double-stroke outlined house with bold C, contemporary design</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#2a3a4a"/>
+  <!-- Hexagons forming house shape -->
+  <!-- Row 1 - roof -->
+  <polygon points="60,12 68,17 68,27 60,32 52,27 52,17" fill="#c57546" stroke="#2a3a4a" stroke-width="1.5"/>
+  <!-- Row 2 -->
+  <polygon points="44,22 52,27 52,37 44,42 36,37 36,27" fill="#b8956a" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="76,22 84,27 84,37 76,42 68,37 68,27" fill="#b8956a" stroke="#2a3a4a" stroke-width="1.5"/>
+  <!-- Row 3 -->
+  <polygon points="28,32 36,37 36,47 28,52 20,47 20,37" fill="#6a9e8c" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="60,32 68,37 68,47 60,52 52,47 52,37" fill="#6a9e8c" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="92,32 100,37 100,47 92,52 84,47 84,37" fill="#6a9e8c" stroke="#2a3a4a" stroke-width="1.5"/>
+  <!-- Row 4 -->
+  <polygon points="28,52 36,57 36,67 28,72 20,67 20,57" fill="#3a5a42" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="60,52 68,57 68,67 60,72 52,67 52,57" fill="#d4836a" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="92,52 100,57 100,67 92,72 84,67 84,57" fill="#3a5a42" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="44,42 52,47 52,57 44,62 36,57 36,47" fill="#8E9A8C" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="76,42 84,47 84,57 76,62 68,57 68,47" fill="#8E9A8C" stroke="#2a3a4a" stroke-width="1.5"/>
+  <!-- Row 5 -->
+  <polygon points="44,62 52,67 52,77 44,82 36,77 36,67" fill="#6a9e8c" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="76,62 84,67 84,77 76,82 68,77 68,67" fill="#6a9e8c" stroke="#2a3a4a" stroke-width="1.5"/>
+  <polygon points="60,72 68,77 68,87 60,92 52,87 52,77" fill="#8E9A8C" stroke="#2a3a4a" stroke-width="1.5"/>
+  <!-- C overlay -->
+  <path d="M68,45 A14,14 0 1,0 68,69" fill="none" stroke="#f9f7f4" stroke-width="3" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="60" y="107" text-anchor="middle" font-family="'Helvetica Neue', sans-serif" font-size="6" fill="#f9f7f4" letter-spacing="3">CINDY'S ART</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-30</div>
+            <div class="card-name">蜂巢藝居</div>
+              <div class="card-name-secondary">Hex Pattern</div>
+            <div class="card-desc">Hexagonal pattern tessellation forming house shape</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Large brush-style C -->
+  <path d="M85,22 C78,14 50,12 38,30 C28,46 26,68 35,82 C42,92 62,98 78,88" fill="none" stroke="#2c2c2c" stroke-width="7" stroke-linecap="round"/>
+  <!-- Brush texture overlay -->
+  <path d="M85,22 C78,14 50,12 38,30" fill="none" stroke="#2c2c2c" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  <!-- Small house tucked inside -->
+  <polygon points="60,40 48,50 72,50" fill="none" stroke="#c57546" stroke-width="1.5"/>
+  <rect x="50" y="50" width="20" height="18" fill="none" stroke="#c57546" stroke-width="1.2"/>
+  <!-- Door -->
+  <rect x="57" y="58" width="6" height="10" rx="3" fill="#c57546" opacity="0.4"/>
+  <!-- Window -->
+  <rect x="52" y="53" width="5" height="5" fill="none" stroke="#c57546" stroke-width="0.8"/>
+  <!-- Brush spatters -->
+  <circle cx="90" cy="20" r="1.5" fill="#2c2c2c" opacity="0.2"/>
+  <circle cx="88" cy="26" r="1" fill="#2c2c2c" opacity="0.15"/>
+  <circle cx="30" cy="90" r="1.8" fill="#2c2c2c" opacity="0.15"/>
+  <!-- Text -->
+  <text x="60" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c" font-style="italic" letter-spacing="0.5">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-31</div>
+            <div class="card-name">筆觸手寫</div>
+              <div class="card-name-secondary">Brush Script</div>
+            <div class="card-desc">Hand-lettered script C with brush texture, house accent</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Outer circle -->
+  <circle cx="60" cy="55" r="42" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <circle cx="60" cy="55" r="38" fill="none" stroke="#2c2c2c" stroke-width="0.5"/>
+  <!-- Compass points -->
+  <!-- North -->
+  <polygon points="60,14 57,28 63,28" fill="#2c2c2c"/>
+  <!-- South -->
+  <polygon points="60,96 57,82 63,82" fill="#8E9A8C"/>
+  <!-- East -->
+  <polygon points="101,55 87,52 87,58" fill="#c57546"/>
+  <!-- West -->
+  <polygon points="19,55 33,52 33,58" fill="#6a9e8c"/>
+  <!-- Diagonal lines -->
+  <line x1="32" y1="27" x2="40" y2="35" stroke="#2c2c2c" stroke-width="0.8"/>
+  <line x1="88" y1="27" x2="80" y2="35" stroke="#2c2c2c" stroke-width="0.8"/>
+  <line x1="32" y1="83" x2="40" y2="75" stroke="#2c2c2c" stroke-width="0.8"/>
+  <line x1="88" y1="83" x2="80" y2="75" stroke="#2c2c2c" stroke-width="0.8"/>
+  <!-- Cardinal labels -->
+  <text x="19" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="4" fill="#6a9e8c" font-weight="bold">W</text>
+  <text x="101" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="4" fill="#c57546" font-weight="bold">E</text>
+  <!-- House at center -->
+  <polygon points="60,38 50,46 70,46" fill="none" stroke="#2c2c2c" stroke-width="1.5"/>
+  <rect x="52" y="46" width="16" height="14" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+  <!-- C -->
+  <path d="M65,49 A6,6 0 1,0 65,57" fill="none" stroke="#b8956a" stroke-width="2" stroke-linecap="round"/>
+  <!-- Location labels -->
+  <text x="30" y="58" text-anchor="middle" font-family="sans-serif" font-size="3" fill="#6a9e8c">BC</text>
+  <text x="90" y="58" text-anchor="middle" font-family="sans-serif" font-size="3" fill="#c57546">TW</text>
+  <!-- Text -->
+  <text x="60" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-32</div>
+            <div class="card-name">羅盤玫瑰</div>
+              <div class="card-name-secondary">Compass Rose</div>
+            <div class="card-desc">Compass rose pointing East-West with house at center, symbolizing dual locations</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Rough circle stamp -->
+  <circle cx="60" cy="56" r="42" fill="#c57546" opacity="0.12"/>
+  <path d="M60,14 C82,13 102,30 103,56 C104,78 88,96 62,98 C38,99 16,82 15,56 C14,32 34,15 60,14 Z" fill="none" stroke="#c57546" stroke-width="3"/>
+  <!-- Inner circle -->
+  <circle cx="60" cy="56" r="35" fill="none" stroke="#c57546" stroke-width="1"/>
+  <!-- House -->
+  <polygon points="60,28 38,46 82,46" fill="none" stroke="#c57546" stroke-width="2"/>
+  <rect x="40" y="46" width="40" height="30" fill="none" stroke="#c57546" stroke-width="1.5"/>
+  <!-- C door -->
+  <path d="M66,54 A10,10 0 1,0 66,70" fill="none" stroke="#c57546" stroke-width="3" stroke-linecap="round"/>
+  <!-- Window -->
+  <rect x="46" y="52" width="8" height="8" fill="none" stroke="#c57546" stroke-width="1"/>
+  <!-- Text around edge -->
+  <defs>
+    <path id="stampArc" d="M25,82 A40,40 0 0,0 95,82"/>
+  </defs>
+  <text font-family="Georgia, serif" font-size="6" fill="#c57546" letter-spacing="1">
+    <textPath href="#stampArc" startOffset="50%" text-anchor="middle">CINDY'S ART STUDIO</textPath>
+  </text>
+  <!-- Est year -->
+  <text x="60" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="4.5" fill="#c57546">Cindy 畫室</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-33</div>
+            <div class="card-name">赤陶印記</div>
+              <div class="card-name-secondary">Terracotta Stamp</div>
+            <div class="card-desc">Terracotta-toned circular stamp with textured edges</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Blooming petals from chimney area -->
+  <ellipse cx="50" cy="28" rx="12" ry="6" fill="#d4836a" opacity="0.3" transform="rotate(-30,50,28)"/>
+  <ellipse cx="70" cy="25" rx="12" ry="6" fill="#6a9e8c" opacity="0.3" transform="rotate(20,70,25)"/>
+  <ellipse cx="42" cy="35" rx="10" ry="5" fill="#b8956a" opacity="0.3" transform="rotate(-60,42,35)"/>
+  <ellipse cx="78" cy="32" rx="10" ry="5" fill="#6b4c6e" opacity="0.25" transform="rotate(50,78,32)"/>
+  <ellipse cx="60" cy="20" rx="11" ry="5" fill="#c57546" opacity="0.25" transform="rotate(0,60,20)"/>
+  <!-- House -->
+  <polygon points="60,35 32,55 32,90 88,90 88,55" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+  <polygon points="60,35 32,55 88,55" fill="#6a9e8c" opacity="0.1"/>
+  <!-- Larger bloom petals behind house -->
+  <ellipse cx="30" cy="65" rx="15" ry="8" fill="#d4836a" opacity="0.12" transform="rotate(-20,30,65)"/>
+  <ellipse cx="90" cy="68" rx="15" ry="8" fill="#6a9e8c" opacity="0.12" transform="rotate(15,90,68)"/>
+  <!-- C door -->
+  <path d="M68,66 A12,12 0 1,0 68,82" fill="none" stroke="#c57546" stroke-width="3" stroke-linecap="round"/>
+  <!-- Windows -->
+  <rect x="40" y="62" width="10" height="10" rx="1" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+  <!-- Center dot -->
+  <circle cx="60" cy="35" r="2.5" fill="#b8956a"/>
+  <!-- Text -->
+  <text x="60" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c">Cindy's Art Studio</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-34</div>
+            <div class="card-name">抽象綻放</div>
+              <div class="card-name-secondary">Abstract Bloom</div>
+            <div class="card-desc">Abstract petals blooming from a house shape, representing creative growth</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#f9f7f4"/>
+  <!-- Background subtle circle -->
+  <circle cx="60" cy="50" r="40" fill="#6a9e8c" opacity="0.06"/>
+  <!-- English C - left side -->
+  <path d="M58,18 C42,16 22,28 20,48 C18,68 28,84 46,88" fill="none" stroke="#2c2c2c" stroke-width="4" stroke-linecap="round"/>
+  <!-- Chinese-inspired house strokes - right side -->
+  <!-- Roof horizontal stroke (like Chinese radical) -->
+  <line x1="50" y1="30" x2="100" y2="30" stroke="#c57546" stroke-width="3" stroke-linecap="round"/>
+  <!-- Vertical stroke -->
+  <line x1="75" y1="30" x2="75" y2="85" stroke="#c57546" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- House horizontal -->
+  <line x1="58" y1="52" x2="92" y2="52" stroke="#c57546" stroke-width="2" stroke-linecap="round"/>
+  <!-- Enclosure strokes (like 口) -->
+  <line x1="62" y1="58" x2="62" y2="78" stroke="#c57546" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="88" y1="58" x2="88" y2="78" stroke="#c57546" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="62" y1="78" x2="88" y2="78" stroke="#c57546" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Small C inside enclosure -->
+  <path d="M80,63 A6,6 0 1,0 80,73" fill="none" stroke="#6a9e8c" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Dot accent -->
+  <circle cx="75" cy="24" r="2" fill="#b8956a"/>
+  <!-- Bridge element connecting E and W -->
+  <path d="M46,88 Q60,92 62,78" fill="none" stroke="#8E9A8C" stroke-width="1" stroke-dasharray="2,2"/>
+  <!-- Text -->
+  <text x="40" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#2c2c2c">Cindy's</text>
+  <text x="82" y="106" text-anchor="middle" font-family="'SimSun', 'Songti SC', serif" font-size="8" fill="#c57546">畫室</text>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">E-35</div>
+            <div class="card-name">雙語印象</div>
+              <div class="card-name-secondary">Dual Script</div>
+            <div class="card-desc">Bilingual design merging English C with Chinese character elements</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- B-4 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="46" fill="#3a4a42"/>
-        <circle cx="50" cy="50" r="41" fill="none" stroke="#6a9e8c" stroke-width="0.8" stroke-dasharray="2 2.5"/>
-        <path d="M50 18L30 36V72H70V36L50 18Z" fill="#4a5d54"/>
-        <path d="M50 18L30 36H70L50 18Z" fill="#6a9e8c"/>
-        <path d="M58 44C58 38 54.5 34 49.5 34C44 34 40 38.5 40 44.5C40 50.5 44 55 49.5 55C53.5 55 56.5 52.5 58 50" stroke="#faf6f1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-        <text x="50" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="5" font-weight="600" fill="#8cbcaa" letter-spacing="1.5">CINDY'S ART</text>
-        <text x="50" y="72" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="4.5" fill="#8cbcaa" letter-spacing="1.2">STUDIO</text>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">B-4</div>
-      <h3>徽章印記風</h3>
-      <p>圓形徽章 + 房屋剪影 + C，最適合印章與頭像</p>
-    </div>
-  </div>
+    <section class="section" id="set-f">
+      <div class="section-header">
+        <div class="section-title-row">
+          <h2 class="section-title">Set F — Codex</h2>
+          <span class="badge" style="background:#dc3545">35 Designs · Codex</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f9f7f4"/>
+<path d="M24 58 L60 26 L96 58" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 56 V92 H86 V56" fill="none" stroke="#6a9e8c" stroke-width="6" stroke-linejoin="round"/>
+<path d="M76 44 C61 37 45 45 45 60 C45 76 60 83 76 76" fill="none" stroke="#c57546" stroke-width="7" stroke-linecap="round"/>
+<circle cx="60" cy="96" r="3" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-01</div>
+            <div class="card-name">家屋C線條</div>
+              <div class="card-name-secondary">House C Line</div>
+            <div class="card-desc">Minimal house outline with the letter C forming the inner structure.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffdf9"/>
+<path d="M22 60 L60 28 L98 60" fill="none" stroke="#c57546" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="39" y="60" width="42" height="30" rx="4" fill="#6a9e8c"/>
+<path d="M76 36 L91 24" stroke="#2c2c2c" stroke-width="5" stroke-linecap="round"/>
+<rect x="89" y="19" width="8" height="11" rx="2" fill="#b8956a"/>
+<path d="M66 70 C54 66 45 72 45 79 C45 88 55 92 66 88" fill="none" stroke="#f9f7f4" stroke-width="6" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-02</div>
+            <div class="card-name">筆刷屋頂畫室</div>
+              <div class="card-name-secondary">Brush Roof Studio</div>
+            <div class="card-desc">A paintbrush becomes the roofline over a compact studio house.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f9f7f4"/>
+<path d="M60 24 C36 24 20 41 20 62 C20 85 38 98 58 98 C68 98 71 90 69 84 C67 78 72 74 79 74 H87 C96 74 102 68 102 58 C102 39 84 24 60 24Z" fill="#6a9e8c"/>
+<path d="M38 60 L60 42 L82 60" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+<path d="M45 60 V80 H75 V60" fill="none" stroke="#fff" stroke-width="5"/>
+<circle cx="40" cy="47" r="4" fill="#d4836a"/>
+<circle cx="54" cy="37" r="4" fill="#b8956a"/>
+<circle cx="74" cy="38" r="4" fill="#c57546"/>
+<circle cx="86" cy="50" r="4" fill="#2a3a4a"/>
+<path d="M68 67 C58 62 48 67 48 75 C48 84 58 87 68 82" fill="none" stroke="#d4836a" stroke-width="4" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-03</div>
+            <div class="card-name">調色盤之家</div>
+              <div class="card-name-secondary">Palette Home</div>
+            <div class="card-desc">House and palette fused into one warm, welcoming mark.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="22" fill="#2a3a4a"/>
+<path d="M25 58 L60 24 L95 58 V94 H25Z" fill="#f9f7f4"/>
+<path d="M37 59 L60 36 L83 59 V82 H37Z" fill="#8E9A8C"/>
+<path d="M73 48 C60 41 48 48 48 60 C48 73 60 79 73 72" fill="none" stroke="#f9f7f4" stroke-width="7" stroke-linecap="round"/>
+<rect x="54" y="67" width="12" height="27" fill="#c57546"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-04</div>
+            <div class="card-name">幾何庭院C</div>
+              <div class="card-name-secondary">Geometric Courtyard C</div>
+            <div class="card-desc">Abstract geometric house with a centered architectural C form.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="50" fill="#3a5a42"/>
+<path d="M30 61 L60 34 L90 61 V88 H30Z" fill="#f9f7f4"/>
+<path d="M74 48 C63 43 51 48 51 60 C51 72 62 77 74 72" fill="none" stroke="#3a5a42" stroke-width="8" stroke-linecap="round"/>
+<rect x="56" y="67" width="8" height="21" fill="#3a5a42"/>
+<circle cx="87" cy="33" r="5" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-05</div>
+            <div class="card-name">留白小屋</div>
+              <div class="card-name-secondary">Negative Space Nest</div>
+            <div class="card-desc">Bold badge using negative space for both house and letter C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffaf4"/>
+<path d="M26 62 Q60 24 94 62" fill="none" stroke="#d4836a" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+<path d="M34 60 Q35 88 60 90 Q84 89 86 60" fill="#6a9e8c" opacity="0.75"/>
+<path d="M77 50 C63 39 45 48 45 62 C45 78 60 86 77 76" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linecap="round"/>
+<circle cx="36" cy="42" r="6" fill="#b8956a" opacity="0.8"/>
+<circle cx="82" cy="41" r="5" fill="#8E9A8C" opacity="0.8"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-06</div>
+            <div class="card-name">水彩藝屋</div>
+              <div class="card-name-secondary">Watercolor Cottage</div>
+            <div class="card-desc">Soft organic watercolor-inspired house with flowing C stroke.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f4f1ec"/>
+<path d="M28 59 L60 30 L92 59" fill="none" stroke="#2c2c2c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M36 59 V89 H84 V59" fill="none" stroke="#2c2c2c" stroke-width="5" stroke-linejoin="round"/>
+<path d="M70 67 C61 60 50 63 50 74 C50 84 61 88 70 82" fill="none" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round"/>
+<path d="M78 43 V57" stroke="#b8956a" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-07</div>
+            <div class="card-name">單線迎賓屋</div>
+              <div class="card-name-secondary">Monoline Welcome Home</div>
+            <div class="card-desc">Contemporary monoline house logo with a graceful C doorway.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<path d="M60 14 L96 28 V61 C96 82 80 99 60 106 C40 99 24 82 24 61 V28Z" fill="#2a3a4a"/>
+<path d="M37 58 L60 39 L83 58 V84 H37Z" fill="#f9f7f4"/>
+<path d="M72 49 C61 44 50 49 50 61 C50 72 61 77 72 72" fill="none" stroke="#c57546" stroke-width="6" stroke-linecap="round"/>
+<circle cx="42" cy="34" r="4" fill="#b8956a"/>
+<circle cx="60" cy="28" r="4" fill="#6a9e8c"/>
+<circle cx="78" cy="34" r="4" fill="#d4836a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-08</div>
+            <div class="card-name">畫室徽章</div>
+              <div class="card-name-secondary">Studio Emblem</div>
+            <div class="card-desc">Classic crest with house, palette dots, and academic studio feel.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect x="20" y="20" width="80" height="80" rx="10" fill="#c57546"/>
+<path d="M33 60 L60 36 L87 60 V85 H33Z" fill="#f9f7f4"/>
+<path d="M73 48 C62 42 49 48 49 60 C49 73 61 78 73 72" fill="none" stroke="#c57546" stroke-width="8" stroke-linecap="square"/>
+<rect x="55" y="68" width="10" height="17" fill="#c57546"/>
+<path d="M25 25 H95 V95 H25 Z" fill="none" stroke="#8a4f2e" stroke-width="2" stroke-dasharray="4 3"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-09</div>
+            <div class="card-name">東西合璧印章</div>
+              <div class="card-name-secondary">East West Seal</div>
+            <div class="card-desc">Square seal-inspired mark combining a house with a carved C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f9f7f4"/>
+<path d="M40 95 L52 40 H68 L80 95" fill="none" stroke="#b8956a" stroke-width="5" stroke-linecap="round"/>
+<path d="M32 58 L60 34 L88 58" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linejoin="round"/>
+<rect x="39" y="58" width="42" height="27" rx="4" fill="#6b4c6e"/>
+<path d="M66 65 C56 60 48 66 48 72 C48 79 56 84 66 79" fill="none" stroke="#f9f7f4" stroke-width="5" stroke-linecap="round"/>
+<path d="M35 73 H85" stroke="#2a3a4a" stroke-width="4" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-10</div>
+            <div class="card-name">畫架小屋</div>
+              <div class="card-name-secondary">Easel House</div>
+            <div class="card-desc">An easel structure becomes a house for learning and creativity.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffdf8"/>
+<path d="M26 56 L60 28 L94 56" fill="#8E9A8C"/>
+<rect x="34" y="56" width="52" height="34" rx="6" fill="#f9f7f4" stroke="#2c2c2c" stroke-width="3"/>
+<path d="M50 56 V90" stroke="#2c2c2c" stroke-width="3"/>
+<path d="M34 73 H86" stroke="#2c2c2c" stroke-width="3"/>
+<path d="M76 63 C67 58 58 62 58 73 C58 83 67 87 76 82" fill="none" stroke="#d4836a" stroke-width="5" stroke-linecap="round"/>
+<circle cx="90" cy="38" r="6" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-11</div>
+            <div class="card-name">窗景C畫室</div>
+              <div class="card-name-secondary">Window C Studio</div>
+            <div class="card-desc">A sunny window-house where the window grid becomes a soft C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="20" fill="#2c2c2c"/>
+<path d="M28 62 L60 30 L92 62 V92 H28Z" fill="#f9f7f4"/>
+<path d="M76 37 L76 21" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round"/>
+<rect x="72" y="17" width="8" height="10" rx="2" fill="#b8956a"/>
+<path d="M72 50 C61 44 50 49 50 61 C50 73 60 78 72 72" fill="none" stroke="#c57546" stroke-width="7" stroke-linecap="round"/>
+<rect x="57" y="70" width="8" height="22" fill="#6a9e8c"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-12</div>
+            <div class="card-name">煙囪畫筆標誌</div>
+              <div class="card-name-secondary">Chimney Brush Mark</div>
+            <div class="card-desc">House icon with a paintbrush chimney and elegant internal C form.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f9f7f4"/>
+<path d="M30 58 L60 32 L90 58" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linejoin="round"/>
+<rect x="34" y="58" width="52" height="30" rx="5" fill="#fff"/>
+<rect x="36" y="49" width="10" height="7" rx="2" fill="#6a9e8c"/>
+<rect x="48" y="43" width="10" height="7" rx="2" fill="#b8956a"/>
+<rect x="60" y="43" width="10" height="7" rx="2" fill="#d4836a"/>
+<rect x="72" y="49" width="10" height="7" rx="2" fill="#6b4c6e"/>
+<path d="M72 66 C62 60 50 64 50 74 C50 84 61 87 72 82" fill="none" stroke="#c57546" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-13</div>
+            <div class="card-name">彩瓦屋頂</div>
+              <div class="card-name-secondary">Color Tile Roof</div>
+            <div class="card-desc">Roof tiles rendered as curated color swatches above a clean house form.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f6f1ea"/>
+<path d="M24 60 L60 24 L96 60 L80 60 L60 40 L40 60Z" fill="#6a9e8c"/>
+<path d="M40 60 H80 V92 H40Z" fill="#d9d2c6"/>
+<path d="M74 50 L61 61 L74 72" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M74 50 C61 43 48 48 48 61 C48 74 61 79 74 72" fill="none" stroke="#c57546" stroke-width="4" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-14</div>
+            <div class="card-name">摺紙藝屋</div>
+              <div class="card-name-secondary">Origami Nest C</div>
+            <div class="card-desc">Folded-paper house silhouette with a crisp origami C gesture.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="22" fill="#2a3a4a"/>
+<path d="M30 58 L60 28 L90 58 V90 H30Z" fill="#f9f7f4"/>
+<path d="M36 58 L60 35 L84 58 V84 H36Z" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+<path d="M36 58 H84 M60 35 V84 M36 71 H84" stroke="#2c2c2c" stroke-width="2"/>
+<rect x="38" y="60" width="20" height="10" fill="#6a9e8c"/>
+<rect x="62" y="60" width="20" height="10" fill="#d4836a"/>
+<rect x="38" y="74" width="20" height="8" fill="#b8956a"/>
+<rect x="62" y="74" width="20" height="8" fill="#6b4c6e"/>
+<path d="M75 48 C63 43 51 48 51 60 C51 71 62 77 75 72" fill="none" stroke="#f9f7f4" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-15</div>
+            <div class="card-name">彩窗畫室</div>
+              <div class="card-name-secondary">Stained Glass Studio</div>
+            <div class="card-desc">A jewel-toned stained glass house window with C-shaped leading.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="22" fill="#fffcf8"/>
+<rect x="28" y="58" width="16" height="16" fill="#6a9e8c"/>
+<rect x="46" y="40" width="16" height="16" fill="#b8956a"/>
+<rect x="64" y="40" width="16" height="16" fill="#d4836a"/>
+<rect x="82" y="58" width="10" height="16" fill="#6b4c6e"/>
+<rect x="28" y="76" width="16" height="16" fill="#2a3a4a"/>
+<rect x="46" y="76" width="16" height="16" fill="#8E9A8C"/>
+<rect x="64" y="76" width="16" height="16" fill="#c57546"/>
+<path d="M73 54 C61 48 50 53 50 66 C50 78 61 83 73 78" fill="none" stroke="#f9f7f4" stroke-width="6" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-16</div>
+            <div class="card-name">馬賽克之家</div>
+              <div class="card-name-secondary">Mosaic Home Mark</div>
+            <div class="card-desc">Modular mosaic blocks build a home around a modern C monogram.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffaf6"/>
+<path d="M26 62 Q42 45 60 28 Q78 44 94 62" fill="none" stroke="#2c2c2c" stroke-width="5" stroke-linecap="round"/>
+<path d="M80 45 C65 31 40 42 40 63 C40 84 63 92 80 77" fill="none" stroke="#c57546" stroke-width="9" stroke-linecap="round"/>
+<path d="M52 62 Q60 73 53 88" fill="none" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round"/>
+<circle cx="87" cy="37" r="4" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-17</div>
+            <div class="card-name">書法家屋C</div>
+              <div class="card-name-secondary">Calligraphic Home C</div>
+            <div class="card-desc">Expressive brush calligraphy suggesting both a home and Cindy's initial.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f3efe8"/>
+<path d="M25 60 L60 27 L95 60" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linejoin="round"/>
+<path d="M36 60 V88 H84 V60" fill="none" stroke="#2a3a4a" stroke-width="4"/>
+<path d="M45 88 V67 C45 56 52 48 60 48 C68 48 75 56 75 67 V88" fill="#b8956a"/>
+<path d="M73 55 C64 50 54 54 54 65 C54 76 64 80 73 75" fill="none" stroke="#f9f7f4" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-18</div>
+            <div class="card-name">學院拱屋</div>
+              <div class="card-name-secondary">Academic Arch House</div>
+            <div class="card-desc">A refined arch-and-gable logo with formal studio credibility.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="28" fill="#f9f7f4"/>
+<path d="M28 60 L60 34 L92 60" fill="none" stroke="#6a9e8c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36" y="60" width="48" height="28" rx="12" fill="#d4836a"/>
+<path d="M71 67 C61 61 49 66 49 75 C49 84 60 89 71 83" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<circle cx="42" cy="49" r="4" fill="#b8956a"/>
+<circle cx="78" cy="49" r="4" fill="#2a3a4a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-19</div>
+            <div class="card-name">圓潤親子畫室</div>
+              <div class="card-name-secondary">Rounded Family Studio</div>
+            <div class="card-desc">Friendly rounded geometry balancing child warmth and adult professionalism.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="20" fill="#2a3a4a"/>
+<path d="M30 56 L60 30 L90 56" fill="#b8956a"/>
+<rect x="36" y="56" width="48" height="22" rx="3" fill="#f9f7f4"/>
+<path d="M32 78 H88 L82 92 H38 Z" fill="#6a9e8c"/>
+<path d="M72 61 C62 56 51 61 51 68 C51 77 61 80 72 75" fill="none" stroke="#c57546" stroke-width="5" stroke-linecap="round"/>
+<path d="M60 78 V92" stroke="#f9f7f4" stroke-width="3"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-20</div>
+            <div class="card-name">作品集之家</div>
+              <div class="card-name-secondary">Portfolio House Crest</div>
+            <div class="card-desc">Structured house logo with a portfolio-book base and monogram C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffaf5"/>
+<path d="M35 56 Q43 38 60 34 Q77 38 85 56" fill="#6b4c6e"/>
+<path d="M25 60 Q35 43 48 43 Q44 57 25 60Z" fill="#8E9A8C"/>
+<path d="M95 60 Q85 43 72 43 Q76 57 95 60Z" fill="#b8956a"/>
+<rect x="34" y="58" width="52" height="30" rx="5" fill="#f9f7f4" stroke="#2c2c2c" stroke-width="2"/>
+<path d="M73 66 C63 60 51 65 51 74 C51 84 62 88 73 82" fill="none" stroke="#c57546" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-21</div>
+            <div class="card-name">蓮瓣屋頂</div>
+              <div class="card-name-secondary">Lotus Roof Home</div>
+            <div class="card-desc">East-meets-West logo using lotus-like roof petals over a western house base.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="44" fill="none" stroke="#2a3a4a" stroke-width="4"/>
+<path d="M33 58 L60 34 L87 58" fill="none" stroke="#6a9e8c" stroke-width="6" stroke-linejoin="round"/>
+<path d="M42 58 V84 H78 V58" fill="none" stroke="#6a9e8c" stroke-width="6"/>
+<path d="M74 50 C63 45 52 50 52 61 C52 72 63 77 74 72" fill="none" stroke="#c57546" stroke-width="6" stroke-linecap="round"/>
+<path d="M60 16 V24 M60 96 V104 M16 60 H24 M96 60 H104" stroke="#b8956a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-22</div>
+            <div class="card-name">指南屋C</div>
+              <div class="card-name-secondary">Compass C House</div>
+            <div class="card-desc">Precise geometric mark suggesting guidance, craft, and systematic teaching.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="50" fill="#f9f7f4" stroke="#2c2c2c" stroke-width="4"/>
+<path d="M32 62 L60 38 L88 62" fill="none" stroke="#b8956a" stroke-width="6" stroke-linejoin="round"/>
+<path d="M40 62 H80 V84 H40Z" fill="#6a9e8c"/>
+<path d="M71 67 C61 61 50 66 50 74 C50 83 61 87 71 81" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<circle cx="38" cy="31" r="4" fill="#d4836a"/>
+<circle cx="50" cy="26" r="4" fill="#6b4c6e"/>
+<circle cx="82" cy="29" r="4" fill="#c57546"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-23</div>
+            <div class="card-name">藝術角落徽章</div>
+              <div class="card-name-secondary">Art Nook Badge</div>
+            <div class="card-desc">Circular badge with cozy studio nook and painterly C centerpiece.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#2a3a4a"/>
+<path d="M30 60 L60 30 L90 60 V90 H30Z" fill="#f9f7f4"/>
+<path d="M73 49 C62 43 50 48 50 60 C50 72 61 77 73 71" fill="none" stroke="#6a9e8c" stroke-width="6" stroke-linecap="round"/>
+<path d="M60 18 L63 25 L70 26 L65 31 L66 38 L60 34 L54 38 L55 31 L50 26 L57 25Z" fill="#b8956a"/>
+<rect x="57" y="69" width="6" height="21" fill="#c57546"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-24</div>
+            <div class="card-name">星光畫屋</div>
+              <div class="card-name-secondary">North Star Studio</div>
+            <div class="card-desc">House silhouette anchored by a guiding star and elegant Cindy C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffdf8"/>
+<path d="M24 61 L60 29 L96 61" fill="#b8956a"/>
+<path d="M30 61 L60 36 L90 61" fill="#6a9e8c"/>
+<rect x="38" y="61" width="44" height="27" rx="4" fill="#f9f7f4"/>
+<path d="M72 67 C62 61 52 66 52 74 C52 82 61 87 72 81" fill="none" stroke="#2a3a4a" stroke-width="5" stroke-linecap="round"/>
+<path d="M44 88 H76" stroke="#d4836a" stroke-width="4" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-25</div>
+            <div class="card-name">層疊屋簷C</div>
+              <div class="card-name-secondary">Layered Gable C</div>
+            <div class="card-desc">Layered roof planes create depth around a compact artistic monogram.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f6f1e8"/>
+<path d="M28 58 L60 30 L92 58" fill="none" stroke="#c57546" stroke-width="6" stroke-linejoin="round"/>
+<rect x="36" y="58" width="48" height="30" rx="10" fill="#b8956a"/>
+<path d="M48 58 V88 M60 58 V88 M72 58 V88" stroke="#f9f7f4" stroke-width="3"/>
+<path d="M74 66 C64 60 52 64 52 74 C52 83 63 88 74 82" fill="none" stroke="#2a3a4a" stroke-width="5" stroke-linecap="round"/>
+<path d="M60 22 V30" stroke="#2a3a4a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-26</div>
+            <div class="card-name">燈籠藝屋</div>
+              <div class="card-name-secondary">Studio Lantern Home</div>
+            <div class="card-desc">A lantern-window house nodding to East Asian warmth and neighborhood welcome.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#2c2c2c"/>
+<path d="M28 62 L60 30 L92 62" fill="none" stroke="#f9f7f4" stroke-width="5" stroke-linejoin="round"/>
+<path d="M36 62 V90 H84 V62" fill="none" stroke="#f9f7f4" stroke-width="5"/>
+<path d="M68 44 C53 38 42 48 42 61 C42 77 55 87 72 82" fill="none" stroke="#6a9e8c" stroke-width="7" stroke-linecap="round"/>
+<path d="M74 50 C63 46 55 52 55 61 C55 70 62 75 74 72" fill="none" stroke="#b8956a" stroke-width="4" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-27</div>
+            <div class="card-name">輪廓屋字標</div>
+              <div class="card-name-secondary">Contour House Monogram</div>
+            <div class="card-desc">Offset contours create a premium monogram with architectural character.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="28" fill="#fffaf6"/>
+<path d="M26 60 L60 31 L94 60" fill="none" stroke="#2a3a4a" stroke-width="6" stroke-linecap="round"/>
+<rect x="36" y="60" width="48" height="28" rx="6" fill="#f9f7f4" stroke="#2a3a4a" stroke-width="3"/>
+<rect x="28" y="72" width="8" height="18" rx="2" fill="#6a9e8c"/>
+<rect x="84" y="72" width="8" height="18" rx="2" fill="#d4836a"/>
+<path d="M72 67 C62 61 51 66 51 74 C51 83 61 87 72 81" fill="none" stroke="#c57546" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-28</div>
+            <div class="card-name">蠟筆小屋</div>
+              <div class="card-name-secondary">Crayon Cottage</div>
+            <div class="card-desc">Playful but polished logo for children and family programming.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f9f7f4"/>
+<path d="M32 59 L60 32 L88 59" fill="none" stroke="#2c2c2c" stroke-width="5" stroke-linejoin="round"/>
+<path d="M40 59 V90 H80 V59" fill="none" stroke="#2c2c2c" stroke-width="5"/>
+<path d="M73 66 C67 58 55 58 49 66 C43 74 47 86 58 86 C64 86 68 84 73 80" fill="none" stroke="#6b4c6e" stroke-width="5" stroke-linecap="round"/>
+<circle cx="58" cy="72" r="2" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-29</div>
+            <div class="card-name">畫廊之門C</div>
+              <div class="card-name-secondary">Gallery Door C</div>
+            <div class="card-desc">A gallery-style doorway uses Cindy's C as the portal to creativity.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffaf5"/>
+<path d="M28 64 Q40 52 60 30 Q80 52 92 64" fill="none" stroke="#d4836a" stroke-width="8" stroke-linecap="round"/>
+<path d="M38 64 Q38 87 60 88 Q82 87 82 64" fill="none" stroke="#6a9e8c" stroke-width="8" stroke-linecap="round"/>
+<path d="M72 51 C61 45 49 50 49 62 C49 75 61 80 72 74" fill="none" stroke="#2a3a4a" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-30</div>
+            <div class="card-name">絲帶屋形</div>
+              <div class="card-name-secondary">Studio Ribbon House</div>
+            <div class="card-desc">Flowing ribbon line wraps into a house and elegant initial.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<path d="M60 14 C81 14 98 30 98 50 V69 C98 91 81 106 60 106 C39 106 22 91 22 69 V50 C22 30 39 14 60 14Z" fill="#6b4c6e"/>
+<path d="M34 59 L60 36 L86 59 V86 H34Z" fill="#f9f7f4"/>
+<path d="M73 49 C62 43 51 48 51 60 C51 72 62 77 73 71" fill="none" stroke="#b8956a" stroke-width="6" stroke-linecap="round"/>
+<path d="M40 26 H80" stroke="#d4836a" stroke-width="3" stroke-linecap="round"/>
+<path d="M44 31 H76" stroke="#d4836a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-31</div>
+            <div class="card-name">傳承畫室徽記</div>
+              <div class="card-name-secondary">Heritage Studio Crest</div>
+            <div class="card-desc">Traditional crest balancing long teaching heritage with artistic refinement.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="20" fill="#f9f7f4"/>
+<path d="M28 58 L60 30 L92 58" fill="none" stroke="#2a3a4a" stroke-width="5"/>
+<rect x="34" y="58" width="52" height="32" fill="none" stroke="#2a3a4a" stroke-width="3"/>
+<path d="M47 58 V90 M60 58 V90 M73 58 V90 M34 69 H86 M34 80 H86" stroke="#b8956a" stroke-width="2"/>
+<path d="M72 49 C61 44 50 49 50 60 C50 72 61 77 72 72" fill="none" stroke="#6a9e8c" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-32</div>
+            <div class="card-name">現代格網屋</div>
+              <div class="card-name-secondary">Modern Grid House</div>
+            <div class="card-desc">Swiss-inspired grid logo with modular education structure and creative C.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffaf4"/>
+<circle cx="60" cy="44" r="18" fill="#f2d39b"/>
+<path d="M28 63 L60 36 L92 63" fill="none" stroke="#c57546" stroke-width="6" stroke-linejoin="round"/>
+<rect x="37" y="63" width="46" height="26" rx="4" fill="#6a9e8c"/>
+<path d="M71 70 C61 64 50 68 50 76 C50 85 61 89 71 83" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-33</div>
+            <div class="card-name">日光畫室屋</div>
+              <div class="card-name-secondary">Sunlit Studio Home</div>
+            <div class="card-desc">Warm sunrise energy for a welcoming home studio identity.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#f0ece5"/>
+<ellipse cx="60" cy="88" rx="34" ry="10" fill="#2c2c2c"/>
+<path d="M30 58 L60 30 L90 58" fill="none" stroke="#2c2c2c" stroke-width="6" stroke-linejoin="round"/>
+<path d="M38 58 V82 H82 V58" fill="#f9f7f4"/>
+<path d="M72 66 C62 60 51 65 51 73 C51 82 61 86 72 80" fill="none" stroke="#6b4c6e" stroke-width="5" stroke-linecap="round"/>
+<path d="M76 38 L86 26" stroke="#6a9e8c" stroke-width="5" stroke-linecap="round"/>
+<rect x="84" y="21" width="7" height="9" rx="2" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-34</div>
+            <div class="card-name">硯台藝屋</div>
+              <div class="card-name-secondary">Inkstone House Mark</div>
+            <div class="card-desc">A grounded logo inspired by brush, inkstone, and cultivated practice.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="24" fill="#fffdf9"/>
+<path d="M26 61 Q44 48 60 28 Q76 48 94 61" fill="none" stroke="#2a3a4a" stroke-width="5" stroke-linecap="round"/>
+<path d="M38 61 Q38 88 60 88 Q82 88 82 61" fill="none" stroke="#2a3a4a" stroke-width="4" stroke-linecap="round"/>
+<path d="M79 48 C69 38 48 45 48 63 C48 82 68 88 79 77" fill="none" stroke="#c57546" stroke-width="7" stroke-linecap="round"/>
+<path d="M33 97 Q52 91 69 96 Q82 100 89 94" fill="none" stroke="#6a9e8c" stroke-width="3" stroke-linecap="round"/>
+<circle cx="88" cy="40" r="4" fill="#b8956a"/>
+</svg>
+          </div>
+          <div class="card-body">
+            <div class="card-label">F-35</div>
+            <div class="card-name">簽名字感畫室</div>
+              <div class="card-name-secondary">Signature Studio House</div>
+            <div class="card-desc">A signature-style final mark blending home, art, and personal mentorship.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- B-5 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
-        <path d="M50 10L12 42V90H88V42L50 10Z" fill="none" stroke="#3a4a42" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M50 18L22 42H78L50 18Z" fill="#6a9e8c" opacity="0.25"/>
-        <path d="M50 15L19 42H81L50 15Z" fill="#6a9e8c" opacity="0.2"/>
-        <path d="M50 21L25 42H75L50 21Z" fill="#6a9e8c" opacity="0.35"/>
-        <path d="M64 50C61 40 56 35 48 35C38 35 30 44 30 56C30 68 38 77 48 77C56 77 61 72 64 64" stroke="#b8956a" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <circle cx="69" cy="45" r="2.5" fill="#d4836a" opacity="0.7"/>
-        <circle cx="73" cy="52" r="1.5" fill="#6a9e8c" opacity="0.5"/>
-        <circle cx="26" cy="70" r="2" fill="#6a9e8c" opacity="0.4"/>
-        <path d="M28 84Q50 80 72 84" stroke="#b8956a" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">B-5</div>
-      <h3>水彩筆觸風</h3>
-      <p>疊色水彩屋頂 + 金棕筆刷 C + 顏料飛濺點</p>
-    </div>
-  </div>
-</div>
-
-<div class="set-detail">
-  <a href="v2.html">查看 Set B 完整版（含色彩變體）&rarr;</a>
-</div>
-
-<!-- ===== SET C ===== -->
-<div class="set-header">
-  <h2>Set C</h2>
-  <div class="line"></div>
-  <span class="badge badge-c">5 Designs</span>
-</div>
-
-<div class="grid">
-  <!-- C-1 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 15L85 45V85H15V45L50 15Z" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M60 50C58 47 54 45 50 45C44 45 40 49 40 55C40 61 44 65 50 65C54 65 58 63 60 60" stroke="#8E9A8C" stroke-width="3.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">C-1</div>
-      <h3>極簡線條版</h3>
-      <p>細線房屋輪廓 + 灰綠 Serif C，現代乾淨專業</p>
-    </div>
-  </div>
-
-  <!-- C-2 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 50L50 20L80 50" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"/>
-        <rect x="25" y="50" width="50" height="35" rx="2" stroke="#2C2C2C" stroke-width="3" style="opacity: 0.8;"/>
-        <path d="M40 55C40 50 45 48 50 48C55 48 60 50 60 55V55C60 60 55 62 50 62C45 62 40 60 40 55Z" fill="#8E9A8C" style="opacity: 0.6;"/>
-        <text x="50" y="68" font-family="Playfair Display, serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">C</text>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">C-2</div>
-      <h3>藝術印記版</h3>
-      <p>穩重房屋 + 漆印風格 C，手工創作溫度</p>
-    </div>
-  </div>
-
-  <!-- C-3 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 45L50 15L85 45V85H15V45Z" fill="#2C2C2C"/>
-        <path d="M65 55C65 48 60 43 52 43C43 43 38 49 38 57C38 65 43 71 52 71C60 71 65 66 65 60" stroke="white" stroke-width="6" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">C-3</div>
-      <h3>負空間色塊版</h3>
-      <p>實色房屋 + 白線 C 負空間，對比搶眼現代感</p>
-    </div>
-  </div>
-
-  <!-- C-4 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 85L50 15L80 85" stroke="#2C2C2C" stroke-width="5" stroke-linecap="round"/>
-        <circle cx="50" cy="55" r="22" fill="#FAFAF7" stroke="#8E9A8C" stroke-width="2"/>
-        <text x="50" y="63" font-family="Serif" font-size="28" fill="#2C2C2C" text-anchor="middle">C</text>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">C-4</div>
-      <h3>閣樓畫室版</h3>
-      <p>A-Frame 造型 + 圓窗 C，寧靜專注的創作空間</p>
-    </div>
-  </div>
-
-  <!-- C-5 -->
-  <div class="card">
-    <div class="logo-box">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 10L90 40H10L50 10Z" fill="#8E9A8C"/>
-        <path d="M15 40H85V85H15V40Z" stroke="#2C2C2C" stroke-width="3"/>
-        <path d="M55 52C53 50 50 49 48 49C43 49 40 53 40 58C40 63 43 67 48 67C50 67 53 66 55 64" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="card-info">
-      <div class="num">C-5</div>
-      <h3>幾何平衡版</h3>
-      <p>三角屋頂 + 矩形牆面 + C，結構平衡象徵系統性</p>
-    </div>
-  </div>
-</div>
-
-<a class="back-link" href="../cindys-art-studio/version-b.html">&larr; 回到網站雛形</a>
+  <footer class="page-footer">
+    Cindy&rsquo;s Art Studio &mdash; Logo Collection &middot; 120 designs across 6 sets
+  </footer>
 
 </body>
 </html>
