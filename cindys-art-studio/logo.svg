@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <g fill="#a5897b">
+    <!-- House with roof and circular window -->
+    <path fill-rule="evenodd" d="
+      M100 10 L24 87 43 87 43 194 Q43 199 48 199 L152 199 Q157 199 157 194 L157 87 176 87 Z
+      M100 99 A44 44 0 1 0 100 187 A44 44 0 1 0 100 99 Z
+    "/>
+    <!-- Bird body + tail -->
+    <path d="
+      M78 118
+      C68 130 62 148 66 162
+      C72 174 84 182 100 184
+      C108 184 124 174 132 160
+      C138 146 132 134 122 130
+      C110 126 94 122 78 118 Z
+    "/>
+    <!-- Bird eye -->
+    <path d="M86 112 Q84 106 90 104 Q96 103 95 108 Q94 114 86 112 Z"/>
+  </g>
+  <!-- Text -->
+  <text x="100" y="228" text-anchor="middle"
+        font-family="'DM Sans', 'Helvetica Neue', sans-serif"
+        font-weight="600" font-size="13.5"
+        letter-spacing="3.2" fill="#a5897b">CINDY'S ATELIER</text>
+</svg>
